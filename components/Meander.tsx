@@ -86,6 +86,7 @@ export default function Meander({
   const patternId = "mp" + rawId.replace(/\W/g, "");
 
   const wrapRef = useRef<HTMLDivElement>(null);
+  const pathRef = useRef<SVGPathElement>(null);
   const [units, setUnits] = useState(
     typeof width === "number" ? Math.ceil(width / NATIVE_W) : 20,
   );
@@ -105,6 +106,24 @@ export default function Meander({
     ro.observe(el);
     return () => ro.disconnect();
   }, [variant, width]);
+
+  // Trigger draw animation when element enters viewport (instead of on mount)
+  useEffect(() => {
+    if (variant !== "draw") return;
+    const path = pathRef.current;
+    if (!path) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          path.classList.add("meander-animated");
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 },
+    );
+    observer.observe(path);
+    return () => observer.disconnect();
+  }, [variant]);
 
   // ── Band: full-bleed colored stripe with SVG <pattern> tiling ──────────
   if (variant === "band") {
@@ -156,6 +175,7 @@ export default function Meander({
         preserveAspectRatio="xMinYMid meet"
       >
         <path
+          ref={variant === "draw" ? pathRef : undefined}
           d={d}
           pathLength={variant === "draw" ? 1 : undefined}
           stroke={fgColor}
@@ -168,7 +188,6 @@ export default function Meander({
               ? { strokeDasharray: 1, strokeDashoffset: 1 }
               : undefined
           }
-          className={variant === "draw" ? "meander-animated" : undefined}
         />
       </svg>
     </div>

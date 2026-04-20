@@ -1,17 +1,61 @@
+"use client";
+
+import { useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger, useGSAP);
+
 export default function Atmosphaere() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const bgRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(
+    () => {
+      if (!bgRef.current) return;
+      const mm = gsap.matchMedia();
+
+      mm.add(
+        "(prefers-reduced-motion: no-preference) and (min-width: 768px)",
+        () => {
+          gsap.to(bgRef.current, {
+            yPercent: -20,
+            ease: "none",
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: true,
+            },
+          });
+        },
+      );
+    },
+    { scope: sectionRef },
+  );
+
   return (
     <section
       id="atmosphaere"
+      ref={sectionRef}
       className="relative flex min-h-[80vh] items-center justify-center overflow-hidden bg-ink"
     >
-      {/* Background with Ken Burns effect */}
+      {/* Parallax wrapper — slightly oversized so translateY never exposes edges */}
       <div
-        className="absolute inset-0 hero-ken-burns"
-        style={{
-          background:
-            "linear-gradient(160deg, #0f1a2e 0%, #0a2040 40%, #1a2e10 80%, #0f1a2e 100%)",
-        }}
-      />
+        ref={bgRef}
+        className="absolute"
+        style={{ inset: "-20% 0", height: "140%" }}
+      >
+        {/* Ken Burns layer */}
+        <div
+          className="absolute inset-0 hero-ken-burns"
+          style={{
+            background:
+              "linear-gradient(160deg, #0f1a2e 0%, #0a2040 40%, #1a2e10 80%, #0f1a2e 100%)",
+          }}
+        />
+      </div>
 
       {/* Gradient overlay for text legibility */}
       <div className="absolute inset-0 bg-gradient-to-b from-ink/40 via-ink/20 to-ink/70" />

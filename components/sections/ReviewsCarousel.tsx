@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+
 const reviews = [
   {
     name: "Marie K.",
@@ -50,6 +54,43 @@ function Stars({ count }: { count: number }) {
 }
 
 export default function ReviewsCarousel() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  // Autoplay
+  useEffect(() => {
+    if (isPaused) return;
+    const id = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % reviews.length);
+    }, 6000);
+    return () => clearInterval(id);
+  }, [isPaused]);
+
+  // Scroll to active card
+  useEffect(() => {
+    const el = carouselRef.current;
+    if (!el) return;
+    const card = el.children[activeIndex] as HTMLElement | undefined;
+    if (card) {
+      el.scrollTo({ left: card.offsetLeft, behavior: "smooth" });
+    }
+  }, [activeIndex]);
+
+  // Track active card from manual scroll
+  useEffect(() => {
+    const el = carouselRef.current;
+    if (!el) return;
+    const onScroll = () => {
+      const cardWidth = (el.children[0] as HTMLElement)?.offsetWidth ?? 0;
+      if (cardWidth > 0) {
+        setActiveIndex(Math.round(el.scrollLeft / (cardWidth + 16)));
+      }
+    };
+    el.addEventListener("scroll", onScroll, { passive: true });
+    return () => el.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <section className="overflow-hidden bg-surface py-24 md:py-32">
       <div className="mx-auto max-w-[1280px] px-6 md:px-12">
@@ -76,27 +117,56 @@ export default function ReviewsCarousel() {
             <p className="mt-3 font-body text-xs text-ink/35">via Google Maps</p>
           </div>
 
-          {/* Scrollable cards */}
-          <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4">
-            {reviews.map((review, i) => (
-              <article
-                key={i}
-                className="w-72 flex-shrink-0 snap-start rounded-lg border border-ink/10 bg-surface p-6 md:w-80"
-              >
-                <div className="mb-3 flex items-start justify-between gap-3">
-                  <div>
-                    <p className="font-body text-sm font-medium text-ink">
-                      {review.name}
-                    </p>
-                    <p className="font-body text-xs text-ink/40">{review.date}</p>
+          {/* Scrollable cards + dots */}
+          <div>
+            <div
+              ref={carouselRef}
+              className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4"
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
+              onTouchStart={() => setIsPaused(true)}
+            >
+              {reviews.map((review, i) => (
+                <article
+                  key={i}
+                  className="w-72 flex-shrink-0 snap-start rounded-lg border border-ink/10 bg-surface p-6 md:w-80"
+                >
+                  <div className="mb-3 flex items-start justify-between gap-3">
+                    <div>
+                      <p className="font-body text-sm font-medium text-ink">
+                        {review.name}
+                      </p>
+                      <p className="font-body text-xs text-ink/40">
+                        {review.date}
+                      </p>
+                    </div>
+                    <Stars count={review.rating} />
                   </div>
-                  <Stars count={review.rating} />
-                </div>
-                <p className="font-body text-sm leading-relaxed text-ink/65">
-                  „{review.text}"
-                </p>
-              </article>
-            ))}
+                  <p className="font-body text-sm leading-relaxed text-ink/65">
+                    „{review.text}"
+                  </p>
+                </article>
+              ))}
+            </div>
+
+            {/* Dot indicator */}
+            <div className="mt-4 flex items-center gap-2">
+              {reviews.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => {
+                    setActiveIndex(i);
+                    setIsPaused(true);
+                  }}
+                  aria-label={`Bewertung ${i + 1}`}
+                  className={`h-1.5 rounded-full transition-all duration-300 ${
+                    i === activeIndex
+                      ? "w-6 bg-brand"
+                      : "w-1.5 bg-ink/20 hover:bg-ink/40"
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>

@@ -1,43 +1,76 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const lines = ["IMMER FRISCH.", "IMMER LECKER.", "IMMER AUTHENTISCH."];
 
 export default function TextFillStatement() {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const [filled, setFilled] = useState([false, false, false]);
 
-  useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
+  useGSAP(
+    () => {
+      const fills = Array.from(
+        sectionRef.current?.querySelectorAll<HTMLElement>(
+          "[data-fill-span]",
+        ) ?? [],
+      );
+      if (!fills.length) return;
 
-    const lineEls = Array.from(
-      section.querySelectorAll<HTMLElement>("[data-fill-line]"),
-    );
+      const mm = gsap.matchMedia();
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const idx = Number(
-              (entry.target as HTMLElement).dataset.fillLine,
+      mm.add("(prefers-reduced-motion: reduce)", () => {
+        fills.forEach((el) => (el.style.clipPath = "none"));
+      });
+
+      mm.add(
+        "(prefers-reduced-motion: no-preference) and (min-width: 768px)",
+        () => {
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: "top top",
+              end: "+=250%",
+              pin: true,
+              scrub: 1,
+            },
+          });
+
+          fills.forEach((el, i) => {
+            tl.to(
+              el,
+              { clipPath: "inset(0 0% 0 0)", ease: "none", duration: 1 },
+              i * 0.8,
             );
-            setFilled((prev) => {
-              if (prev[idx]) return prev;
-              const next = [...prev];
-              next[idx] = true;
-              return next;
-            });
-          }
-        });
-      },
-      { threshold: 0.3 },
-    );
+          });
+        },
+      );
 
-    lineEls.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
+      mm.add(
+        "(prefers-reduced-motion: no-preference) and (max-width: 767px)",
+        () => {
+          fills.forEach((el, i) => {
+            gsap.to(el, {
+              clipPath: "inset(0 0% 0 0)",
+              ease: "none",
+              scrollTrigger: {
+                trigger: el,
+                start: "top 80%",
+                end: "top 30%",
+                scrub: 1,
+              },
+              delay: i * 0.1,
+            });
+          });
+        },
+      );
+    },
+    { scope: sectionRef },
+  );
 
   return (
     <section
@@ -49,7 +82,6 @@ export default function TextFillStatement() {
           {lines.map((line, i) => (
             <div
               key={i}
-              data-fill-line={i}
               className="relative"
               style={{ lineHeight: 1 }}
             >
@@ -65,17 +97,16 @@ export default function TextFillStatement() {
               >
                 {line}
               </span>
-              {/* Fill layer — reveals left-to-right on scroll */}
+              {/* Fill layer — clip-path animated by GSAP on scroll */}
               <span
-                className="absolute inset-0 block font-display uppercase transition-[clip-path] duration-700 ease-out"
+                data-fill-span
+                className="absolute inset-0 block font-display uppercase"
                 style={{
                   fontSize: "clamp(2.5rem, 9vw, 7.5rem)",
                   color: "#F4EDE0",
-                  clipPath: filled[i]
-                    ? "inset(0 0% 0 0)"
-                    : "inset(0 100% 0 0)",
-                  transitionDelay: `${i * 120}ms`,
+                  clipPath: "inset(0 100% 0 0)",
                 }}
+                aria-label={i === 0 ? line : undefined}
               >
                 {line}
               </span>

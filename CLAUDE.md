@@ -9,6 +9,7 @@ Dient als Referenzprojekt für **Klarteq** (Freelance Webentwicklung, OWL).
 
 - @DESIGN-SYSTEM.md — Farben, Typografie, Spacing, Animationen, Bildsprache
 - @SECTIONS.md — Routen, Seitenstruktur, Scroll-Dramaturgie der Startseite
+- @ANIMATIONS.md — Animationseffekte, Toolchain (Framer Motion + GSAP)
 
 ## Deployment & Arbeitsweise
 
