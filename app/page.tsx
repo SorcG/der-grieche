@@ -2,7 +2,7 @@ export default function Home() {
   return (
     <main className="min-h-screen px-6 py-24 md:px-12 md:py-32">
       <div className="mx-auto max-w-4xl space-y-16">
-        {/* Test 1: Ancient Geek (Display, Großbuchstaben, kein Umlaut) */}
+
         <section>
           <p className="mb-2 text-sm uppercase tracking-widest text-ink/60">
             Display — Ancient Geek
@@ -18,7 +18,6 @@ export default function Home() {
           </p>
         </section>
 
-        {/* Test 2: Headline mit Umlaut → Fallback auf Bebas Neue */}
         <section>
           <p className="mb-2 text-sm uppercase tracking-widest text-ink/60">
             Display mit Umlaut — Fallback auf Bebas Neue
@@ -30,13 +29,10 @@ export default function Home() {
             QUALITÄT &amp; AUTHENTIZITÄT
           </h2>
           <p className="mt-2 text-sm text-ink/60">
-            Die meisten Buchstaben sollten in Ancient Geek gesetzt sein.
-            Nur die Umlaute (Ä) sollten optisch anders aussehen
-            (Bebas-Neue-Fallback).
+            Umlaute (Ä) sollten optisch anders aussehen als der Rest.
           </p>
         </section>
 
-        {/* Test 3: DM Sans Body */}
         <section>
           <p className="mb-2 text-sm uppercase tracking-widest text-ink/60">
             Body — DM Sans
@@ -44,24 +40,23 @@ export default function Home() {
           <p className="text-lg leading-relaxed text-ink">
             Seit 1974 bereiten wir Gyros, Souvlaki und Bifteki nach
             traditionellem Familienrezept zu. Authentische griechische Kueche,
-            direkt aus unserer Taverne in Guetersloh. Frische Zutaten,
-            handgemacht, taeglich.
+            direkt aus unserer Taverne in Guetersloh.
           </p>
         </section>
 
-        {/* Test 4: Brand-Farben sichtbar machen */}
         <section>
           <p className="mb-4 text-sm uppercase tracking-widest text-ink/60">
             Farbpalette
           </p>
           <div className="grid grid-cols-2 gap-4 md:grid-cols-5">
-            <div className="h-20 rounded bg-brand" title="brand" />
-            <div className="h-20 rounded border border-ink/10 bg-surface" title="surface" />
-            <div className="h-20 rounded bg-surface-warm" title="surface-warm" />
-            <div className="h-20 rounded bg-accent" title="accent" />
-            <div className="h-20 rounded bg-ink" title="ink" />
+            <div className="h-20 rounded bg-brand" />
+            <div className="h-20 rounded border border-ink/10 bg-surface" />
+            <div className="h-20 rounded bg-surface-warm" />
+            <div className="h-20 rounded bg-accent" />
+            <div className="h-20 rounded bg-ink" />
           </div>
         </section>
+
       </div>
     </main>
   );
