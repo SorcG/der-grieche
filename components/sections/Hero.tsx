@@ -46,7 +46,7 @@ export default function Hero() {
       {/* Bottom: Mäander + Scroll-Indicator */}
       <div className="absolute bottom-0 left-0 right-0 z-10 px-6 pb-8">
         <div className="mx-auto max-w-[1280px]">
-          <Meander color="rgba(252,254,253,0.25)" />
+          <Meander variant="border" background="ink" className="opacity-30" />
         </div>
         <div className="mt-5 flex justify-center">
           <div className="flex flex-col items-center gap-2">

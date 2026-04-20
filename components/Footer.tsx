@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="bg-ink text-surface-warm">
       {/* Mäander border */}
       <div className="px-6 pt-6 md:px-12">
-        <Meander color="#F4EDE0" className="opacity-20" />
+        <Meander variant="border" background="ink" className="opacity-20" />
       </div>
 
       <div className="mx-auto max-w-[1280px] px-6 py-12 md:px-12 md:py-16">

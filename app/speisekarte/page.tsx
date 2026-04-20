@@ -23,7 +23,7 @@ export default function Speisekarte() {
           Speisekarte
         </h1>
         <div className="mt-6 w-full max-w-lg">
-          <Meander color="rgba(252,254,253,0.25)" />
+          <Meander variant="border" background="ink" className="opacity-30" />
         </div>
       </div>
 
@@ -46,7 +46,7 @@ export default function Speisekarte() {
                 {category.name}
               </h2>
               <div className="mb-8 mt-3">
-                <Meander color="#0960D0" width={160} />
+                <Meander variant="border" background="surface" width={160} />
               </div>
 
               <ul className="divide-y divide-ink/5">

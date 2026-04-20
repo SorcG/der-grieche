@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
-import { Anton, DM_Sans } from "next/font/google";
+import { Bebas_Neue, DM_Sans } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 
-const anton = Anton({
+// Bebas Neue is the interim display font until AncientGeek.woff2 is placed
+// in app/fonts/. See DESIGN-SYSTEM.md § Typografie for the full font strategy.
+const bebasNeue = Bebas_Neue({
   weight: "400",
-  variable: "--font-anton",
+  variable: "--font-bebas-neue",
   subsets: ["latin"],
 });
 
@@ -29,7 +31,7 @@ export default function RootLayout({
   return (
     <html
       lang="de"
-      className={`${anton.variable} ${dmSans.variable} h-full antialiased`}
+      className={`${bebasNeue.variable} ${dmSans.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
         <Nav />
