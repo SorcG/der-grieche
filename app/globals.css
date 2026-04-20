@@ -1,26 +1,40 @@
 @import "tailwindcss";
 
+/* ----------------------------------------------------------------
+   Theme-Tokens für Tailwind v4
+   Wird als Utilities exponiert: bg-brand, text-ink, bg-surface-warm, etc.
+   ---------------------------------------------------------------- */
 @theme {
-  --color-brand: #0960D0;
-  --color-surface: #FCFEFD;
-  --color-surface-warm: #F4EDE0;
-  --color-accent: #6B7C48;
-  --color-ink: #0F1A2E;
+  /* Brand-Farben (siehe DESIGN-SYSTEM.md) */
+  --color-brand: #0960d0;
+  --color-surface: #fcfefd;
+  --color-surface-warm: #f4ede0;
+  --color-accent: #6b7c48;
+  --color-ink: #0f1a2e;
 }
 
+/* Font-Stacks via @theme inline so Tailwind inlines the var() references
+   into generated utilities without creating a circular :root custom property.
+   Ancient Geek (--font-display) and Bebas Neue (--font-display-fallback) are
+   injected on <html> by Next.js localFont / next/font. */
 @theme inline {
-  --font-display: var(--font-display);
-  --font-body: var(--font-body);
+  --font-display: var(--font-display), var(--font-display-fallback), "Impact", sans-serif;
+  --font-body: var(--font-body), system-ui, -apple-system, sans-serif;
 }
 
+/* ----------------------------------------------------------------
+   Globale Defaults
+   ---------------------------------------------------------------- */
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background: var(--color-surface);
+  background-color: var(--color-surface);
   color: var(--color-ink);
-  font-family: var(--font-body), system-ui, sans-serif;
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
 }
 
 /* Ancient Geek irregular forms read best with a touch of tracking */
@@ -28,7 +42,11 @@ body {
   letter-spacing: 0.02em;
 }
 
-/* Hero Ken Burns */
+/* ----------------------------------------------------------------
+   Animations
+   ---------------------------------------------------------------- */
+
+/* Hero + Atmosphäre Ken-Burns-Effekt */
 @keyframes ken-burns {
   0%   { transform: scale(1.05) translate(0, 0); }
   100% { transform: scale(1.15) translate(-1.5%, 1%); }
@@ -39,7 +57,7 @@ body {
   will-change: transform;
 }
 
-/* Mäander draw-in animation */
+/* Mäander Draw-In */
 @keyframes meander-draw {
   to { stroke-dashoffset: 0; }
 }
@@ -48,10 +66,21 @@ body {
   animation: meander-draw 1.5s ease-out forwards;
 }
 
+/* ----------------------------------------------------------------
+   prefers-reduced-motion respektieren (siehe ANIMATIONS.md)
+   ---------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
-  .hero-ken-burns { animation: none; }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Mäander-Pfad sofort vollständig sichtbar */
   .meander-animated {
-    animation: none;
     stroke-dashoffset: 0 !important;
   }
 }
