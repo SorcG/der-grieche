@@ -1,11 +1,11 @@
-export default function Home() {
+ï»¿export default function Home() {
   return (
     <main className="min-h-screen px-6 py-24 md:px-12 md:py-32">
       <div className="mx-auto max-w-4xl space-y-16">
 
         <section>
           <p className="mb-2 text-sm uppercase tracking-widest text-ink/60">
-            Display — Ancient Geek
+            Display: Ancient Geek
           </p>
           <h1
             className="text-6xl text-brand md:text-8xl"
@@ -17,7 +17,7 @@ export default function Home() {
 
         <section>
           <p className="mb-2 text-sm uppercase tracking-widest text-ink/60">
-            Body — DM Sans
+            Body: DM Sans
           </p>
           <p className="text-lg leading-relaxed text-ink">
             Seit 1974 bereiten wir Gyros, Souvlaki und Bifteki nach
