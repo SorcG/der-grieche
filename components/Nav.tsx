@@ -1,41 +1,23 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { usePathname } from "next/navigation";
 
 const navLinks = [
   { href: "/speisekarte", label: "Speisekarte" },
+  { href: "/ueber-uns", label: "Über uns" },
   { href: "/#atmosphaere", label: "Atmosphäre" },
-  { href: "/#standort", label: "Kontakt" },
+  { href: "#kontakt", label: "Kontakt" },
 ];
 
 export default function Nav() {
   const pathname = usePathname();
-  const isHome = pathname === "/";
-  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
-    setMenuOpen(false);
-  }, [pathname]);
-
-  const transparent = isHome && !scrolled;
-
   return (
-    <header
-      className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
-        transparent ? "bg-transparent" : "bg-ink"
-      }`}
-    >
-      <div className="mx-auto flex max-w-[1280px] items-center justify-between px-6 py-4 md:px-12">
+    <header className="fixed left-0 right-0 top-0 z-50 bg-brand h-14 md:h-16">
+      <div className="mx-auto flex h-full max-w-[1280px] items-center justify-between px-6 md:px-12">
         <Link
           href="/"
           className="font-display text-xl uppercase tracking-tight text-surface"
@@ -89,7 +71,7 @@ export default function Nav() {
 
       {/* Mobile menu */}
       <div
-        className={`overflow-hidden bg-ink transition-all duration-300 md:hidden ${
+        className={`overflow-hidden bg-brand transition-all duration-300 md:hidden ${
           menuOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
@@ -99,7 +81,7 @@ export default function Nav() {
               key={href}
               href={href}
               onClick={() => setMenuOpen(false)}
-              className="py-2 font-body text-base font-medium uppercase tracking-[0.1em] text-surface/70 transition-colors hover:text-surface"
+              className="py-2 font-body text-base font-medium uppercase tracking-[0.1em] text-surface/75 transition-colors hover:text-surface"
             >
               {label}
             </Link>

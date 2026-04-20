@@ -1,29 +1,32 @@
 import Meander from "@/components/Meander";
 import Hero from "@/components/sections/Hero";
 import Willkommen from "@/components/sections/Willkommen";
-import SignatureDishes from "@/components/sections/SignatureDishes";
-import QualitaetsStatement from "@/components/sections/QualitaetsStatement";
+import QualitaetsAnspruch from "@/components/sections/QualitaetsAnspruch";
+import DreieBildreihe from "@/components/sections/DreieBildreihe";
 import Atmosphaere from "@/components/sections/Atmosphaere";
-import Standort from "@/components/sections/Standort";
+import ReviewsCarousel from "@/components/sections/ReviewsCarousel";
+import TextFillStatement from "@/components/sections/TextFillStatement";
+import SignatureCard from "@/components/sections/SignatureCard";
 
 export default function Home() {
   return (
     <main>
       <Hero />
-      {/* Creme band: transitions dark Hero into warm Willkommen */}
-      <Meander variant="band" background="warm" />
+      {/* White breather after the dark Hero */}
+      <Meander variant="band" background="surface" />
       <Willkommen />
-      {/* Brand band: bold separator before the white Dishes section */}
-      <Meander variant="band" background="brand" />
-      <SignatureDishes />
-      {/* No band here — QualitaetsStatement opens with its own brand-blue drama */}
-      <QualitaetsStatement />
-      {/* Warm band: softens the exit from intense blue into the gallery */}
+      {/* Warm creme band into the quality statement */}
       <Meander variant="band" background="warm" />
+      <QualitaetsAnspruch />
+      <DreieBildreihe />
       <Atmosphaere />
-      {/* Brand band: energises the transition into the info/contact section */}
+      {/* Brand blue band — energetic contrast before the bright reviews */}
       <Meander variant="band" background="brand" />
-      <Standort />
+      <ReviewsCarousel />
+      <TextFillStatement />
+      <SignatureCard />
+      {/* Dark ink band flowing into the Footer */}
+      <Meander variant="band" background="ink" />
     </main>
   );
 }

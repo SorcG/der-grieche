@@ -8,10 +8,10 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-br from-ink via-ink/95 to-brand/20 hero-ken-burns" />
 
       {/* Gradient overlay for text legibility */}
-      <div className="absolute inset-0 bg-gradient-to-b from-ink/60 via-transparent to-ink/80" />
+      <div className="absolute inset-0 bg-gradient-to-b from-ink/30 via-transparent to-ink/70" />
 
       {/* Content */}
-      <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
+      <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 pt-16 text-center">
         <p className="mb-6 font-body text-sm font-medium uppercase tracking-[0.18em] text-surface/60">
           Kattenstrother Grillhaus · Seit 1974
         </p>

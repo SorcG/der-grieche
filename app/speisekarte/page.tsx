@@ -15,7 +15,7 @@ export default function Speisekarte() {
   return (
     <main>
       {/* Mini-Hero */}
-      <div className="flex min-h-[30vh] flex-col items-center justify-center bg-ink px-6 pb-10 pt-[calc(72px+3rem)] text-center">
+      <div className="flex min-h-[30vh] flex-col items-center justify-center bg-ink px-6 pb-10 pt-[calc(64px+3rem)] text-center">
         <h1
           className="font-display uppercase leading-none tracking-tight text-surface"
           style={{ fontSize: "clamp(3rem, 8vw, 5rem)" }}
