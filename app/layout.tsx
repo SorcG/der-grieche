@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Anton, DM_Sans } from "next/font/google";
 import "./globals.css";
+import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
 
 const anton = Anton({
   weight: "400",
@@ -15,7 +17,8 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   title: "Der Grieche – Kattenstrother Grillhaus",
-  description: "Authentisch griechisch seit 1974. Herzlich willkommen in Gütersloh.",
+  description:
+    "Authentisch griechisch seit 1974. Herzlich willkommen in Gütersloh.",
 };
 
 export default function RootLayout({
@@ -28,7 +31,11 @@ export default function RootLayout({
       lang="de"
       className={`${anton.variable} ${dmSans.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="flex min-h-full flex-col">
+        <Nav />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }

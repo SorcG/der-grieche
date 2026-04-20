@@ -13,12 +13,28 @@
   --font-body: var(--font-dm-sans);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--color-surface);
   color: var(--color-ink);
   font-family: var(--font-dm-sans), system-ui, sans-serif;
 }
 
+/* Hero Ken Burns — applied to the background element; swap in actual media later */
+@keyframes ken-burns {
+  0%   { transform: scale(1.05) translate(0, 0); }
+  100% { transform: scale(1.15) translate(-1.5%, 1%); }
+}
+
+.hero-ken-burns {
+  animation: ken-burns 20s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+/* Mäander draw-in animation */
 @keyframes meander-draw {
   to {
     stroke-dashoffset: 0;
@@ -30,6 +46,9 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .hero-ken-burns {
+    animation: none;
+  }
   .meander-animated {
     animation: none;
     stroke-dashoffset: 0 !important;
