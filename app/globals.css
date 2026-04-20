@@ -9,11 +9,8 @@
 }
 
 @theme inline {
-  /* Display: Bebas Neue now; Ancient Geek replaces it in step 2.
-     When AncientGeek.woff2 is loaded, change to:
-     --font-display: var(--font-ancient-geek), var(--font-bebas-neue); */
-  --font-display: var(--font-bebas-neue);
-  --font-body: var(--font-dm-sans);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
 }
 
 html {
@@ -23,12 +20,12 @@ html {
 body {
   background: var(--color-surface);
   color: var(--color-ink);
-  font-family: var(--font-dm-sans), system-ui, sans-serif;
+  font-family: var(--font-body), system-ui, sans-serif;
 }
 
-/* Bebas Neue (and Ancient Geek) need positive tracking — overrides tracking-tight */
+/* Ancient Geek irregular forms read best with a touch of tracking */
 .font-display {
-  letter-spacing: 0.05em;
+  letter-spacing: 0.02em;
 }
 
 /* Hero Ken Burns */
