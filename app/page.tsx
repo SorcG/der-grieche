@@ -1,19 +1,14 @@
+import Hero from "@/components/sections/hero";
+import Willkommen from "@/components/sections/willkommen";
+import Meander from "@/components/ui/meander";
+
 export default function Home() {
   return (
-    <div
-      style={{
-        minHeight: "calc(100vh - 64px)",
-        backgroundColor: "#0960D0",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        fontFamily: "var(--font-display)",
-        color: "#FCFEFD",
-        fontSize: "clamp(48px, 8vw, 120px)",
-        letterSpacing: "0.02em",
-      }}
-    >
-      DER GRIECHE
-    </div>
+    <main>
+      <Hero />
+      <Meander background="surface" height={48} />
+      <Willkommen />
+      <Meander background="warm" height={48} />
+    </main>
   );
 }
