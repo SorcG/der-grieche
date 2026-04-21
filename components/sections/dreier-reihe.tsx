@@ -1,3 +1,5 @@
+import FadeIn from "@/components/ui/fade-in";
+
 export default function DreierReihe() {
   const imgStyle: React.CSSProperties = {
     width: "100%",
@@ -30,57 +32,63 @@ export default function DreierReihe() {
           className="hidden md:grid"
           style={{ gridTemplateColumns: "1fr 1fr 1fr", gap: 12 }}
         >
-          <div style={cellStyle}>
-            <img
-              src="https://images.unsplash.com/photo-1529566652340-2c41a1eb6d93?w=800&q=80&fit=crop"
-              alt="Griechisches Essen"
-              style={imgStyle}
-            />
-          </div>
+          <FadeIn delay={0}>
+            <div style={cellStyle}>
+              <img
+                src="https://images.unsplash.com/photo-1529566652340-2c41a1eb6d93?w=800&q=80&fit=crop"
+                alt="Griechisches Essen"
+                style={imgStyle}
+              />
+            </div>
+          </FadeIn>
 
           {/* Middle: video slot placeholder */}
-          <div style={cellStyle}>
-            <img
-              src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&q=80&fit=crop"
-              alt="Video-Platzhalter: Gyros am Spieß"
-              style={imgStyle}
-            />
-            <div
-              style={{
-                position: "absolute",
-                inset: 0,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-              aria-hidden="true"
-            >
+          <FadeIn delay={0.15}>
+            <div style={cellStyle}>
+              <img
+                src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&q=80&fit=crop"
+                alt="Video-Platzhalter: Gyros am Spieß"
+                style={imgStyle}
+              />
               <div
                 style={{
-                  width: 48,
-                  height: 48,
-                  borderRadius: "50%",
-                  backgroundColor: "rgba(252,254,253,0.15)",
+                  position: "absolute",
+                  inset: 0,
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  backdropFilter: "blur(4px)",
                 }}
+                aria-hidden="true"
               >
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="white">
-                  <path d="M5 3l9 5-9 5V3z" />
-                </svg>
+                <div
+                  style={{
+                    width: 48,
+                    height: 48,
+                    borderRadius: "50%",
+                    backgroundColor: "rgba(252,254,253,0.15)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    backdropFilter: "blur(4px)",
+                  }}
+                >
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="white">
+                    <path d="M5 3l9 5-9 5V3z" />
+                  </svg>
+                </div>
               </div>
             </div>
-          </div>
+          </FadeIn>
 
-          <div style={cellStyle}>
-            <img
-              src="https://images.unsplash.com/photo-1544025162-d76694265947?w=800&q=80&fit=crop"
-              alt="Grill-Atmosphäre"
-              style={imgStyle}
-            />
-          </div>
+          <FadeIn delay={0.3}>
+            <div style={cellStyle}>
+              <img
+                src="https://images.unsplash.com/photo-1544025162-d76694265947?w=800&q=80&fit=crop"
+                alt="Grill-Atmosphäre"
+                style={imgStyle}
+              />
+            </div>
+          </FadeIn>
         </div>
 
         {/* Mobile: stacked */}

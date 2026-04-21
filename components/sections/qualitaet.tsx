@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import Meander from "@/components/ui/meander";
+import FadeIn from "@/components/ui/fade-in";
 
 export default function Qualitaet() {
   return (
@@ -13,7 +14,8 @@ export default function Qualitaet() {
       }}
       className="py-16 md:py-24"
     >
-      <div style={{ maxWidth: 760, margin: "0 auto" }}>
+      <FadeIn>
+        <div style={{ maxWidth: 760, margin: "0 auto" }}>
         <p
           style={{
             fontFamily: "var(--font-body)",
@@ -100,6 +102,7 @@ export default function Qualitaet() {
           </a>
         </div>
       </div>
+      </FadeIn>
 
       {/* Decorative column â€” desktop only */}
       <svg

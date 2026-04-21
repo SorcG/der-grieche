@@ -1,5 +1,7 @@
 "use client";
 
+import { motion } from "framer-motion";
+
 const bounceKeyframes = `
 @keyframes scroll-bounce {
   0%, 100% { transform: translateX(-50%) translateY(0); }
@@ -8,6 +10,17 @@ const bounceKeyframes = `
 `;
 
 export default function Hero() {
+  const prefersReduced =
+    typeof window !== "undefined"
+      ? window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      : false;
+
+  const anim = (y: number, delay: number) => ({
+    initial: prefersReduced ? false : ({ opacity: 0, y } as const),
+    animate: prefersReduced ? {} : { opacity: 1, y: 0 },
+    transition: { duration: 0.6, delay, ease: [0.25, 0.1, 0.25, 1] as const },
+  });
+
   return (
     <>
       <style>{bounceKeyframes}</style>
@@ -47,7 +60,8 @@ export default function Hero() {
           className="px-6 md:px-12"
         >
           {/* Tagline */}
-          <p
+          <motion.p
+            {...anim(20, 0.2)}
             style={{
               fontFamily: "var(--font-body)",
               fontSize: 13,
@@ -59,10 +73,11 @@ export default function Hero() {
             }}
           >
             Kattenstrother Grillhaus · Seit 1974
-          </p>
+          </motion.p>
 
           {/* Headline */}
-          <h1
+          <motion.h1
+            {...anim(20, 0.4)}
             style={{
               fontFamily: "var(--font-display)",
               fontSize: "clamp(64px, 10vw, 140px)",
@@ -73,10 +88,11 @@ export default function Hero() {
             }}
           >
             DER GRIECHE
-          </h1>
+          </motion.h1>
 
           {/* Subtext */}
-          <p
+          <motion.p
+            {...anim(20, 0.6)}
             style={{
               fontFamily: "var(--font-body)",
               fontSize: 18,
@@ -88,10 +104,13 @@ export default function Hero() {
             className="text-base md:text-lg"
           >
             Handgemachtes Gyros. Griechische Gastfreundschaft. Seit 1974.
-          </p>
+          </motion.p>
 
           {/* Buttons */}
-          <div style={{ display: "flex", gap: 16, flexWrap: "wrap", alignItems: "center" }}>
+          <motion.div
+            {...anim(20, 0.8)}
+            style={{ display: "flex", gap: 16, flexWrap: "wrap", alignItems: "center" }}
+          >
             <a
               href="tel:+4952411234567"
               style={{
@@ -131,11 +150,14 @@ export default function Hero() {
             >
               Zur Speisekarte →
             </a>
-          </div>
+          </motion.div>
         </div>
 
         {/* Scroll indicator */}
-        <div
+        <motion.div
+          initial={prefersReduced ? false : { opacity: 0 }}
+          animate={prefersReduced ? {} : { opacity: 1 }}
+          transition={{ duration: 0.6, delay: 1.2 }}
           style={{
             position: "absolute",
             bottom: 32,
@@ -156,7 +178,7 @@ export default function Hero() {
           >
             <path d="M12 5v14M5 12l7 7 7-7" />
           </svg>
-        </div>
+        </motion.div>
       </section>
     </>
   );

@@ -3,6 +3,7 @@ import Willkommen from "@/components/sections/willkommen";
 import Qualitaet from "@/components/sections/qualitaet";
 import DreierReihe from "@/components/sections/dreier-reihe";
 import Atmosphaere from "@/components/sections/atmosphaere";
+import TextFill from "@/components/sections/text-fill";
 import Meander from "@/components/ui/meander";
 
 export default function Home() {
@@ -17,6 +18,8 @@ export default function Home() {
       <DreierReihe />
       <Atmosphaere />
       <Meander background="brand" height={48} />
+      <TextFill />
+      <Meander background="ink" height={48} />
     </main>
   );
 }

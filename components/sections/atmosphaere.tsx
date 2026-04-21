@@ -1,5 +1,7 @@
 ﻿"use client";
 
+import FadeIn from "@/components/ui/fade-in";
+
 export default function Atmosphaere() {
   return (
     <section
@@ -25,7 +27,7 @@ export default function Atmosphaere() {
       />
 
       {/* Content */}
-      <div
+      <FadeIn
         style={{
           position: "relative",
           zIndex: 1,
@@ -89,7 +91,7 @@ export default function Atmosphaere() {
         >
           Unsere Speisekarte â†’
         </a>
-      </div>
+      </FadeIn>
     </section>
   );
 }
