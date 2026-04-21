@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 export default function Atmosphaere() {
   return (
@@ -47,7 +47,7 @@ export default function Atmosphaere() {
             fontWeight: 400,
           }}
         >
-          SEIT 1974
+          SEIT JEHER
         </h2>
 
         <p
@@ -87,9 +87,10 @@ export default function Atmosphaere() {
             (e.currentTarget.style.borderBottomColor = "rgba(244,237,224,0.4)")
           }
         >
-          Unsere Speisekarte →
+          Unsere Speisekarte â†’
         </a>
       </div>
     </section>
   );
 }
+

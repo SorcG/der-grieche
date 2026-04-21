@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Meander from "@/components/ui/meander";
 
@@ -40,7 +40,7 @@ export default function Qualitaet() {
             fontWeight: 400,
           }}
         >
-          HANDGEMACHT SEIT 1974
+          HANDGEMACHT
         </h2>
 
         <div style={{ marginBottom: 32 }}>
@@ -96,12 +96,12 @@ export default function Qualitaet() {
             onMouseEnter={(e) => (e.currentTarget.style.color = "#6B7C48")}
             onMouseLeave={(e) => (e.currentTarget.style.color = "#0960D0")}
           >
-            Zur Historie →
+            Zur Historie â†’
           </a>
         </div>
       </div>
 
-      {/* Decorative column — desktop only */}
+      {/* Decorative column â€” desktop only */}
       <svg
         width="120"
         height="200"
@@ -126,3 +126,4 @@ export default function Qualitaet() {
     </section>
   );
 }
+
