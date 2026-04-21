@@ -4,6 +4,8 @@ import Qualitaet from "@/components/sections/qualitaet";
 import DreierReihe from "@/components/sections/dreier-reihe";
 import Atmosphaere from "@/components/sections/atmosphaere";
 import TextFill from "@/components/sections/text-fill";
+import Reviews from "@/components/sections/reviews";
+import SignatureCard from "@/components/sections/signature-card";
 import Meander from "@/components/ui/meander";
 
 export default function Home() {
@@ -19,6 +21,10 @@ export default function Home() {
       <Atmosphaere />
       <Meander background="brand" height={48} />
       <TextFill />
+      <Meander background="surface" height={48} />
+      <Reviews />
+      <Meander background="ink" height={48} />
+      <SignatureCard />
       <Meander background="ink" height={48} />
     </main>
   );
