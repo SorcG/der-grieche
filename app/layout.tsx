@@ -2,6 +2,8 @@
 import localFont from "next/font/local";
 import { Bebas_Neue, DM_Sans } from "next/font/google";
 import "./globals.css";
+import Navigation from "@/components/layout/navigation";
+import Footer from "@/components/layout/footer";
 
 const ancientGeek = localFont({
   src: "./fonts/ancient-geek.ttf",
@@ -39,7 +41,11 @@ export default function RootLayout({
       lang="de"
       className={`${ancientGeek.variable} ${bebasNeue.variable} ${dmSans.variable}`}
     >
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <Navigation />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
