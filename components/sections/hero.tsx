@@ -296,7 +296,7 @@ export default function Hero() {
           style={{
             position: "absolute",
             bottom: 0,
-            right: "5%",
+            right: "2%",
             zIndex: 2,
             transformOrigin: "bottom center",
           }}
@@ -307,6 +307,8 @@ export default function Hero() {
     </>
   );
 }
+
+
 
 
 
