@@ -40,7 +40,7 @@ export default function Hero() {
             position: "absolute",
             inset: 0,
             background:
-              "linear-gradient(to bottom, rgba(9,96,208,0.3) 0%, rgba(15,26,46,0.85) 100%)",
+              "linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.75) 100%)",
           }}
         />
 
@@ -55,7 +55,8 @@ export default function Hero() {
             padding: "0 48px",
             display: "flex",
             flexDirection: "column",
-            justifyContent: "center",
+            justifyContent: "flex-end",
+            paddingBottom: "80px",
           }}
           className="px-6 md:px-12"
         >
@@ -72,7 +73,7 @@ export default function Hero() {
               marginBottom: 16,
             }}
           >
-            Kattenstrother Grillhaus Â· Seit 1974
+            {"KATTENSTROTHER GRILLHAUS · SEIT 1974"}
           </motion.p>
 
           {/* Headline */}
@@ -80,9 +81,10 @@ export default function Hero() {
             {...anim(20, 0.4)}
             style={{
               fontFamily: "var(--font-display)",
-              fontSize: "clamp(64px, 10vw, 140px)",
+              fontSize: "clamp(80px, 14vw, 200px)",
               color: "#FCFEFD",
               lineHeight: 0.9,
+              letterSpacing: "0.01em",
               marginBottom: 24,
               fontWeight: 400,
             }}
