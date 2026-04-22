@@ -1,6 +1,10 @@
 ﻿"use client";
 
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import GreekFigure from "@/components/ui/greek-figure";
 
 const bounceKeyframes = `
 @keyframes scroll-bounce {
@@ -21,10 +25,78 @@ export default function Hero() {
     transition: { duration: 0.6, delay, ease: [0.25, 0.1, 0.25, 1] as const },
   });
 
+  const figureRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const prefersReduced = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    if (prefersReduced) return;
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const figure = figureRef.current;
+    if (!figure) return;
+
+    // Idle-Animation: sanftes Auf/Ab (Atemeffekt)
+    const breathe = gsap.to(figure, {
+      y: -12,
+      duration: 2.5,
+      ease: "sine.inOut",
+      repeat: -1,
+      yoyo: true,
+    });
+
+    // Scroll-Exit-Animation: Figur dreht sich und geht nach rechts
+    const ctx = gsap.context(() => {
+      ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start: "top top",
+        end: "bottom top",
+        onLeave: () => {
+          breathe.pause();
+          gsap.to(figure, {
+            rotateY: 60,
+            x: 300,
+            opacity: 0,
+            duration: 0.8,
+            ease: "power2.in",
+          });
+        },
+        onEnterBack: () => {
+          gsap.to(figure, {
+            rotateY: 0,
+            x: 0,
+            opacity: 1,
+            duration: 0.6,
+            ease: "power2.out",
+            onComplete: () => breathe.resume(),
+          });
+        },
+      });
+
+      // Figur fährt beim ersten Laden ein (von rechts)
+      gsap.from(figure, {
+        x: 200,
+        opacity: 0,
+        duration: 1.0,
+        delay: 1.0,
+        ease: "power3.out",
+      });
+    }, sectionRef);
+
+    return () => {
+      ctx.revert();
+      breathe.kill();
+    };
+  }, []);
+
   return (
     <>
       <style>{bounceKeyframes}</style>
       <section
+        ref={sectionRef}
         style={{
           position: "relative",
           height: "100vh",
@@ -32,6 +104,7 @@ export default function Hero() {
             "url('/images/spiess.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
+          perspective: "1000px",
         }}
       >
         {/* Gradient overlay */}
@@ -225,6 +298,21 @@ export default function Hero() {
             <path d="M12 5v14M5 12l7 7 7-7" />
           </svg>
         </motion.div>
+
+        {/* Griechische Figur – rechts im Hero */}
+        <div
+          ref={figureRef}
+          className="hidden lg:block"
+          style={{
+            position: "absolute",
+            bottom: 0,
+            right: "5%",
+            zIndex: 2,
+            transformOrigin: "bottom center",
+          }}
+        >
+          <GreekFigure width={280} />
+        </div>
       </section>
     </>
   );
