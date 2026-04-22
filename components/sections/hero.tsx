@@ -55,8 +55,8 @@ export default function Hero() {
             padding: "0 48px",
             display: "flex",
             flexDirection: "column",
-            justifyContent: "flex-end",
-            paddingBottom: "80px",
+            justifyContent: "flex-start",
+            paddingTop: "48px",
           }}
           className="px-6 md:px-12"
         >
@@ -70,7 +70,7 @@ export default function Hero() {
               textTransform: "uppercase",
               letterSpacing: "0.15em",
               color: "rgba(244,237,224,0.8)",
-              marginBottom: 16,
+              marginBottom: 8,
             }}
           >
             {"KATTENSTROTHER GRILLHAUS · SEIT 1974"}
@@ -81,13 +81,15 @@ export default function Hero() {
             {...anim(20, 0.4)}
             style={{
               fontFamily: "var(--font-display)",
-              fontSize: "clamp(80px, 14vw, 200px)",
+              fontSize: "clamp(72px, 12vw, 180px)",
               color: "#FCFEFD",
-              lineHeight: 0.9,
+              lineHeight: 0.88,
               letterSpacing: "0.01em",
-              marginBottom: 24,
+              marginBottom: 28,
               fontWeight: 400,
-            }}
+              WebkitTextStroke: "3px #0F1A2E",
+              paintOrder: "stroke fill",
+            } as React.CSSProperties}
           >
             DER GRIECHE
           </motion.h1>
@@ -99,7 +101,7 @@ export default function Hero() {
               fontFamily: "var(--font-body)",
               fontSize: 18,
               color: "rgba(244,237,224,0.9)",
-              maxWidth: 480,
+              maxWidth: 520,
               lineHeight: 1.55,
               marginBottom: 40,
             }}
@@ -120,11 +122,11 @@ export default function Hero() {
                 color: "#FCFEFD",
                 textDecoration: "none",
                 fontFamily: "var(--font-body)",
-                fontSize: 13,
+                fontSize: 15,
                 fontWeight: 500,
                 textTransform: "uppercase",
                 letterSpacing: "0.1em",
-                padding: "14px 32px",
+                padding: "16px 40px",
                 borderRadius: 4,
                 transition: "background-color 150ms ease",
               }}
@@ -143,14 +145,14 @@ export default function Hero() {
                 color: "#F4EDE0",
                 textDecoration: "none",
                 fontFamily: "var(--font-body)",
-                fontSize: 14,
+                fontSize: 15,
                 fontWeight: 500,
                 transition: "color 150ms ease",
               }}
               onMouseEnter={(e) => (e.currentTarget.style.color = "#FCFEFD")}
               onMouseLeave={(e) => (e.currentTarget.style.color = "#F4EDE0")}
             >
-              Zur Speisekarte â†’
+              {"Zur Speisekarte →"}
             </a>
           </motion.div>
         </div>
