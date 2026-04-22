@@ -36,15 +36,35 @@ export default function Navigation() {
         <a
           href="/"
           style={{
-            fontFamily: "var(--font-display)",
-            color: "#FCFEFD",
-            fontSize: 20,
-            fontWeight: 400,
+            display: "flex",
+            alignItems: "center",
+            gap: 10,
             textDecoration: "none",
-            letterSpacing: "0.02em",
           }}
         >
-          DER GRIECHE
+          <img
+            src="/images/der-grieche.jpg"
+            alt="Der Grieche Logo"
+            style={{
+              width: 40,
+              height: 40,
+              borderRadius: "50%",
+              objectFit: "cover",
+              border: "2px solid rgba(255,255,255,0.25)",
+              flexShrink: 0,
+            }}
+          />
+          <span
+            style={{
+              fontFamily: "var(--font-display)",
+              fontSize: 18,
+              color: "#FCFEFD",
+              letterSpacing: "0.06em",
+              fontWeight: 400,
+            }}
+          >
+            DER GRIECHE
+          </span>
         </a>
 
         {/* Desktop nav */}

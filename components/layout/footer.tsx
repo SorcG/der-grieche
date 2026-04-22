@@ -55,17 +55,26 @@ export default function Footer() {
             <a
               href="/"
               style={{
-                fontFamily: "var(--font-display)",
-                color: "#F4EDE0",
-                fontSize: 24,
-                fontWeight: 400,
-                letterSpacing: "0.02em",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-start",
+                gap: 12,
                 textDecoration: "none",
-                display: "block",
-                marginBottom: 4,
+                marginBottom: 8,
               }}
             >
-              DER GRIECHE
+              <img
+                src="/images/der-grieche.jpg"
+                alt="Der Grieche Logo"
+                style={{
+                  width: 90,
+                  height: 90,
+                  borderRadius: "50%",
+                  objectFit: "cover",
+                  border: "3px solid rgba(244,237,224,0.15)",
+                  flexShrink: 0,
+                }}
+              />
             </a>
             <p style={{ ...bodyStyle, fontSize: 14, marginBottom: 24 }}>
               Kattenstrother Grillhaus
