@@ -55,8 +55,8 @@ export default function Hero() {
             padding: "0 48px",
             display: "flex",
             flexDirection: "column",
-            justifyContent: "flex-end",
-            paddingBottom: "80px",
+            justifyContent: "flex-start",
+            paddingTop: "40px",
           }}
           className="px-6 md:px-12"
         >
@@ -81,7 +81,7 @@ export default function Hero() {
             {...anim(20, 0.4)}
             style={{
               fontFamily: "var(--font-display)",
-              fontSize: "clamp(80px, 14vw, 200px)",
+              fontSize: "clamp(52px, 7vw, 100px)",
               color: "#FCFEFD",
               lineHeight: 0.9,
               letterSpacing: "0.01em",
@@ -185,6 +185,9 @@ export default function Hero() {
     </>
   );
 }
+
+
+
 
 
 
