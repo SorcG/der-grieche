@@ -5,11 +5,17 @@ import "./globals.css";
 import Navigation from "@/components/layout/navigation";
 import Footer from "@/components/layout/footer";
 
-const ancientGeek = localFont({
-  src: "./fonts/ancient-geek.ttf",
+const greconian = localFont({
+  src: "./fonts/greconian.ttf",
   variable: "--font-display",
   display: "swap",
-  fallback: ["Bebas Neue", "Impact", "sans-serif"],
+  fallback: ["Impact", "sans-serif"],
+});
+
+const ancientGeek = localFont({
+  src: "./fonts/ancient-geek.ttf",
+  variable: "--font-display-legacy",
+  display: "swap",
 });
 
 const bebasNeue = Bebas_Neue({
@@ -39,7 +45,7 @@ export default function RootLayout({
   return (
     <html
       lang="de"
-      className={`${ancientGeek.variable} ${bebasNeue.variable} ${dmSans.variable}`}
+      className={`${greconian.variable} ${ancientGeek.variable} ${bebasNeue.variable} ${dmSans.variable}`}
     >
       <body className="antialiased">
         <Navigation />

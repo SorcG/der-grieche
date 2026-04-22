@@ -11,6 +11,11 @@
   --font-body: var(--font-body), system-ui, sans-serif;
 }
 
+/* Greconian Display-Font Optimierung */
+[style*="--font-display"] {
+  letter-spacing: 0.03em;
+}
+
 body {
   background-color: var(--color-surface);
   color: var(--color-ink);
