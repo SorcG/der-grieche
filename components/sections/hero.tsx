@@ -56,21 +56,24 @@ export default function Hero() {
             padding: "40px 48px 48px",
           }}
         >
-          {/* Tagline */}
-          <motion.p
-            {...anim(20, 0.2)}
-            style={{
-              fontFamily: "var(--font-body)",
-              fontSize: 13,
-              fontWeight: 500,
-              textTransform: "uppercase",
-              letterSpacing: "0.15em",
-              color: "rgba(244,237,224,0.8)",
-              marginBottom: 16,
-            }}
+          {/* Logo über der Headline */}
+          <motion.div
+            {...anim(20, 0.3)}
+            style={{ marginBottom: 8 }}
           >
-            {"KATTENSTROTHER GRILLHAUS · SEIT 1974"}
-          </motion.p>
+            <img
+              src="/images/der-grieche.jpg"
+              alt="Der Grieche Logo"
+              style={{
+                width: "clamp(80px, 10vw, 140px)",
+                height: "clamp(80px, 10vw, 140px)",
+                borderRadius: "50%",
+                objectFit: "cover",
+                border: "3px solid rgba(255,255,255,0.25)",
+                display: "block",
+              }}
+            />
+          </motion.div>
 
           {/* Headline */}
           <motion.h1
@@ -87,6 +90,23 @@ export default function Hero() {
           >
             DER GRIECHE
           </motion.h1>
+
+          {/* Tagline */}
+          <motion.p
+            {...anim(20, 0.2)}
+            style={{
+              fontFamily: "var(--font-body)",
+              fontSize: 12,
+              fontWeight: 500,
+              textTransform: "uppercase",
+              letterSpacing: "0.18em",
+              color: "rgba(244,237,224,0.65)",
+              marginBottom: 20,
+              marginTop: 4,
+            }}
+          >
+            {"KATTENSTROTHER GRILLHAUS · SEIT 1974"}
+          </motion.p>
 
           {/* Subtext */}
           <motion.p
