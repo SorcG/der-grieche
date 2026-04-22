@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 
@@ -29,7 +29,7 @@ export default function Hero() {
           position: "relative",
           height: "100vh",
           backgroundImage:
-            "url('https://images.unsplash.com/photo-1544025162-d76694265947?w=1920&q=80&fit=crop')",
+            "url('/images/spiess.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -72,7 +72,7 @@ export default function Hero() {
               marginBottom: 16,
             }}
           >
-            Kattenstrother Grillhaus · Seit 1974
+            Kattenstrother Grillhaus Â· Seit 1974
           </motion.p>
 
           {/* Headline */}
@@ -148,7 +148,7 @@ export default function Hero() {
               onMouseEnter={(e) => (e.currentTarget.style.color = "#FCFEFD")}
               onMouseLeave={(e) => (e.currentTarget.style.color = "#F4EDE0")}
             >
-              Zur Speisekarte →
+              Zur Speisekarte â†’
             </a>
           </motion.div>
         </div>
@@ -183,3 +183,4 @@ export default function Hero() {
     </>
   );
 }
+
