@@ -10,7 +10,7 @@ export default function Atmosphaere() {
         height: "80vh",
         minHeight: 400,
         backgroundImage:
-          "url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&q=80&fit=crop')",
+          "url('/images/sitzbereich.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}

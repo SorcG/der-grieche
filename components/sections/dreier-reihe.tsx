@@ -35,7 +35,7 @@ export default function DreierReihe() {
           <FadeIn delay={0}>
             <div style={cellStyle}>
               <img
-                src="https://images.unsplash.com/photo-1529566652340-2c41a1eb6d93?w=800&q=80&fit=crop"
+                src="/images/souvlaki-pita.png"
                 alt="Griechisches Essen"
                 style={imgStyle}
               />
@@ -46,7 +46,7 @@ export default function DreierReihe() {
           <FadeIn delay={0.15}>
             <div style={cellStyle}>
               <img
-                src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&q=80&fit=crop"
+                src="/images/spiess-schneiden.png"
                 alt="Video-Platzhalter: Gyros am Spieß"
                 style={imgStyle}
               />
@@ -83,7 +83,7 @@ export default function DreierReihe() {
           <FadeIn delay={0.3}>
             <div style={cellStyle}>
               <img
-                src="https://images.unsplash.com/photo-1544025162-d76694265947?w=800&q=80&fit=crop"
+                src="/images/souvlaki-grill.png"
                 alt="Grill-Atmosphäre"
                 style={imgStyle}
               />
@@ -95,17 +95,17 @@ export default function DreierReihe() {
         <div className="md:hidden" style={{ display: "flex", flexDirection: "column", gap: 12 }}>
           {[
             {
-              src: "https://images.unsplash.com/photo-1529566652340-2c41a1eb6d93?w=800&q=80&fit=crop",
+              src: "/images/souvlaki-pita.png",
               alt: "Griechisches Essen",
               video: false,
             },
             {
-              src: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&q=80&fit=crop",
+              src: "/images/spiess-schneiden.png",
               alt: "Video-Platzhalter",
               video: true,
             },
             {
-              src: "https://images.unsplash.com/photo-1544025162-d76694265947?w=800&q=80&fit=crop",
+              src: "/images/souvlaki-grill.png",
               alt: "Grill-Atmosphäre",
               video: false,
             },

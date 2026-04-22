@@ -56,7 +56,7 @@ export default function Willkommen() {
         {/* Left image */}
         <div ref={leftImageRef} style={{ overflow: "hidden", position: "relative" }}>
           <img
-            src="https://images.unsplash.com/photo-1529566652340-2c41a1eb6d93?w=800&q=80&fit=crop"
+            src="/images/tzatziki.png"
             alt="Griechisches Essen"
             style={{
               width: "100%",
@@ -86,7 +86,7 @@ export default function Willkommen() {
         {/* Right image */}
         <div ref={rightImageRef} style={{ overflow: "hidden", position: "relative" }}>
           <img
-            src="https://images.unsplash.com/photo-1574484284002-952d92456975?w=800&q=80&fit=crop"
+            src="/images/gyrosteller.png"
             alt="Griechische Taverne"
             style={{
               width: "100%",
@@ -103,7 +103,7 @@ export default function Willkommen() {
       <div className="lg:hidden">
         <div style={{ height: 300, overflow: "hidden" }}>
           <img
-            src="https://images.unsplash.com/photo-1529566652340-2c41a1eb6d93?w=800&q=80&fit=crop"
+            src="/images/tzatziki.png"
             alt="Griechisches Essen"
             style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
           />
@@ -115,7 +115,7 @@ export default function Willkommen() {
         </div>
         <div style={{ height: 300, overflow: "hidden" }}>
           <img
-            src="https://images.unsplash.com/photo-1574484284002-952d92456975?w=800&q=80&fit=crop"
+            src="/images/gyrosteller.png"
             alt="Griechische Taverne"
             style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
           />
