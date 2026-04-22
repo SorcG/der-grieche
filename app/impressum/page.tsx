@@ -1,135 +1,215 @@
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Impressum – Der Grieche",
-};
-
 export default function Impressum() {
   return (
-    <main className="mx-auto max-w-[860px] px-6 pb-24 pt-[calc(72px+4rem)] md:px-12">
-      <h1
-        className="font-display uppercase leading-none tracking-tight text-ink"
-        style={{ fontSize: "clamp(2.5rem, 6vw, 4rem)" }}
-      >
-        Impressum
-      </h1>
+    <main
+      style={{
+        backgroundColor: "#FCFEFD",
+        minHeight: "100vh",
+        padding: "80px 24px",
+      }}
+    >
+      <div style={{ maxWidth: 720, margin: "0 auto" }}>
 
-      <div className="mt-10 space-y-10 font-body text-base leading-relaxed text-ink/75">
-        <section>
-          <h2 className="font-display text-2xl uppercase tracking-tight text-ink">
+        {/* Hinweis-Banner */}
+        <div
+          style={{
+            backgroundColor: "rgba(9,96,208,0.06)",
+            border: "1px solid rgba(9,96,208,0.2)",
+            borderRadius: 8,
+            padding: "16px 24px",
+            marginBottom: 48,
+          }}
+        >
+          <p
+            style={{
+              fontFamily: "var(--font-body)",
+              fontSize: 13,
+              color: "#0960D0",
+              lineHeight: 1.6,
+              margin: 0,
+            }}
+          >
+            <strong>Hinweis:</strong> Diese Website ist ein fiktives
+            Showcase-Projekt von Klarteq (klarteq.de). Alle Angaben
+            sind frei erfunden. Dies ist kein echtes Unternehmen.
+          </p>
+        </div>
+
+        {/* Seitentitel */}
+        <h1
+          style={{
+            fontFamily: "var(--font-display)",
+            fontSize: "clamp(36px, 5vw, 64px)",
+            color: "#0F1A2E",
+            lineHeight: 1.0,
+            marginBottom: 48,
+          }}
+        >
+          IMPRESSUM
+        </h1>
+
+        {/* Angaben gemäß § 5 TMG */}
+        <section style={{ marginBottom: 40 }}>
+          <h2
+            style={{
+              fontFamily: "var(--font-body)",
+              fontSize: 13,
+              fontWeight: 500,
+              letterSpacing: "0.12em",
+              textTransform: "uppercase",
+              color: "#6B7C48",
+              marginBottom: 16,
+            }}
+          >
             Angaben gemäß § 5 TMG
           </h2>
-          <div className="mt-3">
-            <p className="font-medium text-ink">
-              Der Grieche – Kattenstrother Grillhaus
-            </p>
-            <p>Nikos Papadopoulos</p>
-            <p>Kattenstrother Straße 247</p>
-            <p>33334 Gütersloh</p>
-          </div>
+          <p
+            style={{
+              fontFamily: "var(--font-body)",
+              fontSize: 16,
+              lineHeight: 1.7,
+              color: "rgba(15,26,46,0.8)",
+            }}
+          >
+            Der Grieche – Kattenstrother Grillhaus (fiktiv)<br />
+            Kattenstrother Str. 100<br />
+            33334 Gütersloh<br />
+            Deutschland
+          </p>
         </section>
 
-        <section>
-          <h2 className="font-display text-2xl uppercase tracking-tight text-ink">
+        {/* Kontakt */}
+        <section style={{ marginBottom: 40 }}>
+          <h2
+            style={{
+              fontFamily: "var(--font-body)",
+              fontSize: 13,
+              fontWeight: 500,
+              letterSpacing: "0.12em",
+              textTransform: "uppercase",
+              color: "#6B7C48",
+              marginBottom: 16,
+            }}
+          >
             Kontakt
           </h2>
-          <div className="mt-3 space-y-1">
-            <p>
-              Telefon:{" "}
-              <a
-                href="tel:+4952411234567"
-                className="text-brand transition-colors hover:underline"
-              >
-                05241 / 12 34 567
-              </a>
-            </p>
-            <p>
-              E-Mail:{" "}
-              <a
-                href="mailto:info@dergrieche-gt.de"
-                className="text-brand transition-colors hover:underline"
-              >
-                info@dergrieche-gt.de
-              </a>
-            </p>
-          </div>
+          <p
+            style={{
+              fontFamily: "var(--font-body)",
+              fontSize: 16,
+              lineHeight: 1.7,
+              color: "rgba(15,26,46,0.8)",
+            }}
+          >
+            Telefon: 05241 / 123456<br />
+            E-Mail: info@der-grieche-guetersloh.de
+          </p>
         </section>
 
-        <section>
-          <h2 className="font-display text-2xl uppercase tracking-tight text-ink">
-            Umsatzsteuer-ID
-          </h2>
-          <div className="mt-3">
-            <p>
-              Umsatzsteuer-Identifikationsnummer gemäß § 27a
-              Umsatzsteuergesetz:
-            </p>
-            <p className="mt-1 font-medium text-ink">DE 123 456 789</p>
-          </div>
-        </section>
-
-        <section>
-          <h2 className="font-display text-2xl uppercase tracking-tight text-ink">
+        {/* Verantwortlich */}
+        <section style={{ marginBottom: 40 }}>
+          <h2
+            style={{
+              fontFamily: "var(--font-body)",
+              fontSize: 13,
+              fontWeight: 500,
+              letterSpacing: "0.12em",
+              textTransform: "uppercase",
+              color: "#6B7C48",
+              marginBottom: 16,
+            }}
+          >
             Verantwortlich für den Inhalt
           </h2>
-          <div className="mt-3">
-            <p>
-              Nikos Papadopoulos
-              <br />
-              Kattenstrother Straße 247
-              <br />
-              33334 Gütersloh
-            </p>
-          </div>
+          <p
+            style={{
+              fontFamily: "var(--font-body)",
+              fontSize: 16,
+              lineHeight: 1.7,
+              color: "rgba(15,26,46,0.8)",
+            }}
+          >
+            Dieses Showcase-Projekt wurde erstellt von:<br />
+            Klarteq – Luca Sorci<br />
+            Gütersloh, NRW<br />
+            Web: klarteq.de
+          </p>
         </section>
 
-        <section>
-          <h2 className="font-display text-2xl uppercase tracking-tight text-ink">
-            Streitschlichtung
+        {/* Haftungsausschluss */}
+        <section style={{ marginBottom: 40 }}>
+          <h2
+            style={{
+              fontFamily: "var(--font-body)",
+              fontSize: 13,
+              fontWeight: 500,
+              letterSpacing: "0.12em",
+              textTransform: "uppercase",
+              color: "#6B7C48",
+              marginBottom: 16,
+            }}
+          >
+            Haftungsausschluss
           </h2>
-          <div className="mt-3">
-            <p>
-              Die Europäische Kommission stellt eine Plattform zur
-              Online-Streitbeilegung (OS) bereit:{" "}
-              <span className="text-ink/50">https://ec.europa.eu/consumers/odr</span>. Wir
-              sind nicht bereit oder verpflichtet, an
-              Streitbeilegungsverfahren vor einer
-              Verbraucherschlichtungsstelle teilzunehmen.
-            </p>
-          </div>
+          <p
+            style={{
+              fontFamily: "var(--font-body)",
+              fontSize: 15,
+              lineHeight: 1.7,
+              color: "rgba(15,26,46,0.7)",
+            }}
+          >
+            Diese Website ist ein fiktives Demonstrationsprojekt.
+            Alle Inhalte, Personen, Adressen und Angaben sind frei
+            erfunden. Eine Haftung für die Richtigkeit, Vollständigkeit
+            oder Aktualität der bereitgestellten Informationen wird
+            nicht übernommen.
+          </p>
         </section>
 
-        <section>
-          <h2 className="font-display text-2xl uppercase tracking-tight text-ink">
-            Haftung für Inhalte
+        {/* Bildnachweise */}
+        <section style={{ marginBottom: 40 }}>
+          <h2
+            style={{
+              fontFamily: "var(--font-body)",
+              fontSize: 13,
+              fontWeight: 500,
+              letterSpacing: "0.12em",
+              textTransform: "uppercase",
+              color: "#6B7C48",
+              marginBottom: 16,
+            }}
+          >
+            Bildnachweise
           </h2>
-          <div className="mt-3">
-            <p>
-              Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene
-              Inhalte auf diesen Seiten nach den allgemeinen Gesetzen
-              verantwortlich. Nach §§ 8 bis 10 TMG sind wir als
-              Diensteanbieter jedoch nicht verpflichtet, übermittelte oder
-              gespeicherte fremde Informationen zu überwachen oder nach
-              Umständen zu forschen, die auf eine rechtswidrige Tätigkeit
-              hinweisen.
-            </p>
-          </div>
+          <p
+            style={{
+              fontFamily: "var(--font-body)",
+              fontSize: 15,
+              lineHeight: 1.7,
+              color: "rgba(15,26,46,0.7)",
+            }}
+          >
+            Bilder: Unsplash.com (lizenzfrei). Fotografen werden
+            gemäß Unsplash-Lizenz nicht namentlich genannt.
+          </p>
         </section>
 
-        <section>
-          <h2 className="font-display text-2xl uppercase tracking-tight text-ink">
-            Haftung für Links
-          </h2>
-          <div className="mt-3">
-            <p>
-              Unser Angebot enthält Links zu externen Websites Dritter, auf
-              deren Inhalte wir keinen Einfluss haben. Deshalb können wir für
-              diese fremden Inhalte auch keine Gewähr übernehmen. Für die
-              Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter
-              oder Betreiber der Seiten verantwortlich.
-            </p>
-          </div>
-        </section>
+        {/* Zurück-Link */}
+        <a
+          href="/"
+          style={{
+            fontFamily: "var(--font-body)",
+            fontSize: 13,
+            fontWeight: 500,
+            letterSpacing: "0.1em",
+            textTransform: "uppercase",
+            color: "#0960D0",
+            textDecoration: "none",
+          }}
+        >
+          ← Zurück zur Startseite
+        </a>
+
       </div>
     </main>
   );

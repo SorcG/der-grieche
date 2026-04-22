@@ -1,15 +1,21 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Bebas_Neue, DM_Sans } from "next/font/google";
 import "./globals.css";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
+import Navigation from "@/components/layout/navigation";
+import Footer from "@/components/layout/footer";
+
+const greconian = localFont({
+  src: "./fonts/greconian.ttf",
+  variable: "--font-display",
+  display: "swap",
+  fallback: ["Impact", "sans-serif"],
+});
 
 const ancientGeek = localFont({
   src: "./fonts/ancient-geek.ttf",
-  variable: "--font-display",
+  variable: "--font-display-legacy",
   display: "swap",
-  fallback: ["Bebas Neue", "Impact", "sans-serif"],
 });
 
 const bebasNeue = Bebas_Neue({
@@ -27,9 +33,8 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Der Grieche – Kattenstrother Grillhaus",
-  description:
-    "Authentisch griechisch seit 1974. Herzlich willkommen in Gütersloh.",
+  title: "Der Grieche - Kattenstrother Grillhaus",
+  description: "Authentische griechische Taverne in Guetersloh. Seit 1974.",
 };
 
 export default function RootLayout({
@@ -40,10 +45,10 @@ export default function RootLayout({
   return (
     <html
       lang="de"
-      className={`${ancientGeek.variable} ${bebasNeue.variable} ${dmSans.variable} h-full antialiased`}
+      className={`${greconian.variable} ${ancientGeek.variable} ${bebasNeue.variable} ${dmSans.variable}`}
     >
-      <body className="flex min-h-full flex-col">
-        <Nav />
+      <body className="antialiased">
+        <Navigation />
         {children}
         <Footer />
       </body>

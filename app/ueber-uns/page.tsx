@@ -1,120 +1,331 @@
-import type { Metadata } from "next";
-import Meander from "@/components/Meander";
-import SignatureCard from "@/components/sections/SignatureCard";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Unsere Geschichte – Der Grieche",
-  description:
-    "Seit 1974 steht Der Grieche für Tradition, Familie und handgemachte griechische Küche in Gütersloh.",
-};
+import Meander from "@/components/ui/meander";
+import FadeIn from "@/components/ui/fade-in";
+import SignatureCard from "@/components/sections/signature-card";
 
-const timeline = [
+const stationen = [
   {
-    year: "Sommer 1974",
-    heading: "Der Anfang",
-    body: "Nikos Papadopoulos, 28 Jahre alt, verlässt sein Dorf in Thessalien mit einer Kochtasche voller Rezepte und dem Traum vom eigenen Restaurant. Im August eröffnet er an der Kattenstrother Straße ein kleines Grillhaus mit 18 Sitzplätzen. Die erste Speisekarte passt auf eine halbe DIN-A4-Seite: Gyros, Souvlaki, Bauernsalat.",
-    detail: "18 Sitzplätze. Eine Küche. Eine Familie.",
+    jahr: "1974",
+    titel: "DIE GRUENDUNG",
+    text: "Panagiotis eroeffnet seine erste kleine Taverne an der Kattenstrother Strasse. Mit wenig mehr als einem Gyros-Spieß und einem Familienrezept beginnt eine Geschichte, die Guetersloh fuer immer veraendern wird.",
+    seite: "links" as const,
+    bild: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80&fit=crop",
   },
   {
-    year: "Der Durchbruch",
-    heading: "Das Stammgast-Wunder",
-    body: "Mitte der 1980er ist das Grillhaus zur Institution geworden. Gütersloher kommen nicht nur zum Essen — sie kommen zu Nikos. Geburtstage, Verlobungen, Firmenfeiern: Der Grieche ist dabei. Das Lokal wächst auf 60 Plätze. Der Spieß dreht sich nun täglich von 11 bis Mitternacht.",
-    detail: "60 Plätze. Ausgebucht am Wochenende seit 1987.",
+    jahr: "1989",
+    titel: "DER DURCHBRUCH",
+    text: "Nach Jahren harter Arbeit ist Der Grieche in aller Munde. Die Warteschlangen reichen bis auf die Strasse. Panagiotis holt seine Familie aus Griechenland nach, um den Ansturm zu bewaeltigen.",
+    seite: "rechts" as const,
+    bild: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80&fit=crop",
   },
   {
-    year: "Tradition Leben",
-    heading: "Zweite Generation",
-    body: "Nikos' Sohn Alexandros übernimmt das Ruder — und hält Kurs. Die Rezepte bleiben, das Feuer bleibt, die Gastfreundschaft bleibt. Nur das Interieur bekommt eine behutsame Frischekur. Der Grieche ist heute ein Ort, an dem drei Generationen Gütersloher an einem Tisch sitzen.",
-    detail: "Seit 2018 in zweiter Generation geführt.",
+    jahr: "2003",
+    titel: "NEUE RAEUME",
+    text: "Der Grieche zieht in groessere Raeumlichkeiten um. Das neue Restaurant fasst 80 Gaeste und bietet erstmals einen Biergarten. Die Atmosphaere bleibt famililaer, das Rezept unveraendert.",
+    seite: "links" as const,
+    bild: "https://images.unsplash.com/photo-1529566652340-2c41a1eb6d93?w=600&q=80&fit=crop",
+  },
+  {
+    jahr: "Heute",
+    titel: "ERFOLG UND TRADITION",
+    text: "Heute fuehrt die zweite Generation die Tradition fort. Die Rezepte sind dieselben, die Leidenschaft unvermindert. Der Grieche ist und bleibt ein Stueck Guetersloh.",
+    seite: "rechts" as const,
+    bild: "https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=80&fit=crop",
   },
 ];
 
-export default function UeberUns() {
+function StationContent({ station }: { station: (typeof stationen)[number] }) {
   return (
-    <main>
-      {/* Mini-Hero */}
-      <div className="flex min-h-[30vh] flex-col items-center justify-center bg-ink px-6 pb-10 pt-[calc(64px+3rem)] text-center">
-        <h1
-          className="font-display uppercase leading-none tracking-tight text-surface"
-          style={{ fontSize: "clamp(3rem, 8vw, 5rem)" }}
+    <FadeIn direction={station.seite === "links" ? "right" : "left"}>
+      <div style={{ paddingBottom: 64 }} className="px-0 md:px-12">
+        <img
+          src={station.bild}
+          alt={station.titel}
+          style={{
+            width: "100%",
+            aspectRatio: "3/2",
+            objectFit: "cover",
+            borderRadius: 8,
+            display: "block",
+            marginBottom: 20,
+          }}
+        />
+        <p
+          style={{
+            fontFamily: "var(--font-body)",
+            fontSize: 12,
+            textTransform: "uppercase",
+            letterSpacing: "0.15em",
+            color: "#6B7C48",
+            marginBottom: 8,
+          }}
         >
-          Unsere Geschichte
-        </h1>
-        <div className="mt-6 w-full max-w-lg">
-          <Meander variant="border" background="ink" className="opacity-30" />
+          {station.jahr}
+        </p>
+        <h3
+          style={{
+            fontFamily: "var(--font-display)",
+            fontSize: "clamp(24px, 2.5vw, 36px)",
+            color: "#0F1A2E",
+            fontWeight: 400,
+            marginBottom: 16,
+          }}
+        >
+          {station.titel}
+        </h3>
+        <p
+          style={{
+            fontFamily: "var(--font-body)",
+            fontSize: 15,
+            lineHeight: 1.7,
+            color: "rgba(15,26,46,0.75)",
+          }}
+        >
+          {station.text}
+        </p>
+      </div>
+    </FadeIn>
+  );
+}
+
+function TimelineMarker({ jahr }: { jahr: string }) {
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        paddingTop: 8,
+      }}
+    >
+      <div
+        style={{
+          width: 48,
+          height: 48,
+          borderRadius: "50%",
+          backgroundColor: "#0960D0",
+          border: "3px solid #F4EDE0",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flexShrink: 0,
+          zIndex: 1,
+        }}
+      >
+        <span
+          style={{
+            fontFamily: "var(--font-body)",
+            fontSize: 10,
+            fontWeight: 700,
+            color: "#FCFEFD",
+            textAlign: "center",
+            lineHeight: 1.2,
+          }}
+        >
+          {jahr}
+        </span>
+      </div>
+    </div>
+  );
+}
+
+export default function UeberUnsPage() {
+  return (
+    <div>
+      {/* Hero */}
+      <div
+        style={{
+          position: "relative",
+          height: "35vh",
+          minHeight: 280,
+          backgroundImage:
+            "url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&q=80&fit=crop')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            backgroundColor: "rgba(15,26,46,0.8)",
+          }}
+        />
+        <div
+          style={{
+            position: "relative",
+            zIndex: 1,
+            height: "100%",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "0 24px",
+          }}
+        >
+          <h1
+            style={{
+              fontFamily: "var(--font-display)",
+              fontSize: "clamp(36px, 6vw, 80px)",
+              color: "#FCFEFD",
+              lineHeight: 1.0,
+              fontWeight: 400,
+              textAlign: "center",
+              marginBottom: 16,
+            }}
+          >
+            UNSERE GESCHICHTE
+          </h1>
+          <p
+            style={{
+              fontFamily: "var(--font-body)",
+              fontSize: 14,
+              textTransform: "uppercase",
+              letterSpacing: "0.15em",
+              color: "rgba(244,237,224,0.8)",
+            }}
+          >
+            Der Grieche · Seit 1974
+          </p>
         </div>
       </div>
 
-      {/* Timeline */}
-      <section className="bg-surface py-24 md:py-32">
-        <div className="mx-auto max-w-[1280px] px-6 md:px-12">
-          <div className="space-y-24 md:space-y-32">
-            {timeline.map((station, i) => (
-              <div
-                key={i}
-                className={`grid items-start gap-8 md:grid-cols-2 md:gap-16 ${
-                  i % 2 === 1 ? "md:[direction:rtl]" : ""
-                }`}
-              >
-                {/* Year / visual column */}
-                <div
-                  className={`flex flex-col ${i % 2 === 1 ? "md:[direction:ltr]" : ""}`}
-                >
-                  <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-lg bg-surface-warm">
-                    <div
-                      className="absolute inset-0"
-                      style={{
-                        background:
-                          i === 0
-                            ? "linear-gradient(135deg, #1a2e1a 0%, #2d4a2d 100%)"
-                            : i === 1
-                              ? "linear-gradient(160deg, #1a1a2e 0%, #0d2a4a 100%)"
-                              : "linear-gradient(120deg, #2e1a0a 0%, #1a2e1a 100%)",
-                      }}
-                    />
-                    <div className="relative text-center">
-                      <p
-                        className="font-display uppercase leading-none tracking-tight text-surface/80"
-                        style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)" }}
-                      >
-                        {station.year}
-                      </p>
-                      <p className="mt-3 font-body text-xs uppercase tracking-[0.15em] text-surface/35">
-                        {station.detail}
-                      </p>
-                    </div>
-                  </div>
-                </div>
+      <Meander background="warm" height={48} />
 
-                {/* Text column */}
-                <div
-                  className={`flex flex-col justify-center ${i % 2 === 1 ? "md:[direction:ltr]" : ""}`}
-                >
-                  <div className="mb-4 h-px w-12 bg-brand" />
-                  <h2
-                    className="font-display uppercase leading-none tracking-tight text-ink"
-                    style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
+      {/* Intro text */}
+      <div
+        style={{
+          backgroundColor: "#F4EDE0",
+          padding: "64px 48px",
+        }}
+        className="px-6 md:px-12 py-12 md:py-16"
+      >
+        <p
+          style={{
+            maxWidth: 720,
+            margin: "0 auto",
+            textAlign: "center",
+            fontFamily: "var(--font-body)",
+            fontSize: 18,
+            lineHeight: 1.75,
+            color: "rgba(15,26,46,0.8)",
+          }}
+        >
+          Was 1974 als kleine Taverne in Guetersloh begann, ist heute ein fester
+          Bestandteil der Stadt. Drei Generationen, eine Leidenschaft:
+          authentische griechische Kueche.
+        </p>
+      </div>
+
+      <Meander background="warm" height={24} />
+
+      {/* Timeline */}
+      <div
+        style={{
+          backgroundColor: "#F4EDE0",
+          padding: "80px 48px",
+        }}
+        className="px-6 md:px-12 py-16 md:py-20"
+      >
+        <div style={{ maxWidth: 1000, margin: "0 auto" }}>
+          {/* Desktop timeline */}
+          <div
+            className="hidden lg:block"
+            style={{ position: "relative" }}
+          >
+            {/* Vertical centre line */}
+            <div
+              style={{
+                position: "absolute",
+                left: "50%",
+                transform: "translateX(-50%)",
+                width: 2,
+                top: 0,
+                bottom: 0,
+                backgroundColor: "rgba(9,96,208,0.2)",
+              }}
+              aria-hidden="true"
+            />
+
+            {stationen.map((station) => (
+              <div
+                key={station.jahr}
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "1fr 80px 1fr",
+                  alignItems: "start",
+                }}
+              >
+                {/* Left slot */}
+                {station.seite === "links" ? (
+                  <StationContent station={station} />
+                ) : (
+                  <div />
+                )}
+
+                {/* Centre marker */}
+                <TimelineMarker jahr={station.jahr} />
+
+                {/* Right slot */}
+                {station.seite === "rechts" ? (
+                  <StationContent station={station} />
+                ) : (
+                  <div />
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Mobile timeline */}
+          <div className="lg:hidden" style={{ display: "flex", flexDirection: "column", gap: 48 }}>
+            {stationen.map((station) => (
+              <div key={station.jahr}>
+                <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 20 }}>
+                  <TimelineMarker jahr={station.jahr} />
+                  <h3
+                    style={{
+                      fontFamily: "var(--font-display)",
+                      fontSize: "clamp(20px, 5vw, 28px)",
+                      color: "#0F1A2E",
+                      fontWeight: 400,
+                      margin: 0,
+                    }}
                   >
-                    {station.heading}
-                  </h2>
-                  <p className="mt-6 font-body text-base leading-relaxed text-ink/65 md:text-lg">
-                    {station.body}
-                  </p>
+                    {station.titel}
+                  </h3>
                 </div>
+                <img
+                  src={station.bild}
+                  alt={station.titel}
+                  style={{
+                    width: "100%",
+                    aspectRatio: "3/2",
+                    objectFit: "cover",
+                    borderRadius: 8,
+                    display: "block",
+                    marginBottom: 16,
+                  }}
+                />
+                <p
+                  style={{
+                    fontFamily: "var(--font-body)",
+                    fontSize: 15,
+                    lineHeight: 1.7,
+                    color: "rgba(15,26,46,0.75)",
+                  }}
+                >
+                  {station.text}
+                </p>
               </div>
             ))}
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* Mäander transition */}
-      <Meander variant="band" background="ink" />
+      <Meander background="warm" height={48} />
 
-      {/* Signature Card */}
       <SignatureCard />
-
-      {/* Mäander into footer */}
-      <Meander variant="band" background="ink" />
-    </main>
+    </div>
   );
 }
