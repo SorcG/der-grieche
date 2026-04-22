@@ -37,57 +37,47 @@ export default function Hero() {
     gsap.registerPlugin(ScrollTrigger);
 
     const figure = figureRef.current;
-    if (!figure) return;
+    const section = sectionRef.current;
+    if (!figure || !section) return;
 
-    // Idle-Animation: sanftes Auf/Ab (Atemeffekt)
+    // Figur fährt beim Laden von rechts ein
+    gsap.from(figure, {
+      x: 300,
+      opacity: 0,
+      duration: 1.0,
+      delay: 0.8,
+      ease: "power3.out",
+    });
+
+    // Idle Atemanimation
     const breathe = gsap.to(figure, {
-      y: -12,
+      y: -10,
       duration: 2.5,
       ease: "sine.inOut",
       repeat: -1,
       yoyo: true,
+      delay: 1.8,
     });
 
-    // Scroll-Exit-Animation: Figur dreht sich und geht nach rechts
-    const ctx = gsap.context(() => {
-      ScrollTrigger.create({
-        trigger: sectionRef.current,
+    // Scroll-gekoppelte Exit-Animation
+    // Je weiter der User scrollt, desto mehr dreht und bewegt sich die Figur
+    gsap.to(figure, {
+      rotationY: 80,
+      x: 400,
+      opacity: 0,
+      ease: "none",
+      scrollTrigger: {
+        trigger: section,
         start: "top top",
         end: "bottom top",
-        onLeave: () => {
-          breathe.pause();
-          gsap.to(figure, {
-            rotateY: 60,
-            x: 300,
-            opacity: 0,
-            duration: 0.8,
-            ease: "power2.in",
-          });
-        },
-        onEnterBack: () => {
-          gsap.to(figure, {
-            rotateY: 0,
-            x: 0,
-            opacity: 1,
-            duration: 0.6,
-            ease: "power2.out",
-            onComplete: () => breathe.resume(),
-          });
-        },
-      });
-
-      // Figur fährt beim ersten Laden ein (von rechts)
-      gsap.from(figure, {
-        x: 200,
-        opacity: 0,
-        duration: 1.0,
-        delay: 1.0,
-        ease: "power3.out",
-      });
-    }, sectionRef);
+        scrub: 1.5,
+        onEnter: () => breathe.pause(),
+        onLeaveBack: () => breathe.resume(),
+      },
+    });
 
     return () => {
-      ctx.revert();
+      ScrollTrigger.getAll().forEach(t => t.kill());
       breathe.kill();
     };
   }, []);
