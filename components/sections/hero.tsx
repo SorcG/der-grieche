@@ -59,7 +59,7 @@ export default function Hero() {
           {/* Logo über der Headline */}
           <motion.div
             {...anim(20, 0.3)}
-            style={{ marginBottom: 8 }}
+            style={{ marginBottom: -8 }}
           >
             <img
               src="/images/der-grieche.jpg"
@@ -83,7 +83,7 @@ export default function Hero() {
               fontSize: "clamp(68px, 10vw, 140px)",
               color: "#FCFEFD",
               lineHeight: 0.9,
-              letterSpacing: "0.01em",
+              letterSpacing: "0.01em", wordSpacing: "-0.05em",
               marginBottom: 24,
               fontWeight: 400,
             }}
@@ -117,7 +117,7 @@ export default function Hero() {
               color: "rgba(244,237,224,0.9)",
               maxWidth: 480,
               lineHeight: 1.55,
-              marginBottom: 40,
+              marginBottom: 24,
             }}
             className="text-base md:text-lg"
           >
@@ -229,6 +229,9 @@ export default function Hero() {
     </>
   );
 }
+
+
+
 
 
 
