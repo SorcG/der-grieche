@@ -1,4 +1,4 @@
-import FadeIn from "@/components/ui/fade-in";
+﻿import FadeIn from "@/components/ui/fade-in";
 
 export default function DreierReihe() {
   const imgStyle: React.CSSProperties = {
@@ -35,7 +35,7 @@ export default function DreierReihe() {
           <FadeIn delay={0}>
             <div style={cellStyle}>
               <img
-                src="/images/souvlaki-pita.png"
+                src="/images/fetaoliven-platte.png"
                 alt="Griechisches Essen"
                 style={imgStyle}
               />
@@ -46,8 +46,8 @@ export default function DreierReihe() {
           <FadeIn delay={0.15}>
             <div style={cellStyle}>
               <img
-                src="/images/spiess-schneiden.png"
-                alt="Video-Platzhalter: Gyros am Spieß"
+                src="/images/theke.png"
+                alt="Video-Platzhalter: Gyros am SpieÃŸ"
                 style={imgStyle}
               />
               <div
@@ -84,7 +84,7 @@ export default function DreierReihe() {
             <div style={cellStyle}>
               <img
                 src="/images/souvlaki-grill.png"
-                alt="Grill-Atmosphäre"
+                alt="Grill-AtmosphÃ¤re"
                 style={imgStyle}
               />
             </div>
@@ -95,18 +95,18 @@ export default function DreierReihe() {
         <div className="md:hidden" style={{ display: "flex", flexDirection: "column", gap: 12 }}>
           {[
             {
-              src: "/images/souvlaki-pita.png",
+              src: "/images/fetaoliven-platte.png",
               alt: "Griechisches Essen",
               video: false,
             },
             {
-              src: "/images/spiess-schneiden.png",
+              src: "/images/theke.png",
               alt: "Video-Platzhalter",
               video: true,
             },
             {
               src: "/images/souvlaki-grill.png",
-              alt: "Grill-Atmosphäre",
+              alt: "Grill-AtmosphÃ¤re",
               video: false,
             },
           ].map((item) => (
@@ -152,3 +152,5 @@ export default function DreierReihe() {
     </section>
   );
 }
+
+
