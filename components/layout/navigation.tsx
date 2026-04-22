@@ -38,33 +38,21 @@ export default function Navigation() {
           style={{
             display: "flex",
             alignItems: "center",
-            gap: 10,
             textDecoration: "none",
+            flexShrink: 0,
           }}
         >
           <img
             src="/images/der-grieche.jpg"
-            alt="Der Grieche Logo"
+            alt="Der Grieche – Kattenstrother Grillhaus"
             style={{
-              width: 40,
-              height: 40,
+              width: 52,
+              height: 52,
               borderRadius: "50%",
               objectFit: "cover",
-              border: "2px solid rgba(255,255,255,0.25)",
-              flexShrink: 0,
+              border: "2px solid rgba(255,255,255,0.3)",
             }}
           />
-          <span
-            style={{
-              fontFamily: "var(--font-display)",
-              fontSize: 18,
-              color: "#FCFEFD",
-              letterSpacing: "0.06em",
-              fontWeight: 400,
-            }}
-          >
-            DER GRIECHE
-          </span>
         </a>
 
         {/* Desktop nav */}

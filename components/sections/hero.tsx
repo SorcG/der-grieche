@@ -49,16 +49,12 @@ export default function Hero() {
           style={{
             position: "relative",
             zIndex: 1,
-            height: "100%",
-            maxWidth: 1280,
-            margin: "0 auto",
-            padding: "0 48px",
             display: "flex",
             flexDirection: "column",
-            justifyContent: "flex-start",
-            paddingTop: "40px",
+            justifyContent: "space-between",
+            height: "100%",
+            padding: "40px 48px 48px",
           }}
-          className="px-6 md:px-12"
         >
           {/* Tagline */}
           <motion.p
@@ -81,7 +77,7 @@ export default function Hero() {
             {...anim(20, 0.4)}
             style={{
               fontFamily: "var(--font-display)",
-              fontSize: "clamp(52px, 7vw, 100px)",
+              fontSize: "clamp(68px, 10vw, 140px)",
               color: "#FCFEFD",
               lineHeight: 0.9,
               letterSpacing: "0.01em",
@@ -140,19 +136,47 @@ export default function Hero() {
             <a
               href="/speisekarte"
               style={{
+                display: "inline-block",
                 color: "#F4EDE0",
-                textDecoration: "none",
                 fontFamily: "var(--font-body)",
                 fontSize: 14,
                 fontWeight: 500,
-                transition: "color 150ms ease",
+                letterSpacing: "0.08em",
+                textDecoration: "none",
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "#FCFEFD")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "#F4EDE0")}
             >
-              Zur Speisekarte â†’
+              {"ZUR SPEISEKARTE →"}
             </a>
           </motion.div>
+
+          {/* Google rating badge */}
+          <div style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 8,
+            marginTop: "auto",
+            paddingTop: 32,
+          }}>
+            <span style={{
+              fontFamily: "var(--font-body)",
+              fontSize: 12,
+              fontWeight: 500,
+              letterSpacing: "0.1em",
+              color: "#F4EDE0",
+              opacity: 0.8,
+            }}>
+              AUSGEZEICHNET
+            </span>
+            <span style={{ color: "#F4B942", fontSize: 14 }}>★★★★★</span>
+            <span style={{
+              fontFamily: "var(--font-body)",
+              fontSize: 12,
+              color: "#F4EDE0",
+              opacity: 0.6,
+            }}>
+              Google
+            </span>
+          </div>
         </div>
 
         {/* Scroll indicator */}
