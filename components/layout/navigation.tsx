@@ -1,5 +1,7 @@
 "use client";
 
+import Meander from "@/components/ui/meander";
+
 const links = [
   { label: "Startseite", href: "/" },
   { label: "Speisekarte", href: "/speisekarte" },
@@ -75,6 +77,7 @@ export default function Navigation() {
           Reservieren
         </a>
       </div>
+      <Meander background="brand" height={8} />
     </header>
   );
 }
