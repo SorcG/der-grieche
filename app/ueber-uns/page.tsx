@@ -268,7 +268,7 @@ export default function UeberUnsPage() {
                   zIndex: 2,
                 }}
               >
-                <GreekFigure width={72} />
+                <GreekFigure width={216} />
               </div>
             </div>
 
