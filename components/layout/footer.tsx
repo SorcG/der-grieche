@@ -1,4 +1,4 @@
-import Meander from "@/components/ui/meander";
+﻿import Meander from "@/components/ui/meander";
 
 const navLinks = [
   { label: "Startseite", href: "/" },
@@ -36,7 +36,7 @@ const linkStyle: React.CSSProperties = {
 export default function Footer() {
   return (
     <footer>
-      <Meander background="ink" height={48} />
+      <Meander background="brand" height={48} />
 
       {/* Main footer area */}
       <div style={{ backgroundColor: "#0F1A2E" }}>
@@ -50,7 +50,7 @@ export default function Footer() {
             gap: 48,
           }}
         >
-          {/* Column 1 — Brand + Nav */}
+          {/* Column 1 â€” Brand + Nav */}
           <div>
             <a
               href="/"
@@ -88,7 +88,7 @@ export default function Footer() {
             </nav>
           </div>
 
-          {/* Column 2 — Address + Hours */}
+          {/* Column 2 â€” Address + Hours */}
           <div>
             <p style={headingStyle}>BESUCH UNS</p>
             <address style={{ ...bodyStyle, fontStyle: "normal" }}>
@@ -97,8 +97,8 @@ export default function Footer() {
               33334 Guetersloh
             </address>
             <div style={{ ...bodyStyle, marginTop: 20 }}>
-              <p>Mo – Fr: 11:00 – 22:00 Uhr</p>
-              <p>Sa – So: 12:00 – 23:00 Uhr</p>
+              <p>Mo â€“ Fr: 11:00 â€“ 22:00 Uhr</p>
+              <p>Sa â€“ So: 12:00 â€“ 23:00 Uhr</p>
             </div>
             <a
               href="tel:+4952411234567"
@@ -108,7 +108,7 @@ export default function Footer() {
             </a>
           </div>
 
-          {/* Column 3 — Contact */}
+          {/* Column 3 â€” Contact */}
           <div>
             <p style={headingStyle}>KONTAKT</p>
             <a
@@ -162,7 +162,7 @@ export default function Footer() {
             margin: 0,
           }}
         >
-          © 2026 Der Grieche – Kattenstrother Grillhaus
+          Â© 2026 Der Grieche â€“ Kattenstrother Grillhaus
         </p>
         <div style={{ display: "flex", gap: 16 }}>
           {[
@@ -187,3 +187,4 @@ export default function Footer() {
     </footer>
   );
 }
+
