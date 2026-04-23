@@ -3,6 +3,7 @@
 import Meander from "@/components/ui/meander";
 import FadeIn from "@/components/ui/fade-in";
 import SignatureCard from "@/components/sections/signature-card";
+import GreekFigure from "@/components/ui/greek-figure";
 
 const stationen = [
   {
@@ -230,11 +231,9 @@ export default function UeberUnsPage() {
       >
         <div style={{ maxWidth: 1000, margin: "0 auto" }}>
           {/* Desktop timeline */}
-          <div
-            className="hidden lg:block"
-            style={{ position: "relative" }}
-          >
-            {/* Vertical centre line */}
+          <div className="hidden lg:block" style={{ position: "relative" }}>
+
+            {/* Vertikale Mittellinie */}
             <div
               style={{
                 position: "absolute",
@@ -248,6 +247,32 @@ export default function UeberUnsPage() {
               aria-hidden="true"
             />
 
+            {/* Griechische Figur – sticky auf der Mittellinie */}
+            <div
+              style={{
+                position: "absolute",
+                left: "50%",
+                top: 0,
+                transform: "translateX(-50%)",
+                width: 80,
+                height: "100%",
+                pointerEvents: "none",
+              }}
+            >
+              <div
+                style={{
+                  position: "sticky",
+                  top: 120,
+                  display: "flex",
+                  justifyContent: "center",
+                  zIndex: 2,
+                }}
+              >
+                <GreekFigure width={72} />
+              </div>
+            </div>
+
+            {/* Timeline-Stationen */}
             {stationen.map((station) => (
               <div
                 key={station.jahr}
@@ -257,17 +282,27 @@ export default function UeberUnsPage() {
                   alignItems: "start",
                 }}
               >
-                {/* Left slot */}
                 {station.seite === "links" ? (
                   <StationContent station={station} />
                 ) : (
                   <div />
                 )}
 
-                {/* Centre marker */}
-                <TimelineMarker jahr={station.jahr} />
+                {/* Jahres-Marker */}
+                <div style={{ display: "flex", justifyContent: "center", paddingTop: 8 }}>
+                  <div
+                    style={{
+                      width: 12,
+                      height: 12,
+                      borderRadius: "50%",
+                      backgroundColor: "#0960D0",
+                      border: "2px solid #F4EDE0",
+                      zIndex: 1,
+                      marginTop: 16,
+                    }}
+                  />
+                </div>
 
-                {/* Right slot */}
                 {station.seite === "rechts" ? (
                   <StationContent station={station} />
                 ) : (
