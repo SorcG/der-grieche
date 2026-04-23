@@ -48,12 +48,12 @@ export default function DreierReihe() {
             scale: 1,
             y: 0,
             ease: "none",
+            delay: i * 0.1,
             scrollTrigger: {
               trigger: sectionRef.current,
               start: "top 80%",
               end: "top 20%",
               scrub: 1.5,
-              delay: i * 0.1,
             },
           }
         );
