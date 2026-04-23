@@ -1,4 +1,4 @@
-﻿import FadeIn from "@/components/ui/fade-in";
+import FadeIn from "@/components/ui/fade-in";
 
 export default function DreierReihe() {
   const imgStyle: React.CSSProperties = {
@@ -47,7 +47,7 @@ export default function DreierReihe() {
             <div style={cellStyle}>
               <img
                 src="/images/theke.png"
-                alt="Video-Platzhalter: Gyros am SpieÃŸ"
+                alt="Video-Platzhalter: Gyros am Spieß"
                 style={imgStyle}
               />
               <div
@@ -83,8 +83,8 @@ export default function DreierReihe() {
           <FadeIn delay={0.3}>
             <div style={cellStyle}>
               <img
-                src="/images/souvlaki-grill.png"
-                alt="Grill-AtmosphÃ¤re"
+                src="/images/sitzbereich.png"
+                alt="Grill-Atmosphäre"
                 style={imgStyle}
               />
             </div>
@@ -105,8 +105,8 @@ export default function DreierReihe() {
               video: true,
             },
             {
-              src: "/images/souvlaki-grill.png",
-              alt: "Grill-AtmosphÃ¤re",
+              src: "/images/sitzbereich.png",
+              alt: "Grill-Atmosphäre",
               video: false,
             },
           ].map((item) => (
