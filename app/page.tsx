@@ -10,18 +10,19 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      <Meander background="surface" height={48} />
+      <Meander background="brand" height={48} />
       <Willkommen />
-      <Meander background="surface" height={48} />
+      <Meander background="brand" height={48} />
       <TextFill />
-      <Meander background="surface" height={48} />
+      <Meander background="brand" height={48} />
       <DreierReihe />
-      <Meander background="surface" height={48} />
+      <Meander background="brand" height={48} />
       <Reviews />
-      <Meander background="surface" height={48} />
+      <Meander background="brand" height={48} />
       <SignatureCard />
-      <Meander background="surface" height={48} />
     </main>
   );
 }
+
+
 
