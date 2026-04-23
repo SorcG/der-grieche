@@ -37,29 +37,16 @@ export default function DreierReihe() {
 
       refs.forEach((ref, i) => {
         gsap.from(ref.current, {
-          y: 60,
           opacity: 0,
-          duration: 0.8,
-          delay: i * 0.15,
+          scale: 1.12,
+          y: 30,
+          duration: 1.0,
+          delay: i * 0.2,
           ease: "power3.out",
           scrollTrigger: {
-            trigger: ref.current,
-            start: "top 85%",
-            once: true,
-          },
-        });
-      });
-
-      // Leichter Parallax auf jedem Bild beim Scrollen
-      refs.forEach((ref) => {
-        gsap.to(ref.current, {
-          y: -20,
-          ease: "none",
-          scrollTrigger: {
             trigger: sectionRef.current,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: 1.5,
+            start: "top 75%",
+            once: true,
           },
         });
       });
