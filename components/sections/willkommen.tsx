@@ -20,41 +20,38 @@ export default function Willkommen() {
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
-      gsap.to(leftImageRef.current, {
-        xPercent: -12,
-        ease: "none",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 1.5,
-        },
-      });
+      const triggerConfig = {
+        trigger: sectionRef.current,
+        start: "top bottom",
+        end: "top 20%",
+        scrub: 1.5,
+      };
 
-      gsap.to(rightImageRef.current, {
-        xPercent: 12,
-        ease: "none",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 1.5,
-        },
-      });
+      gsap.fromTo(
+        leftImageRef.current,
+        { xPercent: 100 },
+        { xPercent: 0, ease: "none", scrollTrigger: triggerConfig }
+      );
+
+      gsap.fromTo(
+        rightImageRef.current,
+        { xPercent: -100 },
+        { xPercent: 0, ease: "none", scrollTrigger: triggerConfig }
+      );
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={sectionRef} style={{ backgroundColor: "#FCFEFD", minHeight: 600 }}>
+    <section ref={sectionRef} style={{ backgroundColor: "#FCFEFD", minHeight: 600, overflow: "hidden" }}>
       {/* Desktop: 3-column grid */}
       <div
         className="hidden lg:grid"
         style={{ gridTemplateColumns: "1fr 1fr 1fr", minHeight: 600 }}
       >
         {/* Left image */}
-        <div ref={leftImageRef} style={{ overflow: "hidden", position: "relative" }}>
+        <div ref={leftImageRef} style={{ overflow: "hidden", position: "relative", zIndex: 2 }}>
           <img
             src="/images/tzatziki.png"
             alt="Griechisches Essen"
@@ -84,7 +81,7 @@ export default function Willkommen() {
         </div>
 
         {/* Right image */}
-        <div ref={rightImageRef} style={{ overflow: "hidden", position: "relative" }}>
+        <div ref={rightImageRef} style={{ overflow: "hidden", position: "relative", zIndex: 2 }}>
           <img
             src="/images/gyrosteller.png"
             alt="Griechische Taverne"
