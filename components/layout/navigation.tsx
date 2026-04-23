@@ -22,9 +22,9 @@ export default function Navigation() {
 
       {/* Nav-Links */}
       <div style={{ display: "flex", gap: 28, alignItems: "center", padding: "0 24px", flexShrink: 0 }}>
-        <a href="/" style={{ color: "rgba(255,255,255,0.85)", fontSize: 12, letterSpacing: "0.12em", fontFamily: "var(--font-body)", textTransform: "uppercase", textDecoration: "none" }}>Startseite</a>
-        <a href="/speisekarte" style={{ color: "rgba(255,255,255,0.85)", fontSize: 12, letterSpacing: "0.12em", fontFamily: "var(--font-body)", textTransform: "uppercase", textDecoration: "none" }}>Speisekarte</a>
-        <a href="/ueber-uns" style={{ color: "rgba(255,255,255,0.85)", fontSize: 12, letterSpacing: "0.12em", fontFamily: "var(--font-body)", textTransform: "uppercase", textDecoration: "none" }}>Ueber Uns</a>
+        <a href="/" className="btn" style={{ color: "rgba(255,255,255,0.85)", fontSize: 12, letterSpacing: "0.12em", fontFamily: "var(--font-body)", textTransform: "uppercase", textDecoration: "none" }}>Startseite</a>
+        <a href="/speisekarte" className="btn" style={{ color: "rgba(255,255,255,0.85)", fontSize: 12, letterSpacing: "0.12em", fontFamily: "var(--font-body)", textTransform: "uppercase", textDecoration: "none" }}>Speisekarte</a>
+        <a href="/ueber-uns" className="btn" style={{ color: "rgba(255,255,255,0.85)", fontSize: 12, letterSpacing: "0.12em", fontFamily: "var(--font-body)", textTransform: "uppercase", textDecoration: "none" }}>Ueber Uns</a>
       </div>
 
       {/* Mäander Mitte-Rechts */}
