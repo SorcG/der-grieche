@@ -34,7 +34,7 @@ export default function Navigation() {
 
       {/* RESERVIEREN Button */}
       <div style={{ flexShrink: 0, padding: "0 16px" }}>
-        <a href="#reservieren" style={{ background: "#6B7C48", color: "white", fontFamily: "var(--font-body)", fontSize: 12, fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase", padding: "10px 20px", borderRadius: 4, textDecoration: "none", whiteSpace: "nowrap" }}>
+        <a href="#reservieren" className="btn" style={{ background: "#6B7C48", color: "white", fontFamily: "var(--font-body)", fontSize: 12, fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase", padding: "10px 20px", borderRadius: 4, textDecoration: "none", whiteSpace: "nowrap" }}>
           RESERVIEREN
         </a>
       </div>

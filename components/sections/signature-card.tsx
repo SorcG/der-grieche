@@ -136,6 +136,7 @@ function TextBlock() {
 
       <a
         href="tel:+4952411234567"
+        className="btn"
         style={{
           display: "inline-block",
           backgroundColor: "#6B7C48",

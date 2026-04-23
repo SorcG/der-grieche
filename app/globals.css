@@ -30,3 +30,16 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+.btn {
+  transition: transform 200ms ease-out, filter 200ms ease-out;
+  cursor: pointer;
+  display: inline-block;
+}
+.btn:hover {
+  transform: scale(1.05);
+  filter: brightness(1.15);
+}
+.btn:active {
+  transform: scale(0.97);
+}

@@ -145,6 +145,7 @@ export default function Hero() {
           >
             <a
               href="tel:+4952411234567"
+              className="btn"
               style={{
                 backgroundColor: "#6B7C48",
                 color: "#FCFEFD",
