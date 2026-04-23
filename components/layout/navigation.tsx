@@ -22,31 +22,15 @@ export default function Navigation() {
           alignItems: "center",
         }}
       >
-        {/* Logo */}
-        <a href="/" style={{ textDecoration: "none", flexShrink: 0 }}>
-          <img
-            src="/images/der-grieche.jpg"
-            alt="Der Grieche"
-            style={{
-              width: 44,
-              height: 44,
-              borderRadius: "50%",
-              objectFit: "cover",
-              border: "2px solid rgba(255,255,255,0.25)",
-              display: "block",
-            }}
-          />
-        </a>
-
         {/* Mäander links + Links + Mäander rechts + Button */}
         <div style={{ display: "flex", alignItems: "center", flex: 1, gap: 0 }}>
           {/* Mäander links */}
-          <div style={{ flex: 1, overflow: "hidden", height: 40 }}>
-            <Meander background="brand" height={40} />
+          <div style={{ flex: 1, overflow: "hidden", height: 56 }}>
+            <Meander background="brand" height={56} />
           </div>
 
           {/* Nav-Links */}
-          <div style={{ display: "flex", gap: 32, alignItems: "center", padding: "0 32px", flexShrink: 0 }}>
+          <div style={{ display: "flex", gap: 32, alignItems: "center", padding: "0 20px", flexShrink: 0 }}>
             <a
               href="/"
               style={{ color: "rgba(255,255,255,0.85)", fontSize: 12, letterSpacing: "0.12em", fontFamily: "var(--font-body)", textTransform: "uppercase", textDecoration: "none" }}
@@ -68,8 +52,8 @@ export default function Navigation() {
           </div>
 
           {/* Mäander rechts */}
-          <div style={{ flex: 1, overflow: "hidden", height: 40 }}>
-            <Meander background="brand" height={40} />
+          <div style={{ flex: 1, overflow: "hidden", height: 56 }}>
+            <Meander background="brand" height={56} />
           </div>
 
           {/* RESERVIEREN Button */}
