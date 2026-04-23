@@ -23,7 +23,7 @@ export default function Navigation() {
         }}
       >
         {/* Mäander links + Links + Mäander rechts + Button */}
-        <div style={{ display: "flex", alignItems: "center", flex: 1, gap: 0 }}>
+        <div style={{ display: "flex", alignItems: "center", flex: 1, gap: 0, width: "100%" }}>
           {/* Mäander links */}
           <div style={{ flex: 1, overflow: "hidden", height: 56 }}>
             <Meander background="brand" height={56} />
@@ -79,6 +79,11 @@ export default function Navigation() {
             >
               RESERVIEREN
             </a>
+          </div>
+
+          {/* Mäander rechts außen */}
+          <div style={{ flex: 1, overflow: "hidden", height: 56 }}>
+            <Meander background="brand" height={56} />
           </div>
         </div>
       </div>
