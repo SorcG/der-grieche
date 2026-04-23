@@ -1,43 +1,85 @@
-﻿type MeanderProps = {
+"use client";
+
+type MeanderProps = {
   background?: "brand" | "surface" | "warm" | "ink";
   height?: number;
   className?: string;
 };
 
 const variants = {
-  brand:   { bg: "#0960D0", fg: "#FCFEFD" },
-  surface: { bg: "#FCFEFD", fg: "#0960D0" },
-  warm:    { bg: "#F4EDE0", fg: "#0960D0" },
-  ink:     { bg: "#0F1A2E", fg: "#F4EDE0" },
+  brand:   { bg: "#0960D0", patternColor: "white" },
+  surface: { bg: "#FCFEFD", patternColor: "#0960D0" },
+  warm:    { bg: "#F4EDE0", patternColor: "#0960D0" },
+  ink:     { bg: "#0F1A2E", patternColor: "#F4EDE0" },
 };
 
-export default function Meander({
-  background = "brand",
-  height = 56,
-  className,
-}: MeanderProps) {
-  const { bg, fg } = variants[background];
-  const tileW = height * (40 / 24);
-  const sw = height * (3 / 24);
-  const s = height / 24;
-  const id = `mk-${background}`;
+export default function Meander({ background = "brand", height = 56, className }: MeanderProps) {
+  const { bg, patternColor } = variants[background];
+  const tileW = Math.round(height * 3.33);
+  const sw = height * 0.125;
+  const uid = `meander-${background}-${height}`;
 
   return (
-    <div className={className} style={{ background: bg, lineHeight: 0 }} aria-hidden="true">
-      <svg width="100%" height={height} style={{ display: "block" }}>
+    <div
+      className={className}
+      style={{ width: "100%", height, backgroundColor: bg, position: "relative", overflow: "hidden" }}
+      role="img"
+      aria-label="Maeander-Ornament"
+    >
+      <svg
+        width="100%"
+        height={height}
+        style={{ position: "absolute", inset: 0, display: "block" }}
+        xmlns="http://www.w3.org/2000/svg"
+      >
         <defs>
-          <pattern id={id} x="0" y="0" width={tileW} height={height} patternUnits="userSpaceOnUse">
-            <line x1="0" y1={1.5*s} x2={tileW} y2={1.5*s} stroke={fg} strokeWidth={sw} strokeLinecap="butt"/>
-            <line x1="0" y1={22.5*s} x2={tileW} y2={22.5*s} stroke={fg} strokeWidth={sw} strokeLinecap="butt"/>
+          <pattern id={uid} x="0" y="0" width={tileW} height={height} patternUnits="userSpaceOnUse">
+            {/* top rail */}
+            <line x1="0" y1={height * 0.0625} x2={tileW} y2={height * 0.0625}
+              stroke={patternColor} strokeWidth={sw} strokeLinecap="butt" />
+            {/* bottom rail */}
+            <line x1="0" y1={height * 0.9375} x2={tileW} y2={height * 0.9375}
+              stroke={patternColor} strokeWidth={sw} strokeLinecap="butt" />
+            {/* left spiral (descends from top rail) */}
             <path
-              d={`M${4*s},${1.5*s} L${4*s},${18*s} L${16*s},${18*s} L${16*s},${5*s} L${8*s},${5*s} L${8*s},${14*s} L${12*s},${14*s} L${12*s},${9*s}`}
-              stroke={fg} strokeWidth={sw} fill="none" strokeLinecap="butt" strokeLinejoin="miter"/>
+              d={[
+                `M ${tileW * 0.1} ${height * 0.0625}`,
+                `L ${tileW * 0.1} ${height * 0.75}`,
+                `L ${tileW * 0.4} ${height * 0.75}`,
+                `L ${tileW * 0.4} ${height * 0.2083}`,
+                `L ${tileW * 0.2} ${height * 0.2083}`,
+                `L ${tileW * 0.2} ${height * 0.5833}`,
+                `L ${tileW * 0.3} ${height * 0.5833}`,
+                `L ${tileW * 0.3} ${height * 0.375}`,
+              ].join(" ")}
+              stroke={patternColor}
+              strokeWidth={sw}
+              strokeLinecap="butt"
+              strokeLinejoin="miter"
+              fill="none"
+            />
+            {/* right spiral (ascends from bottom rail) */}
             <path
-              d={`M${24*s},${22.5*s} L${24*s},${6*s} L${36*s},${6*s} L${36*s},${19*s} L${28*s},${19*s} L${28*s},${10*s} L${32*s},${10*s} L${32*s},${15*s}`}
-              stroke={fg} strokeWidth={sw} fill="none" strokeLinecap="butt" strokeLinejoin="miter"/>
+              d={[
+                `M ${tileW * 0.6} ${height * 0.9375}`,
+                `L ${tileW * 0.6} ${height * 0.25}`,
+                `L ${tileW * 0.9} ${height * 0.25}`,
+                `L ${tileW * 0.9} ${height * 0.7917}`,
+                `L ${tileW * 0.7} ${height * 0.7917}`,
+                `L ${tileW * 0.7} ${height * 0.4167}`,
+                `L ${tileW * 0.8} ${height * 0.4167}`,
+                `L ${tileW * 0.8} ${height * 0.625}`,
+              ].join(" ")}
+              stroke={patternColor}
+              strokeWidth={sw}
+              strokeLinecap="butt"
+              strokeLinejoin="miter"
+              fill="none"
+            />
           </pattern>
         </defs>
-        <rect width="100%" height={height} fill={`url(#${id})`}/>
+        <rect width="100%" height={height} fill={bg} />
+        <rect width="100%" height={height} fill={`url(#${uid})`} />
       </svg>
     </div>
   );
