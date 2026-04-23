@@ -1,156 +1,89 @@
+"use client";
+
 import FadeIn from "@/components/ui/fade-in";
 
+const bilder = [
+  {
+    src: "/images/bifteki.png",
+    alt: "Bifteki auf Schieferplatte mit Tzatziki und Pita",
+  },
+  {
+    src: "/images/mixed-greek.png",
+    alt: "Griechische Mezze-Auswahl mit Tomatenreis und Haenchen",
+  },
+  {
+    src: "/images/mythos-ouzo.png",
+    alt: "Griechische Getraenke: Mythos Bier und Ouzo",
+  },
+];
+
 export default function DreierReihe() {
-  const imgStyle: React.CSSProperties = {
-    width: "100%",
-    height: "100%",
-    objectFit: "cover",
-    display: "block",
-    borderRadius: 8,
-  };
-
-  const cellStyle: React.CSSProperties = {
-    aspectRatio: "1/1",
-    borderRadius: 8,
-    overflow: "hidden",
-    position: "relative",
-  };
-
   return (
     <section
       style={{
         backgroundColor: "#0F1A2E",
-        padding: "64px 24px",
+        padding: "64px 48px",
       }}
-      className="py-12 md:py-16"
     >
+      {/* Desktop: drei Bilder nebeneinander */}
       <div
-        style={{ maxWidth: 1280, margin: "0 auto" }}
+        className="hidden md:grid"
+        style={{
+          gridTemplateColumns: "1fr 1fr 1fr",
+          gap: 12,
+        }}
       >
-        {/* Desktop: 3 columns */}
-        <div
-          className="hidden md:grid"
-          style={{ gridTemplateColumns: "1fr 1fr 1fr", gap: 12 }}
-        >
-          <FadeIn delay={0}>
-            <div style={cellStyle}>
+        {bilder.map((bild, i) => (
+          <FadeIn key={bild.src} delay={i * 0.15}>
+            <div
+              style={{
+                borderRadius: 8,
+                overflow: "hidden",
+                aspectRatio: "4/3",
+              }}
+            >
               <img
-                src="/images/fetaoliven-platte.png"
-                alt="Griechisches Essen"
-                style={imgStyle}
-              />
-            </div>
-          </FadeIn>
-
-          {/* Middle: video slot placeholder */}
-          <FadeIn delay={0.15}>
-            <div style={cellStyle}>
-              <img
-                src="/images/gyrosteller-closeup.png"
-                alt="Video-Platzhalter: Gyros am Spieß"
-                style={imgStyle}
-              />
-              <div
+                src={bild.src}
+                alt={bild.alt}
                 style={{
-                  position: "absolute",
-                  inset: 0,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  display: "block",
                 }}
-                aria-hidden="true"
-              >
-                <div
-                  style={{
-                    width: 48,
-                    height: 48,
-                    borderRadius: "50%",
-                    backgroundColor: "rgba(252,254,253,0.15)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    backdropFilter: "blur(4px)",
-                  }}
-                >
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="white">
-                    <path d="M5 3l9 5-9 5V3z" />
-                  </svg>
-                </div>
-              </div>
-            </div>
-          </FadeIn>
-
-          <FadeIn delay={0.3}>
-            <div style={cellStyle}>
-              <img
-                src="/images/souvlaki-grill.png"
-                alt="Grill-Atmosphäre"
-                style={imgStyle}
               />
             </div>
           </FadeIn>
-        </div>
+        ))}
+      </div>
 
-        {/* Mobile: stacked */}
-        <div className="md:hidden" style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-          {[
-            {
-              src: "/images/fetaoliven-platte.png",
-              alt: "Griechisches Essen",
-              video: false,
-            },
-            {
-              src: "/images/gyrosteller-closeup.png",
-              alt: "Video-Platzhalter",
-              video: true,
-            },
-            {
-              src: "/images/souvlaki-grill.png",
-              alt: "Grill-Atmosphäre",
-              video: false,
-            },
-          ].map((item) => (
-            <div key={item.src} style={{ height: 280, borderRadius: 8, overflow: "hidden", position: "relative" }}>
-              <img
-                src={item.src}
-                alt={item.alt}
-                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-              />
-              {item.video && (
-                <div
-                  style={{
-                    position: "absolute",
-                    inset: 0,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                  aria-hidden="true"
-                >
-                  <div
-                    style={{
-                      width: 48,
-                      height: 48,
-                      borderRadius: "50%",
-                      backgroundColor: "rgba(252,254,253,0.15)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      backdropFilter: "blur(4px)",
-                    }}
-                  >
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="white">
-                      <path d="M5 3l9 5-9 5V3z" />
-                    </svg>
-                  </div>
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
+      {/* Mobile: Bilder untereinander */}
+      <div
+        className="flex flex-col md:hidden"
+        style={{ gap: 12 }}
+      >
+        {bilder.map((bild) => (
+          <div
+            key={bild.src}
+            style={{
+              borderRadius: 8,
+              overflow: "hidden",
+              aspectRatio: "16/9",
+            }}
+          >
+            <img
+              src={bild.src}
+              alt={bild.alt}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                display: "block",
+              }}
+            />
+          </div>
+        ))}
       </div>
     </section>
   );
 }
-
-
