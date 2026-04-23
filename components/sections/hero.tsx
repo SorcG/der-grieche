@@ -28,12 +28,25 @@ export default function Hero() {
         style={{
           position: "relative",
           height: "100vh",
-          backgroundImage:
-            "url('/images/spiess.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
         }}
       >
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            zIndex: 0,
+          }}
+        >
+          <source src="/videos/spiess.mp4" type="video/mp4" />
+        </video>
+
         {/* Gradient overlay */}
         <div
           style={{
@@ -41,6 +54,7 @@ export default function Hero() {
             inset: 0,
             background:
               "linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.75) 100%)",
+            zIndex: 1,
           }}
         />
 
