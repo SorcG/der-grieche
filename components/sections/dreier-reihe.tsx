@@ -46,7 +46,7 @@ export default function DreierReihe() {
           <FadeIn delay={0.15}>
             <div style={cellStyle}>
               <img
-                src="/images/theke.png"
+                src="/images/gyrosteller-closeup.png"
                 alt="Video-Platzhalter: Gyros am Spieß"
                 style={imgStyle}
               />
@@ -83,7 +83,7 @@ export default function DreierReihe() {
           <FadeIn delay={0.3}>
             <div style={cellStyle}>
               <img
-                src="/images/sitzbereich.png"
+                src="/images/souvlaki-grill.png"
                 alt="Grill-Atmosphäre"
                 style={imgStyle}
               />
@@ -100,12 +100,12 @@ export default function DreierReihe() {
               video: false,
             },
             {
-              src: "/images/theke.png",
+              src: "/images/gyrosteller-closeup.png",
               alt: "Video-Platzhalter",
               video: true,
             },
             {
-              src: "/images/sitzbereich.png",
+              src: "/images/souvlaki-grill.png",
               alt: "Grill-Atmosphäre",
               video: false,
             },

@@ -1,9 +1,7 @@
 import Hero from "@/components/sections/hero";
 import Willkommen from "@/components/sections/willkommen";
-import Qualitaet from "@/components/sections/qualitaet";
-import DreierReihe from "@/components/sections/dreier-reihe";
-import Atmosphaere from "@/components/sections/atmosphaere";
 import TextFill from "@/components/sections/text-fill";
+import DreierReihe from "@/components/sections/dreier-reihe";
 import Reviews from "@/components/sections/reviews";
 import SignatureCard from "@/components/sections/signature-card";
 import Meander from "@/components/ui/meander";
@@ -15,12 +13,9 @@ export default function Home() {
       <Meander background="surface" height={48} />
       <Willkommen />
       <Meander background="warm" height={48} />
-      <Qualitaet />
+      <TextFill />
       <Meander background="ink" height={48} />
       <DreierReihe />
-      <Atmosphaere />
-      <Meander background="brand" height={48} />
-      <TextFill />
       <Meander background="surface" height={48} />
       <Reviews />
       <Meander background="ink" height={48} />

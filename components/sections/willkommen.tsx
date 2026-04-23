@@ -202,7 +202,7 @@ function WillkommenText() {
         onMouseEnter={(e) => (e.currentTarget.style.color = "#6B7C48")}
         onMouseLeave={(e) => (e.currentTarget.style.color = "#0960D0")}
       >
-        Jetzt Reservieren →
+        {"Jetzt Reservieren →"}
       </a>
     </>
   );
