@@ -104,7 +104,7 @@ export default function SpeisekartePage() {
           height: "40vh",
           minHeight: 320,
           backgroundImage:
-            "url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1920&q=80&fit=crop')",
+            "url('/images/souvlaki-grill.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}

@@ -28,12 +28,25 @@ export default function Hero() {
         style={{
           position: "relative",
           height: "100vh",
-          backgroundImage:
-            "url('/images/spiess.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
         }}
       >
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            zIndex: 0,
+          }}
+        >
+          <source src="/videos/spiess.mp4" type="video/mp4" />
+        </video>
+
         {/* Gradient overlay */}
         <div
           style={{
@@ -41,6 +54,7 @@ export default function Hero() {
             inset: 0,
             background:
               "linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.75) 100%)",
+            zIndex: 1,
           }}
         />
 
@@ -49,50 +63,64 @@ export default function Hero() {
           style={{
             position: "relative",
             zIndex: 1,
-            height: "100%",
-            maxWidth: 1280,
-            margin: "0 auto",
-            padding: "0 48px",
             display: "flex",
             flexDirection: "column",
-            justifyContent: "flex-start",
-            paddingTop: "48px",
+            justifyContent: "space-between",
+            height: "100%",
+            padding: "40px 48px 48px",
           }}
-          className="px-6 md:px-12"
         >
-          {/* Tagline */}
-          <motion.p
-            {...anim(20, 0.2)}
-            style={{
-              fontFamily: "var(--font-body)",
-              fontSize: 13,
-              fontWeight: 500,
-              textTransform: "uppercase",
-              letterSpacing: "0.15em",
-              color: "rgba(244,237,224,0.8)",
-              marginBottom: 8,
-            }}
+          {/* Logo über der Headline */}
+          <motion.div
+            {...anim(20, 0.3)}
+            style={{ marginBottom: -8 }}
           >
-            {"KATTENSTROTHER GRILLHAUS · SEIT 1974"}
-          </motion.p>
+            <img
+              src="/images/der-grieche.jpg"
+              alt="Der Grieche Logo"
+              style={{
+                width: "clamp(80px, 10vw, 140px)",
+                height: "clamp(80px, 10vw, 140px)",
+                borderRadius: "50%",
+                objectFit: "cover",
+                border: "3px solid rgba(255,255,255,0.25)",
+                display: "block",
+              }}
+            />
+          </motion.div>
 
           {/* Headline */}
           <motion.h1
             {...anim(20, 0.4)}
             style={{
               fontFamily: "var(--font-display)",
-              fontSize: "clamp(72px, 12vw, 180px)",
+              fontSize: "clamp(68px, 10vw, 140px)",
               color: "#FCFEFD",
-              lineHeight: 0.88,
-              letterSpacing: "0.01em",
-              marginBottom: 28,
+              lineHeight: 0.9,
+              letterSpacing: "0.01em", wordSpacing: "-0.05em",
+              marginBottom: 24,
               fontWeight: 400,
-              WebkitTextStroke: "3px #0F1A2E",
-              paintOrder: "stroke fill",
-            } as React.CSSProperties}
+            }}
           >
             DER GRIECHE
           </motion.h1>
+
+          {/* Tagline */}
+          <motion.p
+            {...anim(20, 0.2)}
+            style={{
+              fontFamily: "var(--font-body)",
+              fontSize: 12,
+              fontWeight: 500,
+              textTransform: "uppercase",
+              letterSpacing: "0.18em",
+              color: "rgba(244,237,224,0.65)",
+              marginBottom: 20,
+              marginTop: 4,
+            }}
+          >
+            {"KATTENSTROTHER GRILLHAUS · SEIT 1974"}
+          </motion.p>
 
           {/* Subtext */}
           <motion.p
@@ -101,9 +129,9 @@ export default function Hero() {
               fontFamily: "var(--font-body)",
               fontSize: 18,
               color: "rgba(244,237,224,0.9)",
-              maxWidth: 520,
+              maxWidth: 480,
               lineHeight: 1.55,
-              marginBottom: 40,
+              marginBottom: 24,
             }}
             className="text-base md:text-lg"
           >
@@ -122,11 +150,11 @@ export default function Hero() {
                 color: "#FCFEFD",
                 textDecoration: "none",
                 fontFamily: "var(--font-body)",
-                fontSize: 15,
+                fontSize: 13,
                 fontWeight: 500,
                 textTransform: "uppercase",
                 letterSpacing: "0.1em",
-                padding: "16px 40px",
+                padding: "14px 32px",
                 borderRadius: 4,
                 transition: "background-color 150ms ease",
               }}
@@ -142,19 +170,47 @@ export default function Hero() {
             <a
               href="/speisekarte"
               style={{
+                display: "inline-block",
                 color: "#F4EDE0",
-                textDecoration: "none",
                 fontFamily: "var(--font-body)",
-                fontSize: 15,
+                fontSize: 14,
                 fontWeight: 500,
-                transition: "color 150ms ease",
+                letterSpacing: "0.08em",
+                textDecoration: "none",
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "#FCFEFD")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "#F4EDE0")}
             >
-              {"Zur Speisekarte →"}
+              {"ZUR SPEISEKARTE →"}
             </a>
           </motion.div>
+
+          {/* Google rating badge */}
+          <div style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 8,
+            marginTop: "auto",
+            paddingTop: 32,
+          }}>
+            <span style={{
+              fontFamily: "var(--font-body)",
+              fontSize: 12,
+              fontWeight: 500,
+              letterSpacing: "0.1em",
+              color: "#F4EDE0",
+              opacity: 0.8,
+            }}>
+              AUSGEZEICHNET
+            </span>
+            <span style={{ color: "#F4B942", fontSize: 14 }}>★★★★★</span>
+            <span style={{
+              fontFamily: "var(--font-body)",
+              fontSize: 12,
+              color: "#F4EDE0",
+              opacity: 0.6,
+            }}>
+              Google
+            </span>
+          </div>
         </div>
 
         {/* Scroll indicator */}
@@ -187,4 +243,14 @@ export default function Hero() {
     </>
   );
 }
+
+
+
+
+
+
+
+
+
+
 

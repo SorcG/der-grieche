@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import Meander from "@/components/ui/meander";
 
 const links = [
   { label: "Startseite", href: "/" },
@@ -9,8 +9,6 @@ const links = [
 ];
 
 export default function Navigation() {
-  const [open, setOpen] = useState(false);
-
   return (
     <header
       style={{
@@ -20,166 +18,66 @@ export default function Navigation() {
         backgroundColor: "#0960D0",
       }}
     >
-      {/* Main bar */}
       <div
         style={{
-          height: 80,
+          height: 64,
           maxWidth: 1280,
           margin: "0 auto",
           padding: "0 24px",
           display: "flex",
           alignItems: "center",
-          justifyContent: "space-between",
+          justifyContent: "flex-end",
+          gap: 32,
+          overflowX: "auto",
         }}
       >
-        {/* Logo */}
-        <a
-          href="/"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            textDecoration: "none",
-          }}
-        >
-          <img
-            src="/images/der-grieche.jpg"
-            alt="Der Grieche Logo"
+        {links.map((l) => (
+          <a
+            key={l.href}
+            href={l.href}
             style={{
-              width: 52,
-              height: 52,
-              borderRadius: "50%",
-              objectFit: "cover",
-              border: "2px solid rgba(255,255,255,0.25)",
+              color: "#FCFEFD",
+              textDecoration: "none",
+              fontFamily: "var(--font-body)",
+              fontSize: 14,
+              fontWeight: 500,
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
+              whiteSpace: "nowrap",
               flexShrink: 0,
             }}
-          />
-        </a>
-
-        {/* Desktop nav */}
-        <nav
-          style={{ display: "flex", alignItems: "center", gap: 32 }}
-          className="hidden md:flex"
-        >
-          {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              style={{
-                color: "#FCFEFD",
-                textDecoration: "none",
-                fontFamily: "var(--font-body)",
-                fontSize: 14,
-                fontWeight: 500,
-                letterSpacing: "0.08em",
-                textTransform: "uppercase",
-              }}
-            >
-              {l.label}
-            </a>
-          ))}
-          <a
-            href="tel:+4952411234567"
-            style={{
-              backgroundColor: "#6B7C48",
-              color: "#FCFEFD",
-              textDecoration: "none",
-              fontFamily: "var(--font-body)",
-              fontSize: 13,
-              fontWeight: 500,
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              padding: "10px 20px",
-              borderRadius: 4,
-              transition: "background-color 150ms ease",
-            }}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.backgroundColor = "#58673b")
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.backgroundColor = "#6B7C48")
-            }
           >
-            Reservieren
+            {l.label}
           </a>
-        </nav>
-
-        {/* Mobile hamburger */}
-        <button
-          className="md:hidden"
-          onClick={() => setOpen((v) => !v)}
-          aria-label={open ? "Menü schließen" : "Menü öffnen"}
-          aria-expanded={open}
+        ))}
+        <a
+          href="tel:+4952411234567"
           style={{
-            background: "none",
-            border: "none",
-            cursor: "pointer",
-            padding: 8,
-            display: "flex",
-            flexDirection: "column",
-            gap: 5,
+            backgroundColor: "#6B7C48",
+            color: "#FCFEFD",
+            textDecoration: "none",
+            fontFamily: "var(--font-body)",
+            fontSize: 13,
+            fontWeight: 500,
+            letterSpacing: "0.1em",
+            textTransform: "uppercase",
+            padding: "10px 20px",
+            borderRadius: 4,
+            transition: "background-color 150ms ease",
+            whiteSpace: "nowrap",
+            flexShrink: 0,
           }}
+          onMouseEnter={(e) =>
+            (e.currentTarget.style.backgroundColor = "#58673b")
+          }
+          onMouseLeave={(e) =>
+            (e.currentTarget.style.backgroundColor = "#6B7C48")
+          }
         >
-          <span
-            style={{ display: "block", width: 24, height: 2, backgroundColor: "#FCFEFD" }}
-          />
-          <span
-            style={{ display: "block", width: 24, height: 2, backgroundColor: "#FCFEFD" }}
-          />
-          <span
-            style={{ display: "block", width: 24, height: 2, backgroundColor: "#FCFEFD" }}
-          />
-        </button>
+          Reservieren
+        </a>
       </div>
-
-      {/* Mobile dropdown */}
-      {open && (
-        <div
-          className="md:hidden"
-          style={{ backgroundColor: "#0960D0", padding: "8px 24px 24px" }}
-        >
-          {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              onClick={() => setOpen(false)}
-              style={{
-                display: "block",
-                color: "#FCFEFD",
-                textDecoration: "none",
-                fontFamily: "var(--font-body)",
-                fontSize: 16,
-                fontWeight: 500,
-                letterSpacing: "0.08em",
-                textTransform: "uppercase",
-                padding: "12px 0",
-                borderBottom: "1px solid rgba(252,254,253,0.1)",
-              }}
-            >
-              {l.label}
-            </a>
-          ))}
-          <a
-            href="tel:+4952411234567"
-            onClick={() => setOpen(false)}
-            style={{
-              display: "inline-block",
-              marginTop: 16,
-              backgroundColor: "#6B7C48",
-              color: "#FCFEFD",
-              textDecoration: "none",
-              fontFamily: "var(--font-body)",
-              fontSize: 13,
-              fontWeight: 500,
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              padding: "10px 20px",
-              borderRadius: 4,
-            }}
-          >
-            Reservieren
-          </a>
-        </div>
-      )}
+      <Meander background="brand" height={8} />
     </header>
   );
 }

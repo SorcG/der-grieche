@@ -70,7 +70,7 @@ export default function SignatureCard() {
                 }}
               >
                 <img
-                  src="https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=80&fit=crop"
+                  src="/images/gyrosteller-closeup.png"
                   alt="Griechisches Essen"
                   style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
                 />

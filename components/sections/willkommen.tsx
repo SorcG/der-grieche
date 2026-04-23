@@ -20,43 +20,40 @@ export default function Willkommen() {
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
-      gsap.to(leftImageRef.current, {
-        xPercent: -12,
-        ease: "none",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 1.5,
-        },
-      });
+      const triggerConfig = {
+        trigger: sectionRef.current,
+        start: "top bottom",
+        end: "top 20%",
+        scrub: 1.5,
+      };
 
-      gsap.to(rightImageRef.current, {
-        xPercent: 12,
-        ease: "none",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 1.5,
-        },
-      });
+      gsap.fromTo(
+        leftImageRef.current,
+        { xPercent: 100 },
+        { xPercent: 0, ease: "none", scrollTrigger: triggerConfig }
+      );
+
+      gsap.fromTo(
+        rightImageRef.current,
+        { xPercent: -100 },
+        { xPercent: 0, ease: "none", scrollTrigger: triggerConfig }
+      );
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={sectionRef} style={{ backgroundColor: "#FCFEFD", minHeight: 600 }}>
+    <section ref={sectionRef} style={{ backgroundColor: "#FCFEFD", minHeight: 600, overflow: "hidden" }}>
       {/* Desktop: 3-column grid */}
       <div
         className="hidden lg:grid"
         style={{ gridTemplateColumns: "1fr 1fr 1fr", minHeight: 600 }}
       >
         {/* Left image */}
-        <div ref={leftImageRef} style={{ overflow: "hidden", position: "relative" }}>
+        <div ref={leftImageRef} style={{ overflow: "hidden", position: "relative", zIndex: 2 }}>
           <img
-            src="https://images.unsplash.com/photo-1529566652340-2c41a1eb6d93?w=800&q=80&fit=crop"
+            src="/images/tzatziki.png"
             alt="Griechisches Essen"
             style={{
               width: "100%",
@@ -84,9 +81,9 @@ export default function Willkommen() {
         </div>
 
         {/* Right image */}
-        <div ref={rightImageRef} style={{ overflow: "hidden", position: "relative" }}>
+        <div ref={rightImageRef} style={{ overflow: "hidden", position: "relative", zIndex: 2 }}>
           <img
-            src="https://images.unsplash.com/photo-1574484284002-952d92456975?w=800&q=80&fit=crop"
+            src="/images/gyrosteller.png"
             alt="Griechische Taverne"
             style={{
               width: "100%",
@@ -103,7 +100,7 @@ export default function Willkommen() {
       <div className="lg:hidden">
         <div style={{ height: 300, overflow: "hidden" }}>
           <img
-            src="https://images.unsplash.com/photo-1529566652340-2c41a1eb6d93?w=800&q=80&fit=crop"
+            src="/images/tzatziki.png"
             alt="Griechisches Essen"
             style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
           />
@@ -115,7 +112,7 @@ export default function Willkommen() {
         </div>
         <div style={{ height: 300, overflow: "hidden" }}>
           <img
-            src="https://images.unsplash.com/photo-1574484284002-952d92456975?w=800&q=80&fit=crop"
+            src="/images/gyrosteller.png"
             alt="Griechische Taverne"
             style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
           />
@@ -202,7 +199,7 @@ function WillkommenText() {
         onMouseEnter={(e) => (e.currentTarget.style.color = "#6B7C48")}
         onMouseLeave={(e) => (e.currentTarget.style.color = "#0960D0")}
       >
-        Jetzt Reservieren →
+        {"Jetzt Reservieren →"}
       </a>
     </>
   );

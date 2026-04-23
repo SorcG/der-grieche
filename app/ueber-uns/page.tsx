@@ -10,28 +10,28 @@ const stationen = [
     titel: "DIE GRUENDUNG",
     text: "Panagiotis eroeffnet seine erste kleine Taverne an der Kattenstrother Strasse. Mit wenig mehr als einem Gyros-Spieß und einem Familienrezept beginnt eine Geschichte, die Guetersloh fuer immer veraendern wird.",
     seite: "links" as const,
-    bild: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80&fit=crop",
+    bild: "/images/sitzbereich.png",
   },
   {
     jahr: "1989",
     titel: "DER DURCHBRUCH",
     text: "Nach Jahren harter Arbeit ist Der Grieche in aller Munde. Die Warteschlangen reichen bis auf die Strasse. Panagiotis holt seine Familie aus Griechenland nach, um den Ansturm zu bewaeltigen.",
     seite: "rechts" as const,
-    bild: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80&fit=crop",
+    bild: "/images/spiess-schneiden.png",
   },
   {
     jahr: "2003",
     titel: "NEUE RAEUME",
     text: "Der Grieche zieht in groessere Raeumlichkeiten um. Das neue Restaurant fasst 80 Gaeste und bietet erstmals einen Biergarten. Die Atmosphaere bleibt famililaer, das Rezept unveraendert.",
     seite: "links" as const,
-    bild: "https://images.unsplash.com/photo-1529566652340-2c41a1eb6d93?w=600&q=80&fit=crop",
+    bild: "/images/tzatziki.png",
   },
   {
     jahr: "Heute",
     titel: "ERFOLG UND TRADITION",
     text: "Heute fuehrt die zweite Generation die Tradition fort. Die Rezepte sind dieselben, die Leidenschaft unvermindert. Der Grieche ist und bleibt ein Stueck Guetersloh.",
     seite: "rechts" as const,
-    bild: "https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=80&fit=crop",
+    bild: "/images/gyrosteller.png",
   },
 ];
 
@@ -140,7 +140,7 @@ export default function UeberUnsPage() {
           height: "35vh",
           minHeight: 280,
           backgroundImage:
-            "url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&q=80&fit=crop')",
+            "url('/images/sitzbereich.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
