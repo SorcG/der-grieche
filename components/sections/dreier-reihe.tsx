@@ -36,19 +36,27 @@ export default function DreierReihe() {
       const refs = [img1Ref, img2Ref, img3Ref];
 
       refs.forEach((ref, i) => {
-        gsap.from(ref.current, {
-          opacity: 0,
-          scale: 1.12,
-          y: 30,
-          duration: 1.0,
-          delay: i * 0.2,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 75%",
-            once: true,
+        gsap.fromTo(
+          ref.current,
+          {
+            opacity: 0,
+            scale: 1.15,
+            y: 40,
           },
-        });
+          {
+            opacity: 1,
+            scale: 1,
+            y: 0,
+            ease: "none",
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: "top 80%",
+              end: "top 20%",
+              scrub: 1.5,
+              delay: i * 0.1,
+            },
+          }
+        );
       });
     }, sectionRef);
 
