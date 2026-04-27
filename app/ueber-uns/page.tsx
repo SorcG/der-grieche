@@ -41,7 +41,7 @@ const stationen: Station[] = [
     titel: "MEHR ALS EIN IMBISS",
     text: "Der Grieche ist heute mehr als ein Imbiss – er ist ein Stück Heimat. Mit frischen Zutaten, Familienrezepten und einem Team das mit Herz dabei ist, bleibt die Küche das, was sie immer war: authentisch griechisch.",
     seite: "rechts",
-    bild: "/images/theke.png",
+    bilder: ["/images/sitzbereich.png", "/images/theke.png"],
   },
 ];
 
@@ -50,18 +50,19 @@ function StationContent({ station }: { station: Station }) {
     <FadeIn direction={station.seite === "links" ? "right" : "left"}>
       <div style={{ paddingBottom: 64 }} className="px-0 md:px-12">
         {station.bilder ? (
-          <div style={{ display: "flex", gap: 12, marginBottom: 20 }}>
+          <div style={{ marginBottom: 20 }}>
             {station.bilder.map((src, i) => (
               <img
                 key={i}
                 src={src}
                 alt={`${station.titel} ${i + 1}`}
                 style={{
-                  width: "50%",
+                  width: "100%",
                   height: 280,
                   objectFit: "cover",
                   borderRadius: 12,
                   display: "block",
+                  marginTop: i > 0 ? 12 : 0,
                 }}
               />
             ))}
@@ -401,41 +402,6 @@ export default function UeberUnsPage() {
                 </p>
               </div>
             ))}
-          </div>
-        </div>
-      </div>
-
-      <div style={{ padding: "12px 0" }}><Meander variant="divider" /></div>
-
-      {/* Bildgalerie */}
-      <div
-        style={{ backgroundColor: "#F4EDE0", padding: "48px 48px" }}
-        className="px-6 md:px-12 py-12"
-      >
-        <div style={{ maxWidth: 1000, margin: "0 auto" }}>
-          <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-            <img
-              src="/images/sitzbereich.png"
-              alt="Sitzbereich"
-              style={{
-                width: "100%",
-                height: 320,
-                objectFit: "cover",
-                borderRadius: 12,
-                display: "block",
-              }}
-            />
-            <img
-              src="/images/theke.png"
-              alt="Theke"
-              style={{
-                width: "100%",
-                height: 320,
-                objectFit: "cover",
-                borderRadius: 12,
-                display: "block",
-              }}
-            />
           </div>
         </div>
       </div>
