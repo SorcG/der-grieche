@@ -249,8 +249,6 @@ export default function UeberUnsPage() {
         </p>
       </div>
 
-      <div style={{ padding: "12px 0" }}><Meander variant="divider" /></div>
-
       {/* Timeline */}
       <div
         style={{
@@ -292,13 +290,13 @@ export default function UeberUnsPage() {
               <div
                 style={{
                   position: "sticky",
-                  top: 120,
+                  top: 80,
                   display: "flex",
                   justifyContent: "center",
                   zIndex: 2,
                 }}
               >
-                <GreekFigure width={216} />
+                <GreekFigure width={120} />
               </div>
             </div>
 
