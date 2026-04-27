@@ -36,7 +36,7 @@ const linkStyle: React.CSSProperties = {
 export default function Footer() {
   return (
     <footer>
-      <div style={{ padding: "24px 0" }}><Meander variant="divider" /></div>
+      <div style={{ padding: "12px 0" }}><Meander variant="divider" /></div>
 
       {/* Main footer area */}
       <div style={{ backgroundColor: "#0F1A2E" }}>

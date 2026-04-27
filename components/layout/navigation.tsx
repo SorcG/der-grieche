@@ -212,7 +212,6 @@ export default function Navigation() {
             border: "none",
             cursor: "pointer",
             padding: 8,
-            display: "flex",
             flexDirection: "column",
             gap: 5,
           }}

@@ -182,12 +182,13 @@ export default function Reviews() {
               </p>
               <h2
                 style={{
-                  fontFamily: "var(--font-display)",
+                  fontFamily: "system-ui, sans-serif",
                   fontSize: "clamp(32px, 3vw, 52px)",
                   color: "#0F1A2E",
                   lineHeight: 1.0,
                   marginBottom: 24,
-                  fontWeight: 400,
+                  fontWeight: 700,
+                  letterSpacing: "0.05em",
                 }}
               >
                 ECHTE STIMMEN
@@ -250,12 +251,13 @@ export default function Reviews() {
             </p>
             <h2
               style={{
-                fontFamily: "var(--font-display)",
+                fontFamily: "system-ui, sans-serif",
                 fontSize: "clamp(32px, 8vw, 48px)",
                 color: "#0F1A2E",
                 lineHeight: 1.0,
                 marginBottom: 24,
-                fontWeight: 400,
+                fontWeight: 700,
+                letterSpacing: "0.05em",
               }}
             >
               ECHTE STIMMEN

@@ -235,7 +235,7 @@ export default function Speisekarte() {
         </p>
       </div>
 
-      <div style={{ padding: "24px 0" }}><Meander variant="divider" /></div>
+      <div style={{ padding: "12px 0" }}><Meander variant="divider" /></div>
 
       {/* Accordion */}
       <div style={{ maxWidth: 860, margin: "0 auto", padding: "48px 24px 80px" }}>

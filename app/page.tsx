@@ -10,15 +10,15 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      <div style={{ padding: "24px 0" }}><Meander variant="divider" /></div>
+      <div style={{ padding: "12px 0" }}><Meander variant="divider" /></div>
       <Willkommen />
-      <div style={{ padding: "24px 0" }}><Meander variant="divider" /></div>
+      <div style={{ padding: "12px 0" }}><Meander variant="divider" /></div>
       <TextFill />
-      <div style={{ padding: "24px 0" }}><Meander variant="divider" /></div>
+      <div style={{ padding: "12px 0" }}><Meander variant="divider" /></div>
       <DreierReihe />
-      <div style={{ padding: "24px 0" }}><Meander variant="divider" /></div>
+      <div style={{ padding: "12px 0" }}><Meander variant="divider" /></div>
       <Reviews />
-      <div style={{ padding: "24px 0" }}><Meander variant="divider" /></div>
+      <div style={{ padding: "12px 0" }}><Meander variant="divider" /></div>
       <SignatureCard />
     </main>
   );
