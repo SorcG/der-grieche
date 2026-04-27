@@ -67,20 +67,19 @@ export default function Hero() {
             flexDirection: "column",
             justifyContent: "space-between",
             height: "100%",
-            padding: "40px 48px 48px",
+            padding: "90px 48px 48px",
           }}
         >
-          {/* Logo über der Headline */}
+          {/* Logo */}
           <motion.div
             {...anim(20, 0.3)}
-            style={{ marginBottom: -8 }}
           >
             <img
               src="/images/der-grieche.jpg"
               alt="Der Grieche Logo"
               style={{
-                width: "clamp(80px, 10vw, 140px)",
-                height: "clamp(80px, 10vw, 140px)",
+                width: 160,
+                height: 160,
                 borderRadius: "50%",
                 objectFit: "cover",
                 border: "3px solid rgba(255,255,255,0.25)",
@@ -88,22 +87,6 @@ export default function Hero() {
               }}
             />
           </motion.div>
-
-          {/* Headline */}
-          <motion.h1
-            {...anim(20, 0.4)}
-            style={{
-              fontFamily: "var(--font-display)",
-              fontSize: "clamp(68px, 10vw, 140px)",
-              color: "#FCFEFD",
-              lineHeight: 0.9,
-              letterSpacing: "0.01em", wordSpacing: "-0.05em",
-              marginBottom: 24,
-              fontWeight: 400,
-            }}
-          >
-            DER GRIECHE
-          </motion.h1>
 
           {/* Tagline */}
           <motion.p
