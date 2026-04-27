@@ -1,4 +1,4 @@
-﻿import Hero from "@/components/sections/hero";
+import Hero from "@/components/sections/hero";
 import Willkommen from "@/components/sections/willkommen";
 import TextFill from "@/components/sections/text-fill";
 import DreierReihe from "@/components/sections/dreier-reihe";
@@ -10,19 +10,16 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      <Meander background="brand" height={48} />
+      <div style={{ padding: "24px 0" }}><Meander variant="divider" /></div>
       <Willkommen />
-      <Meander background="brand" height={48} />
+      <div style={{ padding: "24px 0" }}><Meander variant="divider" /></div>
       <TextFill />
-      <Meander background="brand" height={48} />
+      <div style={{ padding: "24px 0" }}><Meander variant="divider" /></div>
       <DreierReihe />
-      <Meander background="brand" height={48} />
+      <div style={{ padding: "24px 0" }}><Meander variant="divider" /></div>
       <Reviews />
-      <Meander background="brand" height={48} />
+      <div style={{ padding: "24px 0" }}><Meander variant="divider" /></div>
       <SignatureCard />
     </main>
   );
 }
-
-
-

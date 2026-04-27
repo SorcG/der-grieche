@@ -4,17 +4,54 @@ type MeanderProps = {
   background?: "brand" | "surface" | "warm" | "ink";
   height?: number;
   className?: string;
+  variant?: "divider";
 };
 
-const variants = {
+const colorVariants = {
   brand:   { bg: "#0960D0", patternColor: "white" },
   surface: { bg: "#FCFEFD", patternColor: "#0960D0" },
   warm:    { bg: "#F4EDE0", patternColor: "#0960D0" },
   ink:     { bg: "#0F1A2E", patternColor: "#F4EDE0" },
 };
 
-export default function Meander({ background = "brand", height = 56, className }: MeanderProps) {
-  const { bg, patternColor } = variants[background];
+export default function Meander({ background = "brand", height = 56, className, variant }: MeanderProps) {
+  if (variant === "divider") {
+    return (
+      <div
+        className={className}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          width: "100%",
+          gap: 0,
+          padding: "0 40px",
+          boxSizing: "border-box",
+        }}
+        aria-hidden="true"
+      >
+        <div style={{
+          flex: 1,
+          height: 1,
+          background: "linear-gradient(to left, rgba(9,96,208,0.3), transparent)",
+        }} />
+        <div style={{
+          width: 8,
+          height: 8,
+          backgroundColor: "rgba(9,96,208,0.45)",
+          transform: "rotate(45deg)",
+          margin: "0 16px",
+          flexShrink: 0,
+        }} />
+        <div style={{
+          flex: 1,
+          height: 1,
+          background: "linear-gradient(to right, rgba(9,96,208,0.3), transparent)",
+        }} />
+      </div>
+    );
+  }
+
+  const { bg, patternColor } = colorVariants[background];
   const tileW = Math.round(height * 3.33);
   const sw = height * 0.125;
   const uid = `meander-${background}-${height}`;

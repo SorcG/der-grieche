@@ -192,7 +192,7 @@ export default function UeberUnsPage() {
         </div>
       </div>
 
-      <Meander background="warm" height={48} />
+      <div style={{ padding: "24px 0" }}><Meander variant="divider" /></div>
 
       {/* Intro text */}
       <div
@@ -219,7 +219,7 @@ export default function UeberUnsPage() {
         </p>
       </div>
 
-      <Meander background="warm" height={24} />
+      <div style={{ padding: "24px 0" }}><Meander variant="divider" /></div>
 
       {/* Timeline */}
       <div
@@ -358,7 +358,7 @@ export default function UeberUnsPage() {
         </div>
       </div>
 
-      <Meander background="warm" height={48} />
+      <div style={{ padding: "24px 0" }}><Meander variant="divider" /></div>
 
       <SignatureCard />
     </div>

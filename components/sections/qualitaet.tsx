@@ -46,7 +46,7 @@ export default function Qualitaet() {
         </h2>
 
         <div style={{ marginBottom: 32 }}>
-          <Meander background="warm" height={24} />
+          <Meander variant="divider" />
         </div>
 
         <p

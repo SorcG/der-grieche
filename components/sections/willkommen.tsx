@@ -153,7 +153,7 @@ function WillkommenText() {
       </h2>
 
       <div style={{ marginBottom: 24 }}>
-        <Meander background="surface" height={16} />
+        <Meander variant="divider" />
       </div>
 
       <p
