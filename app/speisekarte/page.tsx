@@ -220,6 +220,7 @@ export default function Speisekarte() {
           color: "#FCFEFD",
           lineHeight: 0.9,
           marginBottom: 24,
+          textShadow: "1px 1px 0px #000, -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000, 2px 2px 6px rgba(0,0,0,0.5)",
         }}>
           SPEISEKARTE
         </h1>
