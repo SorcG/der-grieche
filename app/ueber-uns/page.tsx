@@ -408,6 +408,27 @@ export default function UeberUnsPage() {
 
       <div style={{ padding: "12px 0" }}><Meander variant="divider" /></div>
 
+      {/* Mehr als ein Imbiss – Bildergalerie */}
+      <div
+        style={{ backgroundColor: "#F4EDE0", padding: "48px 48px" }}
+        className="px-6 md:px-12 py-12"
+      >
+        <div style={{ maxWidth: 1000, margin: "0 auto", display: "flex", flexDirection: "column", gap: 16 }}>
+          <img
+            src="/images/theke.png"
+            alt="Theke"
+            style={{ width: "100%", height: 320, objectFit: "cover", borderRadius: 12, display: "block" }}
+          />
+          <img
+            src="/images/sitzbereich.png"
+            alt="Sitzbereich"
+            style={{ width: "100%", height: 320, objectFit: "cover", borderRadius: 12, display: "block" }}
+          />
+        </div>
+      </div>
+
+      <div style={{ padding: "12px 0" }}><Meander variant="divider" /></div>
+
       <SignatureCard />
     </div>
   );
