@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import Meander from "@/components/ui/meander";
 import FadeIn from "@/components/ui/fade-in";
 import SignatureCard from "@/components/sections/signature-card";
@@ -161,6 +162,36 @@ function TimelineMarker({ jahr }: { jahr: string }) {
 }
 
 export default function UeberUnsPage() {
+  const desktopRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const mobileRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const observers: IntersectionObserver[] = [];
+
+    const animate = (refs: (HTMLDivElement | null)[]) => {
+      refs.forEach((ref, index) => {
+        if (!ref || index === 0) return;
+        const observer = new IntersectionObserver(
+          ([entry]) => {
+            if (entry.isIntersecting) {
+              ref.style.opacity = "1";
+              ref.style.transform = "translateY(0)";
+              observer.disconnect();
+            }
+          },
+          { threshold: 0.2 }
+        );
+        observer.observe(ref);
+        observers.push(observer);
+      });
+    };
+
+    animate(desktopRefs.current);
+    animate(mobileRefs.current);
+
+    return () => observers.forEach((o) => o.disconnect());
+  }, []);
+
   return (
     <div>
       {/* Hero */}
@@ -301,13 +332,17 @@ export default function UeberUnsPage() {
             </div>
 
             {/* Timeline-Stationen */}
-            {stationen.map((station) => (
+            {stationen.map((station, index) => (
               <div
                 key={station.titel}
+                ref={(el) => { desktopRefs.current[index] = el; }}
                 style={{
                   display: "grid",
                   gridTemplateColumns: "1fr 80px 1fr",
                   alignItems: "start",
+                  opacity: index === 0 ? 1 : 0,
+                  transform: index === 0 ? "none" : "translateY(40px)",
+                  transition: "opacity 0.7s ease, transform 0.7s ease",
                 }}
               >
                 {station.seite === "links" ? (
@@ -342,8 +377,16 @@ export default function UeberUnsPage() {
 
           {/* Mobile timeline */}
           <div className="lg:hidden" style={{ display: "flex", flexDirection: "column", gap: 48 }}>
-            {stationen.map((station) => (
-              <div key={station.titel}>
+            {stationen.map((station, index) => (
+              <div
+                key={station.titel}
+                ref={(el) => { mobileRefs.current[index] = el; }}
+                style={{
+                  opacity: index === 0 ? 1 : 0,
+                  transform: index === 0 ? "none" : "translateY(40px)",
+                  transition: "opacity 0.7s ease, transform 0.7s ease",
+                }}
+              >
                 <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 20 }}>
                   <TimelineMarker jahr={station.jahr} />
                   <h3
