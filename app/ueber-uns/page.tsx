@@ -170,7 +170,7 @@ export default function UeberUnsPage() {
           height: "35vh",
           minHeight: 280,
           backgroundImage:
-            "url('/images/haus1.PNG')",
+            "url('/images/haus3.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
