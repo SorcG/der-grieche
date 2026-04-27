@@ -172,7 +172,7 @@ export default function UeberUnsPage() {
           backgroundImage:
             "url('/images/haus3.png')",
           backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundPosition: "center top",
         }}
       >
         <div
