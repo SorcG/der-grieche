@@ -34,14 +34,14 @@ const stationen: Station[] = [
     titel: "GRIECHISCHER SOMMER",
     text: "Mit der Eröffnung des Außenbereichs bringt Der Grieche griechisches Urlaubsfeeling nach Kattenstroth. Weiße Stühle, blaue Akzente, mediterranes Flair – mitten in Gütersloh.",
     seite: "links",
-    bild: "/images/aussenbereich.jpg",
+    bild: "/images/aussenbereich1.PNG",
   },
   {
     jahr: "Heute",
     titel: "MEHR ALS EIN IMBISS",
     text: "Der Grieche ist heute mehr als ein Imbiss – er ist ein Stück Heimat. Mit frischen Zutaten, Familienrezepten und einem Team das mit Herz dabei ist, bleibt die Küche das, was sie immer war: authentisch griechisch.",
     seite: "rechts",
-    bilder: ["/images/sitzbereich.png", "/images/theke.png"],
+    bild: "/images/theke.png",
   },
 ];
 
@@ -169,7 +169,7 @@ export default function UeberUnsPage() {
           height: "35vh",
           minHeight: 280,
           backgroundImage:
-            "url('/images/haus.PNG')",
+            "url('/images/haus1.PNG')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -401,6 +401,41 @@ export default function UeberUnsPage() {
                 </p>
               </div>
             ))}
+          </div>
+        </div>
+      </div>
+
+      <div style={{ padding: "12px 0" }}><Meander variant="divider" /></div>
+
+      {/* Bildgalerie */}
+      <div
+        style={{ backgroundColor: "#F4EDE0", padding: "48px 48px" }}
+        className="px-6 md:px-12 py-12"
+      >
+        <div style={{ maxWidth: 1000, margin: "0 auto" }}>
+          <div style={{ display: "flex", gap: 16 }}>
+            <img
+              src="/images/sitzbereich.png"
+              alt="Sitzbereich"
+              style={{
+                width: "50%",
+                height: 320,
+                objectFit: "cover",
+                borderRadius: 12,
+                display: "block",
+              }}
+            />
+            <img
+              src="/images/theke.png"
+              alt="Theke"
+              style={{
+                width: "50%",
+                height: 320,
+                objectFit: "cover",
+                borderRadius: 12,
+                display: "block",
+              }}
+            />
           </div>
         </div>
       </div>
