@@ -41,7 +41,7 @@ const stationen: Station[] = [
     titel: "MEHR ALS EIN IMBISS",
     text: "Der Grieche ist heute mehr als ein Imbiss – er ist ein Stück Heimat. Mit frischen Zutaten, Familienrezepten und einem Team das mit Herz dabei ist, bleibt die Küche das, was sie immer war: authentisch griechisch.",
     seite: "rechts",
-    bilder: ["/images/theke.png", "/images/sitzbereich.png"],
+    bild: "/images/theke.png",
   },
 ];
 
