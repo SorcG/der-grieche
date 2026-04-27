@@ -143,10 +143,11 @@ function WillkommenText() {
         style={{
           fontFamily: "var(--font-display)",
           fontSize: "clamp(36px, 4vw, 64px)",
-          color: "#0F1A2E",
+          color: "#FFFFFF",
           lineHeight: 1.0,
           marginBottom: 24,
           fontWeight: 400,
+          textShadow: "1px 1px 0px #000, -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000, 2px 2px 6px rgba(0,0,0,0.5)",
         }}
       >
         DER GRIECHE
