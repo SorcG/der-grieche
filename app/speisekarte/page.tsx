@@ -265,7 +265,9 @@ export default function Speisekarte() {
                 }}
               >
                 <span style={{
-                  fontFamily: "var(--font-display)",
+                  fontFamily: "system-ui, sans-serif",
+                  fontWeight: 700,
+                  letterSpacing: "0.05em",
                   fontSize: "clamp(24px, 4vw, 36px)",
                   color: istOffen ? "#0960D0" : "#0F1A2E",
                   lineHeight: 1,
