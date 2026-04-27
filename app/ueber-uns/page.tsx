@@ -282,7 +282,7 @@ export default function UeberUnsPage() {
                 left: "50%",
                 top: 0,
                 transform: "translateX(-50%)",
-                width: 80,
+                width: 220,
                 height: "100%",
                 pointerEvents: "none",
               }}
@@ -296,7 +296,7 @@ export default function UeberUnsPage() {
                   zIndex: 2,
                 }}
               >
-                <GreekFigure width={120} />
+                <GreekFigure width={220} />
               </div>
             </div>
 
