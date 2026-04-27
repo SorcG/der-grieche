@@ -34,7 +34,7 @@ const stationen: Station[] = [
     titel: "GRIECHISCHER SOMMER",
     text: "Mit der Eröffnung des Außenbereichs bringt Der Grieche griechisches Urlaubsfeeling nach Kattenstroth. Weiße Stühle, blaue Akzente, mediterranes Flair – mitten in Gütersloh.",
     seite: "links",
-    bild: "/images/aussenbereich1.PNG",
+    bild: "/images/aussenbereich1.jpg",
   },
   {
     jahr: "Heute",
@@ -413,12 +413,12 @@ export default function UeberUnsPage() {
         className="px-6 md:px-12 py-12"
       >
         <div style={{ maxWidth: 1000, margin: "0 auto" }}>
-          <div style={{ display: "flex", gap: 16 }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
             <img
               src="/images/sitzbereich.png"
               alt="Sitzbereich"
               style={{
-                width: "50%",
+                width: "100%",
                 height: 320,
                 objectFit: "cover",
                 borderRadius: 12,
@@ -429,7 +429,7 @@ export default function UeberUnsPage() {
               src="/images/theke.png"
               alt="Theke"
               style={{
-                width: "50%",
+                width: "100%",
                 height: 320,
                 objectFit: "cover",
                 borderRadius: 12,
