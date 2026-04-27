@@ -5,53 +5,81 @@ import FadeIn from "@/components/ui/fade-in";
 import SignatureCard from "@/components/sections/signature-card";
 import GreekFigure from "@/components/ui/greek-figure";
 
-const stationen = [
+type Station = {
+  jahr: string;
+  titel: string;
+  text: string;
+  seite: "links" | "rechts";
+  bild?: string;
+  bilder?: string[];
+};
+
+const stationen: Station[] = [
   {
-    jahr: "1974",
-    titel: "DIE GRUENDUNG",
-    text: "Panagiotis eroeffnet seine erste kleine Taverne an der Kattenstrother Strasse. Mit wenig mehr als einem Gyros-Spieß und einem Familienrezept beginnt eine Geschichte, die Guetersloh fuer immer veraendern wird.",
-    seite: "links" as const,
-    bild: "/images/sitzbereich.png",
+    jahr: "2021",
+    titel: "DER TRAUM WIRD WAHR",
+    text: "Nach jahrelangem Traum eröffnet Aristidis Angelakopoulos gemeinsam mit seiner Frau Chrysovalantou und seinem Vater den Kattenstrother Grill an der Rhedaer Straße 30. Was der Vater einst mit dem Akropolis Grill begann, führt die nächste Generation nun in Gütersloh fort – mit Familienrezepten, griechischer Gastfreundschaft und einem Herz für echte Küche.",
+    seite: "links",
+    bild: "/images/gruendung.jpg",
   },
   {
-    jahr: "1989",
-    titel: "DER DURCHBRUCH",
-    text: "Nach Jahren harter Arbeit ist Der Grieche in aller Munde. Die Warteschlangen reichen bis auf die Strasse. Panagiotis holt seine Familie aus Griechenland nach, um den Ansturm zu bewaeltigen.",
-    seite: "rechts" as const,
-    bild: "/images/spiess-schneiden.png",
+    jahr: "2023",
+    titel: "TEIL DER GEMEINSCHAFT",
+    text: "Der Grieche übernimmt Verantwortung über den Tellerrand hinaus. Als Sponsor des ambitionierten Kreisligisten DSC Gütersloh – einem noch jungen Verein mit großen Zielen – zeigt die Familie Angelakopoulos: Wir sind Teil dieser Stadt. Ein Projekt das sie gerne von Anfang an unterstützen wollten.",
+    seite: "rechts",
+    bild: "/images/sponsoring.PNG",
   },
   {
-    jahr: "2003",
-    titel: "NEUE RAEUME",
-    text: "Der Grieche zieht in groessere Raeumlichkeiten um. Das neue Restaurant fasst 80 Gaeste und bietet erstmals einen Biergarten. Die Atmosphaere bleibt famililaer, das Rezept unveraendert.",
-    seite: "links" as const,
-    bild: "/images/tzatziki.png",
+    jahr: "2023",
+    titel: "GRIECHISCHER SOMMER",
+    text: "Mit der Eröffnung des Außenbereichs bringt Der Grieche griechisches Urlaubsfeeling nach Kattenstroth. Weiße Stühle, blaue Akzente, mediterranes Flair – mitten in Gütersloh.",
+    seite: "links",
+    bild: "/images/aussenbereich.jpg",
   },
   {
     jahr: "Heute",
-    titel: "ERFOLG UND TRADITION",
-    text: "Heute fuehrt die zweite Generation die Tradition fort. Die Rezepte sind dieselben, die Leidenschaft unvermindert. Der Grieche ist und bleibt ein Stueck Guetersloh.",
-    seite: "rechts" as const,
-    bild: "/images/gyrosteller.png",
+    titel: "MEHR ALS EIN IMBISS",
+    text: "Der Grieche ist heute mehr als ein Imbiss – er ist ein Stück Heimat. Mit frischen Zutaten, Familienrezepten und einem Team das mit Herz dabei ist, bleibt die Küche das, was sie immer war: authentisch griechisch.",
+    seite: "rechts",
+    bilder: ["/images/sitzbereich.png", "/images/theke.png"],
   },
 ];
 
-function StationContent({ station }: { station: (typeof stationen)[number] }) {
+function StationContent({ station }: { station: Station }) {
   return (
     <FadeIn direction={station.seite === "links" ? "right" : "left"}>
       <div style={{ paddingBottom: 64 }} className="px-0 md:px-12">
-        <img
-          src={station.bild}
-          alt={station.titel}
-          style={{
-            width: "100%",
-            aspectRatio: "3/2",
-            objectFit: "cover",
-            borderRadius: 8,
-            display: "block",
-            marginBottom: 20,
-          }}
-        />
+        {station.bilder ? (
+          <div style={{ display: "flex", gap: 12, marginBottom: 20 }}>
+            {station.bilder.map((src, i) => (
+              <img
+                key={i}
+                src={src}
+                alt={`${station.titel} ${i + 1}`}
+                style={{
+                  width: "50%",
+                  height: 280,
+                  objectFit: "cover",
+                  borderRadius: 12,
+                  display: "block",
+                }}
+              />
+            ))}
+          </div>
+        ) : (
+          <img
+            src={station.bild ?? ""}
+            alt={station.titel}
+            style={{
+              width: "100%",
+              height: 280,
+              objectFit: "cover",
+              borderRadius: 12,
+              display: "block",
+              marginBottom: 20,
+            }}
+          />
+        )}
         <p
           style={{
             fontFamily: "var(--font-body)",
@@ -141,7 +169,7 @@ export default function UeberUnsPage() {
           height: "35vh",
           minHeight: 280,
           backgroundImage:
-            "url('/images/sitzbereich.png')",
+            "url('/images/haus.PNG')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -150,7 +178,7 @@ export default function UeberUnsPage() {
           style={{
             position: "absolute",
             inset: 0,
-            backgroundColor: "rgba(15,26,46,0.8)",
+            backgroundColor: "rgba(9,26,46,0.55)",
           }}
         />
         <div
@@ -275,7 +303,7 @@ export default function UeberUnsPage() {
             {/* Timeline-Stationen */}
             {stationen.map((station) => (
               <div
-                key={station.jahr}
+                key={station.titel}
                 style={{
                   display: "grid",
                   gridTemplateColumns: "1fr 80px 1fr",
@@ -315,7 +343,7 @@ export default function UeberUnsPage() {
           {/* Mobile timeline */}
           <div className="lg:hidden" style={{ display: "flex", flexDirection: "column", gap: 48 }}>
             {stationen.map((station) => (
-              <div key={station.jahr}>
+              <div key={station.titel}>
                 <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 20 }}>
                   <TimelineMarker jahr={station.jahr} />
                   <h3
@@ -330,18 +358,37 @@ export default function UeberUnsPage() {
                     {station.titel}
                   </h3>
                 </div>
-                <img
-                  src={station.bild}
-                  alt={station.titel}
-                  style={{
-                    width: "100%",
-                    aspectRatio: "3/2",
-                    objectFit: "cover",
-                    borderRadius: 8,
-                    display: "block",
-                    marginBottom: 16,
-                  }}
-                />
+                {station.bilder ? (
+                  <div style={{ display: "flex", flexDirection: "column", gap: 12, marginBottom: 16 }}>
+                    {station.bilder.map((src, i) => (
+                      <img
+                        key={i}
+                        src={src}
+                        alt={`${station.titel} ${i + 1}`}
+                        style={{
+                          width: "100%",
+                          aspectRatio: "3/2",
+                          objectFit: "cover",
+                          borderRadius: 12,
+                          display: "block",
+                        }}
+                      />
+                    ))}
+                  </div>
+                ) : (
+                  <img
+                    src={station.bild ?? ""}
+                    alt={station.titel}
+                    style={{
+                      width: "100%",
+                      aspectRatio: "3/2",
+                      objectFit: "cover",
+                      borderRadius: 12,
+                      display: "block",
+                      marginBottom: 16,
+                    }}
+                  />
+                )}
                 <p
                   style={{
                     fontFamily: "var(--font-body)",
