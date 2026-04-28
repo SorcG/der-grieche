@@ -1,6 +1,6 @@
 "use client";
 
-import FadeIn from "@/components/ui/fade-in";
+import { useEffect, useRef } from "react";
 
 function ColumnSVG() {
   return (
@@ -27,62 +27,89 @@ function ColumnSVG() {
 }
 
 export default function SignatureCard() {
+  const kastenRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = kastenRef.current;
+    if (!el) return;
+
+    el.style.opacity = "0";
+    el.style.transform = "translateX(-80px)";
+    el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.style.opacity = "1";
+          el.style.transform = "translateX(0)";
+        } else {
+          el.style.opacity = "0";
+          el.style.transform = "translateX(-80px)";
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section
       style={{
         backgroundColor: "#0F1A2E",
         padding: "80px 48px",
+        overflow: "hidden",
       }}
       className="py-16 md:py-20 px-6 md:px-12"
     >
       <div style={{ maxWidth: 1000, margin: "0 auto" }}>
-        <FadeIn>
+        <div
+          ref={kastenRef}
+          style={{
+            backgroundColor: "rgba(255,255,255,0.04)",
+            border: "1px solid rgba(244,237,224,0.12)",
+            borderRadius: 8,
+            padding: 64,
+          }}
+          className="p-10 md:p-16"
+        >
+          {/* Desktop three-column */}
           <div
-            style={{
-              backgroundColor: "rgba(255,255,255,0.04)",
-              border: "1px solid rgba(244,237,224,0.12)",
-              borderRadius: 8,
-              padding: 64,
-            }}
-            className="p-10 md:p-16"
+            className="hidden lg:grid"
+            style={{ gridTemplateColumns: "auto 1fr auto", gap: 48, alignItems: "center" }}
           >
-            {/* Desktop three-column */}
-            <div
-              className="hidden lg:grid"
-              style={{ gridTemplateColumns: "auto 1fr auto", gap: 48, alignItems: "center" }}
-            >
-              {/* Left: column illustration */}
-              <div style={{ display: "flex", justifyContent: "center" }}>
-                <ColumnSVG />
-              </div>
-
-              {/* Middle: text */}
-              <TextBlock />
-
-              {/* Right: food photo */}
-              <div
-                style={{
-                  width: 220,
-                  aspectRatio: "4/5",
-                  borderRadius: 8,
-                  overflow: "hidden",
-                  flexShrink: 0,
-                }}
-              >
-                <img
-                  src="/images/gyrosteller-closeup.png"
-                  alt="Griechisches Essen"
-                  style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-                />
-              </div>
+            {/* Left: column illustration */}
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <ColumnSVG />
             </div>
 
-            {/* Mobile: just text */}
-            <div className="lg:hidden">
-              <TextBlock />
+            {/* Middle: text */}
+            <TextBlock />
+
+            {/* Right: food photo */}
+            <div
+              style={{
+                width: 220,
+                aspectRatio: "4/5",
+                borderRadius: 8,
+                overflow: "hidden",
+                flexShrink: 0,
+              }}
+            >
+              <img
+                src="/images/gyrosteller-closeup.png"
+                alt="Griechisches Essen"
+                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+              />
             </div>
           </div>
-        </FadeIn>
+
+          {/* Mobile: just text */}
+          <div className="lg:hidden">
+            <TextBlock />
+          </div>
+        </div>
       </div>
     </section>
   );
