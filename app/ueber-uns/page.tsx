@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from "react";
 import Meander from "@/components/ui/meander";
-import FadeIn from "@/components/ui/fade-in";
 import SignatureCard from "@/components/sections/signature-card";
 import GreekFigure from "@/components/ui/greek-figure";
 
@@ -48,8 +47,7 @@ const stationen: Station[] = [
 
 function StationContent({ station }: { station: Station }) {
   return (
-    <FadeIn direction={station.seite === "links" ? "right" : "left"}>
-      <div style={{ paddingBottom: 64 }} className="px-0 md:px-12">
+    <div style={{ paddingBottom: 64 }} className="px-0 md:px-12">
         {station.bilder ? (
           <div style={{ marginBottom: 20 }}>
             {station.bilder.map((src, i) => (
@@ -115,8 +113,7 @@ function StationContent({ station }: { station: Station }) {
         >
           {station.text}
         </p>
-      </div>
-    </FadeIn>
+    </div>
   );
 }
 
@@ -164,6 +161,7 @@ function TimelineMarker({ jahr }: { jahr: string }) {
 export default function UeberUnsPage() {
   const thekeRef = useRef<HTMLImageElement>(null);
   const sitzbereichRef = useRef<HTMLImageElement>(null);
+  const textRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -171,16 +169,22 @@ export default function UeberUnsPage() {
 
     const theke = thekeRef.current;
     const sitz = sitzbereichRef.current;
+    const text = textRef.current;
 
     if (theke) {
       theke.style.opacity = "0";
-      theke.style.transform = "translateY(40px)";
+      theke.style.transform = "translateY(50px)";
       theke.style.transition = "opacity 0.7s ease, transform 0.7s ease";
     }
     if (sitz) {
       sitz.style.opacity = "0";
-      sitz.style.transform = "translateY(40px)";
+      sitz.style.transform = "translateY(50px)";
       sitz.style.transition = "opacity 0.7s ease, transform 0.7s ease";
+    }
+    if (text) {
+      text.style.opacity = "0";
+      text.style.transform = "translateY(30px)";
+      text.style.transition = "opacity 0.6s ease, transform 0.6s ease";
     }
 
     const observers: IntersectionObserver[] = [];
@@ -192,7 +196,7 @@ export default function UeberUnsPage() {
           theke.style.transform = "translateY(0)";
         } else {
           theke.style.opacity = "0";
-          theke.style.transform = "translateY(40px)";
+          theke.style.transform = "translateY(50px)";
         }
       }, { threshold: 0.15 });
       obs.observe(theke);
@@ -208,10 +212,26 @@ export default function UeberUnsPage() {
         } else {
           sitz.style.transition = "opacity 0.7s ease, transform 0.7s ease";
           sitz.style.opacity = "0";
-          sitz.style.transform = "translateY(40px)";
+          sitz.style.transform = "translateY(50px)";
         }
       }, { threshold: 0.15 });
       obs.observe(sitz);
+      observers.push(obs);
+    }
+
+    if (text) {
+      const obs = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) {
+          text.style.transition = "opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s";
+          text.style.opacity = "1";
+          text.style.transform = "translateY(0)";
+        } else {
+          text.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+          text.style.opacity = "0";
+          text.style.transform = "translateY(30px)";
+        }
+      }, { threshold: 0.2 });
+      obs.observe(text);
       observers.push(obs);
     }
 
@@ -495,6 +515,21 @@ export default function UeberUnsPage() {
               marginTop: 16,
             }}
           />
+          <p
+            ref={textRef}
+            style={{
+              fontFamily: "var(--font-body)",
+              fontSize: 16,
+              lineHeight: 1.75,
+              color: "rgba(15,26,46,0.8)",
+              marginTop: 32,
+              maxWidth: 720,
+            }}
+          >
+            Der Grieche ist heute mehr als ein Imbiss – er ist ein Stück Heimat.
+            Mit frischen Zutaten, Familienrezepten und einem Team das mit Herz
+            dabei ist, bleibt die Küche das, was sie immer war: authentisch griechisch.
+          </p>
         </div>
       </div>
 
