@@ -65,6 +65,33 @@ function StationContent({ station }: { station: Station }) {
               />
             ))}
           </div>
+        ) : station.bild === "/images/theke.png" ? (
+          <>
+            <img
+              src={station.bild}
+              alt={station.titel}
+              style={{
+                width: "100%",
+                height: 280,
+                objectFit: "cover",
+                borderRadius: 12,
+                display: "block",
+                marginBottom: 12,
+              }}
+            />
+            <img
+              src="/images/sitzbereich.png"
+              alt="Sitzbereich"
+              style={{
+                width: "100%",
+                height: 280,
+                objectFit: "cover",
+                borderRadius: 12,
+                display: "block",
+                marginBottom: 20,
+              }}
+            />
+          </>
         ) : (
           <img
             src={station.bild ?? ""}
@@ -372,6 +399,33 @@ export default function UeberUnsPage() {
                       />
                     ))}
                   </div>
+                ) : station.bild === "/images/theke.png" ? (
+                  <>
+                    <img
+                      src={station.bild}
+                      alt={station.titel}
+                      style={{
+                        width: "100%",
+                        aspectRatio: "3/2",
+                        objectFit: "cover",
+                        borderRadius: 12,
+                        display: "block",
+                        marginBottom: 12,
+                      }}
+                    />
+                    <img
+                      src="/images/sitzbereich.png"
+                      alt="Sitzbereich"
+                      style={{
+                        width: "100%",
+                        aspectRatio: "3/2",
+                        objectFit: "cover",
+                        borderRadius: 12,
+                        display: "block",
+                        marginBottom: 16,
+                      }}
+                    />
+                  </>
                 ) : (
                   <img
                     src={station.bild ?? ""}
@@ -402,30 +456,7 @@ export default function UeberUnsPage() {
         </div>
       </div>
 
-      {/* Sitzbereich Foto */}
-      <div
-        style={{
-          backgroundColor: "#F4EDE0",
-          padding: "0 48px 64px",
-        }}
-        className="px-6 md:px-12"
-      >
-        <div style={{ maxWidth: 1000, margin: "0 auto" }}>
-          <img
-            src="/images/sitzbereich.png"
-            alt="Sitzbereich"
-            style={{
-              width: "100%",
-              height: 320,
-              objectFit: "cover",
-              borderRadius: 12,
-              display: "block",
-            }}
-          />
-        </div>
-      </div>
-
-      <div style={{ padding: "12px 0" }}><Meander variant="divider" /></div>
+<div style={{ padding: "12px 0" }}><Meander variant="divider" /></div>
 
       <SignatureCard />
     </div>
