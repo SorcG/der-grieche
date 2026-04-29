@@ -1,9 +1,9 @@
-﻿import Meander from "@/components/ui/meander";
+import Meander from "@/components/ui/meander";
 
 const navLinks = [
   { label: "Startseite", href: "/" },
   { label: "Speisekarte", href: "/speisekarte" },
-  { label: "Ueber Uns", href: "/ueber-uns" },
+  { label: "Über Uns", href: "/ueber-uns" },
   { label: "Impressum", href: "/impressum" },
   { label: "Datenschutz", href: "/datenschutz" },
 ];
@@ -50,7 +50,7 @@ export default function Footer() {
             gap: 48,
           }}
         >
-          {/* Column 1 â€” Brand + Nav */}
+          {/* Column 1 – Brand + Nav */}
           <div>
             <a
               href="/"
@@ -77,7 +77,7 @@ export default function Footer() {
               />
             </a>
             <p style={{ ...bodyStyle, fontSize: 14, marginBottom: 24 }}>
-              Kattenstrother Grillhaus
+              Kattenstrother Grill
             </p>
             <nav style={{ display: "flex", flexDirection: "column" }}>
               {navLinks.map((l) => (
@@ -88,40 +88,34 @@ export default function Footer() {
             </nav>
           </div>
 
-          {/* Column 2 â€” Address + Hours */}
+          {/* Column 2 – Address + Hours */}
           <div>
             <p style={headingStyle}>BESUCH UNS</p>
             <address style={{ ...bodyStyle, fontStyle: "normal" }}>
-              Kattenstrother Str. 100
+              Rhedaer Straße 30
               <br />
-              33334 Guetersloh
+              33330 Gütersloh
             </address>
             <div style={{ ...bodyStyle, marginTop: 20 }}>
-              <p>Mo â€“ Fr: 11:00 â€“ 22:00 Uhr</p>
-              <p>Sa â€“ So: 12:00 â€“ 23:00 Uhr</p>
+              <p>Di – So: 16:00 – 21:00 Uhr</p>
+              <p>Mo: Ruhetag</p>
             </div>
             <a
-              href="tel:+4952411234567"
+              href="tel:+4952415059777"
               style={{ ...linkStyle, marginTop: 16, color: "rgba(244,237,224,0.7)" }}
             >
-              05241 / 123456
+              05241 / 5059777
             </a>
           </div>
 
-          {/* Column 3 â€” Contact */}
+          {/* Column 3 – Contact */}
           <div>
             <p style={headingStyle}>KONTAKT</p>
-            <a
-              href="mailto:info@der-grieche-guetersloh.de"
-              style={{ ...linkStyle, color: "rgba(244,237,224,0.7)", marginBottom: 12 }}
-            >
-              info@der-grieche-guetersloh.de
-            </a>
             <p style={{ ...bodyStyle, marginBottom: 24 }}>
-              Tischreservierungen gerne telefonisch oder per E-Mail.
+              Tischreservierungen gerne telefonisch.
             </p>
             <a
-              href="tel:+4952411234567"
+              href="tel:+4952415059777"
               className="btn"
               style={{
                 display: "inline-block",
@@ -163,7 +157,7 @@ export default function Footer() {
             margin: 0,
           }}
         >
-          Â© 2026 Der Grieche â€“ Kattenstrother Grillhaus
+          © 2026 Der Grieche – Kattenstrother Grill
         </p>
         <div style={{ display: "flex", gap: 16 }}>
           {[
@@ -188,4 +182,3 @@ export default function Footer() {
     </footer>
   );
 }
-
