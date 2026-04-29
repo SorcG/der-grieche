@@ -166,8 +166,8 @@ function WillkommenText() {
           marginBottom: 16,
         }}
       >
-        Seit 1974 steht Der Grieche fuer authentische griechische Kueche in
-        Guetersloh. Was als kleine Taverne begann, ist heute ein Ort fuer
+        Seit 2021 steht Der Grieche für authentische griechische Küche in
+        Gütersloh. Was als kleine Taverne begann, ist heute ein Ort für
         Familien, Freunde und alle, die das echte Griechenland auf dem Teller
         erleben wollen.
       </p>
@@ -181,7 +181,7 @@ function WillkommenText() {
           marginBottom: 32,
         }}
       >
-        Jedes Gyros wird nach unserem Familienrezept gewuerzt. Handgemacht.
+        Jedes Gyros wird nach unserem Familienrezept gewürzt. Handgemacht.
         Frisch. Jeden Tag.
       </p>
 

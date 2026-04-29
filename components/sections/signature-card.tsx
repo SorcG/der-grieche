@@ -129,7 +129,7 @@ function TextBlock() {
           marginBottom: 12,
         }}
       >
-        Kattenstrother Grillhaus
+        Kattenstrother Grill
       </p>
 
       <h2
@@ -157,7 +157,7 @@ function TextBlock() {
           maxWidth: 440,
         }}
       >
-        Seit 1974 servieren wir authentische griechische Kueche in Guetersloh.
+        Seit 1974 servieren wir authentische griechische Küche in Gütersloh.
         Was als kleine Taverne begann, ist heute ein fester Teil der Stadt.
       </p>
 
@@ -198,7 +198,7 @@ function TextBlock() {
         onMouseEnter={(e) => (e.currentTarget.style.color = "#F4EDE0")}
         onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(244,237,224,0.6)")}
       >
-        Entdecke unsere Kueche →
+        Entdecke unsere Küche →
       </a>
     </div>
   );

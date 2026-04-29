@@ -7,13 +7,13 @@ const reviews = [
   {
     name: "Maria K.",
     rating: 5,
-    text: "Das beste Gyros in ganz Guetersloh. Die Atmosphaere ist famililaer und das Personal immer freundlich. Wir kommen seit Jahren hierher!",
+    text: "Das beste Gyros in ganz Gütersloh. Die Atmosphäre ist familiär und das Personal immer freundlich. Wir kommen seit Jahren hierher!",
     date: "vor 2 Wochen",
   },
   {
     name: "Thomas B.",
     rating: 5,
-    text: "Authentische griechische Kueche wie man sie sich wuenscht. Das Souvlaki ist einfach unschlagbar. Sehr zu empfehlen!",
+    text: "Authentische griechische Küche wie man sie sich wünscht. Das Souvlaki ist einfach unschlagbar. Sehr zu empfehlen!",
     date: "vor 1 Monat",
   },
   {
@@ -31,7 +31,7 @@ const reviews = [
   {
     name: "Julia R.",
     rating: 5,
-    text: "Schnell, sauber, hoeflich und ein Familienbetrieb. Fuer mich immer die erste Wahl wenn ich griechisch essen moechte.",
+    text: "Schnell, sauber, höflich und ein Familienbetrieb. Für mich immer die erste Wahl wenn ich griechisch essen möchte.",
     date: "vor 1 Woche",
   },
 ];
@@ -178,7 +178,7 @@ export default function Reviews() {
                   marginBottom: 16,
                 }}
               >
-                Das sagen unsere Gaeste
+                Das sagen unsere Gäste
               </p>
               <h2
                 style={{
@@ -201,7 +201,7 @@ export default function Reviews() {
                   color: "rgba(15,26,46,0.7)",
                 }}
               >
-                Ueber 200 Bewertungen auf Google. Durchschnittlich 4.9 Sterne.
+                Über 200 Bewertungen auf Google. Durchschnittlich 4.9 Sterne.
               </p>
               <span
                 style={{
@@ -247,7 +247,7 @@ export default function Reviews() {
                 marginBottom: 16,
               }}
             >
-              Das sagen unsere Gaeste
+              Das sagen unsere Gäste
             </p>
             <h2
               style={{
@@ -401,7 +401,7 @@ function NavButton({
     <button
       onClick={onClick}
       disabled={disabled}
-      aria-label={dir === "prev" ? "Vorheriges Review" : "Naechstes Review"}
+      aria-label={dir === "prev" ? "Vorheriges Review" : "Nächstes Review"}
       style={{
         width: 32,
         height: 32,

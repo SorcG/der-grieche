@@ -102,7 +102,7 @@ export default function Hero() {
               marginTop: 4,
             }}
           >
-            {"KATTENSTROTHER GRILLHAUS · SEIT 1974"}
+            {"KATTENSTROTHER GRILL"}
           </motion.p>
 
           {/* Subtext */}
@@ -118,7 +118,7 @@ export default function Hero() {
             }}
             className="text-base md:text-lg"
           >
-            Handgemachtes Gyros. Griechische Gastfreundschaft. Seit 1974.
+            Handgemachtes Gyros. Griechische Gastfreundschaft.
           </motion.p>
 
           {/* Buttons */}
