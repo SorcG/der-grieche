@@ -139,7 +139,7 @@ export default function Navigation() {
               lineHeight: 1,
             }}
           >
-            Kattenstrother Grillhaus
+            Kattenstrother Grill
           </span>
         </div>
 
