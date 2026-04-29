@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import Meander from "@/components/ui/meander";
 import FadeIn from "@/components/ui/fade-in";
 import SignatureCard from "@/components/sections/signature-card";
@@ -161,6 +162,62 @@ function TimelineMarker({ jahr }: { jahr: string }) {
 }
 
 export default function UeberUnsPage() {
+  const thekeRef = useRef<HTMLImageElement>(null);
+  const sitzbereichRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReduced) return;
+
+    const theke = thekeRef.current;
+    const sitz = sitzbereichRef.current;
+
+    if (theke) {
+      theke.style.opacity = "0";
+      theke.style.transform = "translateY(40px)";
+      theke.style.transition = "opacity 0.7s ease, transform 0.7s ease";
+    }
+    if (sitz) {
+      sitz.style.opacity = "0";
+      sitz.style.transform = "translateY(40px)";
+      sitz.style.transition = "opacity 0.7s ease, transform 0.7s ease";
+    }
+
+    const observers: IntersectionObserver[] = [];
+
+    if (theke) {
+      const obs = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) {
+          theke.style.opacity = "1";
+          theke.style.transform = "translateY(0)";
+        } else {
+          theke.style.opacity = "0";
+          theke.style.transform = "translateY(40px)";
+        }
+      }, { threshold: 0.15 });
+      obs.observe(theke);
+      observers.push(obs);
+    }
+
+    if (sitz) {
+      const obs = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) {
+          sitz.style.transition = "opacity 0.7s ease 0.15s, transform 0.7s ease 0.15s";
+          sitz.style.opacity = "1";
+          sitz.style.transform = "translateY(0)";
+        } else {
+          sitz.style.transition = "opacity 0.7s ease, transform 0.7s ease";
+          sitz.style.opacity = "0";
+          sitz.style.transform = "translateY(40px)";
+        }
+      }, { threshold: 0.15 });
+      obs.observe(sitz);
+      observers.push(obs);
+    }
+
+    return () => observers.forEach((o) => o.disconnect());
+  }, []);
+
   return (
     <div>
       {/* Hero */}
@@ -402,6 +459,42 @@ export default function UeberUnsPage() {
               </div>
             ))}
           </div>
+        </div>
+      </div>
+
+      <div style={{ padding: "12px 0" }}><Meander variant="divider" /></div>
+
+      {/* Bildbereich nach Timeline */}
+      <div
+        style={{ backgroundColor: "#F4EDE0", padding: "64px 48px" }}
+        className="px-6 md:px-12 py-12 md:py-16"
+      >
+        <div style={{ maxWidth: 1000, margin: "0 auto" }}>
+          <img
+            ref={thekeRef}
+            src="/images/theke.png"
+            alt="Theke"
+            style={{
+              width: "100%",
+              height: 320,
+              objectFit: "cover",
+              borderRadius: 12,
+              display: "block",
+            }}
+          />
+          <img
+            ref={sitzbereichRef}
+            src="/images/sitzbereich.png"
+            alt="Sitzbereich"
+            style={{
+              width: "100%",
+              height: 320,
+              objectFit: "cover",
+              borderRadius: 12,
+              display: "block",
+              marginTop: 16,
+            }}
+          />
         </div>
       </div>
 
