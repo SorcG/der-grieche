@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import Meander from "@/components/ui/meander";
 import SignatureCard from "@/components/sections/signature-card";
 import GreekFigure from "@/components/ui/greek-figure";
@@ -159,85 +158,6 @@ function TimelineMarker({ jahr }: { jahr: string }) {
 }
 
 export default function UeberUnsPage() {
-  const thekeRef = useRef<HTMLImageElement>(null);
-  const sitzbereichRef = useRef<HTMLImageElement>(null);
-  const textRef = useRef<HTMLParagraphElement>(null);
-
-  useEffect(() => {
-    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReduced) return;
-
-    const theke = thekeRef.current;
-    const sitz = sitzbereichRef.current;
-    const text = textRef.current;
-
-    if (theke) {
-      theke.style.opacity = "0";
-      theke.style.transform = "translateY(50px)";
-      theke.style.transition = "opacity 0.7s ease, transform 0.7s ease";
-    }
-    if (sitz) {
-      sitz.style.opacity = "0";
-      sitz.style.transform = "translateY(50px)";
-      sitz.style.transition = "opacity 0.7s ease, transform 0.7s ease";
-    }
-    if (text) {
-      text.style.opacity = "0";
-      text.style.transform = "translateY(30px)";
-      text.style.transition = "opacity 0.6s ease, transform 0.6s ease";
-    }
-
-    const observers: IntersectionObserver[] = [];
-
-    if (theke) {
-      const obs = new IntersectionObserver(([entry]) => {
-        if (entry.isIntersecting) {
-          theke.style.opacity = "1";
-          theke.style.transform = "translateY(0)";
-        } else {
-          theke.style.opacity = "0";
-          theke.style.transform = "translateY(50px)";
-        }
-      }, { threshold: 0.15 });
-      obs.observe(theke);
-      observers.push(obs);
-    }
-
-    if (sitz) {
-      const obs = new IntersectionObserver(([entry]) => {
-        if (entry.isIntersecting) {
-          sitz.style.transition = "opacity 0.7s ease 0.15s, transform 0.7s ease 0.15s";
-          sitz.style.opacity = "1";
-          sitz.style.transform = "translateY(0)";
-        } else {
-          sitz.style.transition = "opacity 0.7s ease, transform 0.7s ease";
-          sitz.style.opacity = "0";
-          sitz.style.transform = "translateY(50px)";
-        }
-      }, { threshold: 0.15 });
-      obs.observe(sitz);
-      observers.push(obs);
-    }
-
-    if (text) {
-      const obs = new IntersectionObserver(([entry]) => {
-        if (entry.isIntersecting) {
-          text.style.transition = "opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s";
-          text.style.opacity = "1";
-          text.style.transform = "translateY(0)";
-        } else {
-          text.style.transition = "opacity 0.6s ease, transform 0.6s ease";
-          text.style.opacity = "0";
-          text.style.transform = "translateY(30px)";
-        }
-      }, { threshold: 0.2 });
-      obs.observe(text);
-      observers.push(obs);
-    }
-
-    return () => observers.forEach((o) => o.disconnect());
-  }, []);
-
   return (
     <div>
       {/* Hero */}
@@ -479,57 +399,6 @@ export default function UeberUnsPage() {
               </div>
             ))}
           </div>
-        </div>
-      </div>
-
-      <div style={{ padding: "12px 0" }}><Meander variant="divider" /></div>
-
-      {/* Bildbereich nach Timeline */}
-      <div
-        style={{ backgroundColor: "#F4EDE0", padding: "64px 48px" }}
-        className="px-6 md:px-12 py-12 md:py-16"
-      >
-        <div style={{ maxWidth: 1000, margin: "0 auto" }}>
-          <img
-            ref={thekeRef}
-            src="/images/theke.png"
-            alt="Theke"
-            style={{
-              width: "100%",
-              height: 320,
-              objectFit: "cover",
-              borderRadius: 12,
-              display: "block",
-            }}
-          />
-          <img
-            ref={sitzbereichRef}
-            src="/images/sitzbereich.png"
-            alt="Sitzbereich"
-            style={{
-              width: "100%",
-              height: 320,
-              objectFit: "cover",
-              borderRadius: 12,
-              display: "block",
-              marginTop: 16,
-            }}
-          />
-          <p
-            ref={textRef}
-            style={{
-              fontFamily: "var(--font-body)",
-              fontSize: 16,
-              lineHeight: 1.75,
-              color: "rgba(15,26,46,0.8)",
-              marginTop: 32,
-              maxWidth: 720,
-            }}
-          >
-            Der Grieche ist heute mehr als ein Imbiss – er ist ein Stück Heimat.
-            Mit frischen Zutaten, Familienrezepten und einem Team das mit Herz
-            dabei ist, bleibt die Küche das, was sie immer war: authentisch griechisch.
-          </p>
         </div>
       </div>
 
