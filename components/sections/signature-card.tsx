@@ -157,7 +157,7 @@ function TextBlock() {
           maxWidth: 440,
         }}
       >
-        Seit 1974 servieren wir authentische griechische Küche in Gütersloh.
+        Seit 2021 servieren wir authentische griechische Küche in Gütersloh.
         Was als kleine Taverne begann, ist heute ein fester Teil der Stadt.
       </p>
 
