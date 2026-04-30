@@ -67,8 +67,8 @@ export default function Willkommen() {
           ease: "none",
           scrollTrigger: {
             trigger: mobileSection,
-            start: "top top",
-            end: "33% top",
+            start: "top bottom",
+            end: "top top",
             scrub: 1,
           },
         }
@@ -82,8 +82,8 @@ export default function Willkommen() {
           ease: "none",
           scrollTrigger: {
             trigger: mobileSection,
-            end: "33% top",
-            start: "top top",
+            start: "top bottom",
+            end: "top top",
             scrub: 1,
           },
         }
