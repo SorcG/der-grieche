@@ -62,7 +62,7 @@ export default function Willkommen() {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: mobileSection,
-          start: "top top",
+          start: "top 50%",
           end: "bottom bottom",
           scrub: 1,
         },
@@ -137,7 +137,7 @@ export default function Willkommen() {
       </div>
 
       {/* Mobile: Split-Effekt */}
-      <div className="lg:hidden" style={{ position: "relative", height: "200vh" }}>
+      <div className="lg:hidden" style={{ position: "relative", height: "150vh" }}>
         {/* Sticky Container */}
         <div
           style={{
