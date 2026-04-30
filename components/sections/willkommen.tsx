@@ -55,48 +55,42 @@ export default function Willkommen() {
     const bottom = mobileBottomRef.current;
     if (!top || !text || !bottom) return;
 
-    top.style.transform = "translateY(-100%)";
-    top.style.transition = "transform 0.8s ease";
+    top.style.transform = "translateY(0)";
+    top.style.transition = "transform 0.8s ease, opacity 0.8s ease";
+    top.style.opacity = "1";
 
     text.style.opacity = "0";
     text.style.transition = "opacity 0.8s ease";
 
-    bottom.style.transform = "translateY(100%)";
-    bottom.style.transition = "transform 0.8s ease";
+    bottom.style.transform = "translateY(0)";
+    bottom.style.transition = "transform 0.8s ease, opacity 0.8s ease";
+    bottom.style.opacity = "1";
 
-    const topObserver = new IntersectionObserver(
+    const container = top.parentElement;
+    if (!container) return;
+
+    const observer = new IntersectionObserver(
       ([entry]) => {
-        top.style.transform = entry.isIntersecting
-          ? "translateY(0)"
-          : "translateY(-100%)";
+        if (entry.isIntersecting) {
+          top.style.transform = "translateY(-100%)";
+          top.style.opacity = "0";
+          text.style.opacity = "1";
+          bottom.style.transform = "translateY(100%)";
+          bottom.style.opacity = "0";
+        } else {
+          top.style.transform = "translateY(0)";
+          top.style.opacity = "1";
+          text.style.opacity = "0";
+          bottom.style.transform = "translateY(0)";
+          bottom.style.opacity = "1";
+        }
       },
-      { threshold: 0.3 }
+      { threshold: 0.5 }
     );
-    topObserver.observe(top);
 
-    const textObserver = new IntersectionObserver(
-      ([entry]) => {
-        text.style.opacity = entry.isIntersecting ? "1" : "0";
-      },
-      { threshold: 0.3 }
-    );
-    textObserver.observe(text);
+    observer.observe(container);
 
-    const bottomObserver = new IntersectionObserver(
-      ([entry]) => {
-        bottom.style.transform = entry.isIntersecting
-          ? "translateY(0)"
-          : "translateY(100%)";
-      },
-      { threshold: 0.3 }
-    );
-    bottomObserver.observe(bottom);
-
-    return () => {
-      topObserver.disconnect();
-      textObserver.disconnect();
-      bottomObserver.disconnect();
-    };
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -153,7 +147,7 @@ export default function Willkommen() {
       </div>
 
       {/* Mobile: stacked */}
-      <div className="lg:hidden">
+      <div className="lg:hidden" style={{ overflow: "hidden" }}>
         <div ref={mobileTopRef} style={{ height: 300, overflow: "hidden" }}>
           <img
             src="/images/tzatziki.png"
