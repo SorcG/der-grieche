@@ -84,7 +84,7 @@ export default function Willkommen() {
   }, []);
 
   return (
-    <section ref={sectionRef} style={{ backgroundColor: "#FCFEFD", minHeight: 600, overflow: "hidden" }}>
+    <section ref={sectionRef} className="lg:overflow-hidden" style={{ backgroundColor: "#FCFEFD", minHeight: 600 }}>
       {/* Desktop: 3-column grid */}
       <div
         className="hidden lg:grid"
@@ -137,7 +137,7 @@ export default function Willkommen() {
       </div>
 
       {/* Mobile: Split-Effekt */}
-      <div className="lg:hidden" style={{ position: "relative", height: "150vh" }}>
+      <div className="lg:hidden" style={{ position: "relative", height: "130vh" }}>
         {/* Sticky Container */}
         <div
           style={{
