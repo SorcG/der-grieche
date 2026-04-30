@@ -379,102 +379,171 @@ export default function UeberUnsPage() {
           </div>
 
           {/* Mobile timeline */}
-          <div className="lg:hidden" style={{ display: "flex", flexDirection: "column", gap: 48 }}>
-            {stationen.map((station) => (
+          <div className="lg:hidden" style={{ position: "relative" }}>
+
+            {/* Vertikale Linie links */}
+            <div
+              style={{
+                position: "absolute",
+                left: 24,
+                top: 0,
+                bottom: 0,
+                width: 2,
+                backgroundColor: "rgba(9,96,208,0.25)",
+              }}
+              aria-hidden="true"
+            />
+
+            {/* Sticky Figur links */}
+            <div
+              style={{
+                position: "absolute",
+                left: 0,
+                top: 0,
+                width: 80,
+                height: "100%",
+                pointerEvents: "none",
+              }}
+            >
               <div
-                key={station.titel}
                 style={{
-                  background: "#16243F",
-                  border: "1px solid rgba(9,96,208,0.15)",
-                  borderRadius: 16,
-                  padding: 28,
-                  boxShadow: "0 4px 16px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.04)",
+                  position: "sticky",
+                  top: 100,
+                  display: "flex",
+                  justifyContent: "center",
+                  zIndex: 2,
                 }}
               >
-                <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 20 }}>
-                  <TimelineMarker jahr={station.jahr} />
-                  <h3
+                <GreekFigure width={80} />
+              </div>
+            </div>
+
+            {/* Stationen-Liste */}
+            <div style={{ display: "flex", flexDirection: "column", gap: 32, paddingLeft: 60 }}>
+              {stationen.map((station) => (
+                <div key={station.titel} style={{ position: "relative" }}>
+
+                  {/* Marker-Punkt auf der Linie */}
+                  <div
                     style={{
-                      fontFamily: "var(--font-display)",
-                      fontSize: "clamp(20px, 5vw, 28px)",
-                      color: "#FCFEFD",
-                      fontWeight: 400,
-                      margin: 0,
+                      position: "absolute",
+                      left: -38,
+                      top: 24,
+                      width: 12,
+                      height: 12,
+                      borderRadius: "50%",
+                      backgroundColor: "#0960D0",
+                      border: "3px solid #0F1A2E",
+                      boxShadow: "0 0 0 2px rgba(9,96,208,0.4)",
+                      zIndex: 1,
+                    }}
+                  />
+
+                  {/* Karte */}
+                  <div
+                    style={{
+                      background: "#16243F",
+                      border: "1px solid rgba(9,96,208,0.15)",
+                      borderRadius: 16,
+                      padding: 24,
+                      boxShadow: "0 4px 16px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.04)",
                     }}
                   >
-                    {station.titel}
-                  </h3>
-                </div>
-                {station.bilder ? (
-                  <div style={{ display: "flex", flexDirection: "column", gap: 12, marginBottom: 16 }}>
-                    {station.bilder.map((src, i) => (
+                    {/* Bilder */}
+                    {station.bilder ? (
+                      <div style={{ display: "flex", flexDirection: "column", gap: 12, marginBottom: 16 }}>
+                        {station.bilder.map((src, i) => (
+                          <img
+                            key={i}
+                            src={src}
+                            alt={`${station.titel} ${i + 1}`}
+                            style={{
+                              width: "100%",
+                              aspectRatio: "3/2",
+                              objectFit: "cover",
+                              borderRadius: 10,
+                              display: "block",
+                            }}
+                          />
+                        ))}
+                      </div>
+                    ) : (
                       <img
-                        key={i}
-                        src={src}
-                        alt={`${station.titel} ${i + 1}`}
+                        src={station.bild ?? ""}
+                        alt={station.titel}
                         style={{
                           width: "100%",
                           aspectRatio: "3/2",
                           objectFit: "cover",
-                          borderRadius: 12,
+                          borderRadius: 10,
                           display: "block",
+                          marginBottom: 16,
                         }}
                       />
-                    ))}
+                    )}
+
+                    {/* sitzbereich.png direkt unter theke.png */}
+                    {station.bild === "/images/theke.png" && (
+                      <img
+                        src="/images/sitzbereich.png"
+                        alt="Sitzbereich"
+                        style={{
+                          width: "100%",
+                          aspectRatio: "3/2",
+                          objectFit: "cover",
+                          borderRadius: 10,
+                          display: "block",
+                          marginTop: -4,
+                          marginBottom: 16,
+                        }}
+                      />
+                    )}
+
+                    {/* Jahr */}
+                    <p
+                      style={{
+                        fontFamily: "var(--font-body)",
+                        fontSize: 11,
+                        textTransform: "uppercase",
+                        letterSpacing: "0.25em",
+                        color: "#6B7C48",
+                        fontWeight: 600,
+                        marginBottom: 10,
+                      }}
+                    >
+                      {station.jahr}
+                    </p>
+
+                    {/* Titel */}
+                    <h3
+                      style={{
+                        fontFamily: "var(--font-display)",
+                        fontSize: "clamp(20px, 5vw, 26px)",
+                        color: "#FCFEFD",
+                        fontWeight: 400,
+                        letterSpacing: "0.04em",
+                        margin: 0,
+                      }}
+                    >
+                      {station.titel}
+                    </h3>
+
+                    {/* Text */}
+                    <p
+                      style={{
+                        fontFamily: "var(--font-body)",
+                        fontSize: 14,
+                        lineHeight: 1.7,
+                        color: "rgba(244,237,224,0.7)",
+                        marginTop: 14,
+                      }}
+                    >
+                      {station.text}
+                    </p>
                   </div>
-                ) : station.bild === "/images/theke.png" ? (
-                  <>
-                    <img
-                      src={station.bild}
-                      alt={station.titel}
-                      style={{
-                        width: "100%",
-                        aspectRatio: "3/2",
-                        objectFit: "cover",
-                        borderRadius: 12,
-                        display: "block",
-                        marginBottom: 12,
-                      }}
-                    />
-                    <img
-                      src="/images/sitzbereich.png"
-                      alt="Sitzbereich"
-                      style={{
-                        width: "100%",
-                        aspectRatio: "3/2",
-                        objectFit: "cover",
-                        borderRadius: 12,
-                        display: "block",
-                        marginBottom: 16,
-                      }}
-                    />
-                  </>
-                ) : (
-                  <img
-                    src={station.bild ?? ""}
-                    alt={station.titel}
-                    style={{
-                      width: "100%",
-                      aspectRatio: "3/2",
-                      objectFit: "cover",
-                      borderRadius: 12,
-                      display: "block",
-                      marginBottom: 16,
-                    }}
-                  />
-                )}
-                <p
-                  style={{
-                    fontFamily: "var(--font-body)",
-                    fontSize: 15,
-                    lineHeight: 1.7,
-                    color: "rgba(244,237,224,0.7)",
-                  }}
-                >
-                  {station.text}
-                </p>
-              </div>
-            ))}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
