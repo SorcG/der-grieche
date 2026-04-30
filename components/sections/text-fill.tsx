@@ -25,8 +25,11 @@ export default function TextFill() {
     }
 
     const ctx = gsap.context(() => {
-      lineRefs.current.forEach((el) => {
+      lineRefs.current.forEach((el, i) => {
         if (!el) return;
+
+        const isMobile = window.innerWidth < 1024;
+
         gsap.fromTo(
           el,
           { "--fill-progress": "0%" } as gsap.TweenVars,
@@ -35,8 +38,8 @@ export default function TextFill() {
             ease: "none",
             scrollTrigger: {
               trigger: el,
-              start: "top 80%",
-              end: "top 20%",
+              start: "top 85%",
+              end: isMobile ? "bottom 30%" : "top 20%",
               scrub: 1,
             },
           } as gsap.TweenVars
