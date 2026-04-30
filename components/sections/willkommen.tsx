@@ -10,9 +10,8 @@ export default function Willkommen() {
   const sectionRef = useRef<HTMLElement>(null);
   const leftImageRef = useRef<HTMLDivElement>(null);
   const rightImageRef = useRef<HTMLDivElement>(null);
-  const mobileTopRef = useRef<HTMLDivElement>(null);
-  const mobileTextRef = useRef<HTMLDivElement>(null);
-  const mobileBottomRef = useRef<HTMLDivElement>(null);
+  const mobileLeftRef = useRef<HTMLDivElement>(null);
+  const mobileRightRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const prefersReduced = window.matchMedia(
@@ -50,47 +49,48 @@ export default function Willkommen() {
     if (typeof window === "undefined") return;
     if (window.innerWidth >= 1024) return;
 
-    const top = mobileTopRef.current;
-    const text = mobileTextRef.current;
-    const bottom = mobileBottomRef.current;
-    if (!top || !text || !bottom) return;
+    gsap.registerPlugin(ScrollTrigger);
 
-    top.style.transform = "translateY(0)";
-    top.style.transition = "transform 0.8s ease, opacity 0.8s ease";
-    top.style.opacity = "1";
+    const mobileSection = mobileLeftRef.current?.closest(
+      ".lg\\:hidden"
+    ) as HTMLElement | null;
 
-    text.style.opacity = "0";
-    text.style.transition = "opacity 0.8s ease";
+    if (!mobileSection || !mobileLeftRef.current || !mobileRightRef.current)
+      return;
 
-    bottom.style.transform = "translateY(0)";
-    bottom.style.transition = "transform 0.8s ease, opacity 0.8s ease";
-    bottom.style.opacity = "1";
-
-    const container = top.parentElement;
-    if (!container) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          top.style.transform = "translateY(-100%)";
-          top.style.opacity = "0";
-          text.style.opacity = "1";
-          bottom.style.transform = "translateY(100%)";
-          bottom.style.opacity = "0";
-        } else {
-          top.style.transform = "translateY(0)";
-          top.style.opacity = "1";
-          text.style.opacity = "0";
-          bottom.style.transform = "translateY(0)";
-          bottom.style.opacity = "1";
+    const ctxMobile = gsap.context(() => {
+      gsap.fromTo(
+        mobileLeftRef.current,
+        { xPercent: 0 },
+        {
+          xPercent: -100,
+          ease: "none",
+          scrollTrigger: {
+            trigger: mobileSection,
+            start: "top top",
+            end: "33% top",
+            scrub: 1,
+          },
         }
-      },
-      { threshold: 0.5 }
-    );
+      );
 
-    observer.observe(container);
+      gsap.fromTo(
+        mobileRightRef.current,
+        { xPercent: 0 },
+        {
+          xPercent: 100,
+          ease: "none",
+          scrollTrigger: {
+            trigger: mobileSection,
+            end: "33% top",
+            start: "top top",
+            scrub: 1,
+          },
+        }
+      );
+    });
 
-    return () => observer.disconnect();
+    return () => ctxMobile.revert();
   }, []);
 
   return (
@@ -146,24 +146,80 @@ export default function Willkommen() {
         </div>
       </div>
 
-      {/* Mobile: stacked */}
-      <div className="lg:hidden" style={{ overflow: "hidden" }}>
-        <div ref={mobileTopRef} style={{ height: 300, overflow: "hidden" }}>
-          <img
-            src="/images/tzatziki.png"
-            alt="Griechisches Essen"
-            style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-          />
-        </div>
-        <div ref={mobileTextRef} style={{ padding: "48px 24px", backgroundColor: "#FCFEFD" }}>
-          <WillkommenText />
-        </div>
-        <div ref={mobileBottomRef} style={{ height: 300, overflow: "hidden" }}>
-          <img
-            src="/images/gyrosteller.png"
-            alt="Griechische Taverne"
-            style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-          />
+      {/* Mobile: Split-Effekt */}
+      <div className="lg:hidden" style={{ position: "relative", height: "300vh" }}>
+        {/* Sticky Container */}
+        <div
+          style={{
+            position: "sticky",
+            top: 0,
+            height: "100vh",
+            overflow: "hidden",
+          }}
+        >
+          {/* Text in der Mitte */}
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              zIndex: 1,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              padding: "48px 24px",
+              backgroundColor: "#FCFEFD",
+              textAlign: "center",
+            }}
+          >
+            <WillkommenText />
+          </div>
+
+          {/* Linkes Bild – linke Hälfte */}
+          <div
+            ref={mobileLeftRef}
+            style={{
+              position: "absolute",
+              inset: 0,
+              zIndex: 2,
+              clipPath: "inset(0 50% 0 0)",
+              willChange: "transform",
+            }}
+          >
+            <img
+              src="/images/tzatziki.png"
+              alt="Tzatziki"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                display: "block",
+              }}
+            />
+          </div>
+
+          {/* Rechtes Bild – rechte Hälfte */}
+          <div
+            ref={mobileRightRef}
+            style={{
+              position: "absolute",
+              inset: 0,
+              zIndex: 2,
+              clipPath: "inset(0 0 0 50%)",
+              willChange: "transform",
+            }}
+          >
+            <img
+              src="/images/gyrosteller.png"
+              alt="Gyros"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                display: "block",
+              }}
+            />
+          </div>
         </div>
       </div>
     </section>
