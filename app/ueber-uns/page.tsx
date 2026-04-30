@@ -46,7 +46,17 @@ const stationen: Station[] = [
 
 function StationContent({ station }: { station: Station }) {
   return (
-    <div style={{ paddingBottom: 64 }} className="px-0 md:px-12">
+    <div className="px-0 md:px-12" style={{ paddingBottom: 64 }}>
+      <div
+        style={{
+          background: "#16243F",
+          border: "1px solid rgba(9,96,208,0.15)",
+          borderRadius: 16,
+          padding: 28,
+          boxShadow: "0 4px 16px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.04)",
+          transition: "transform 0.3s ease, box-shadow 0.3s ease",
+        }}
+      >
         {station.bilder ? (
           <div style={{ marginBottom: 20 }}>
             {station.bilder.map((src, i) => (
@@ -109,11 +119,12 @@ function StationContent({ station }: { station: Station }) {
         <p
           style={{
             fontFamily: "var(--font-body)",
-            fontSize: 12,
+            fontSize: 11,
             textTransform: "uppercase",
-            letterSpacing: "0.15em",
+            letterSpacing: "0.25em",
             color: "#6B7C48",
-            marginBottom: 8,
+            fontWeight: 600,
+            marginBottom: 10,
           }}
         >
           {station.jahr}
@@ -121,10 +132,11 @@ function StationContent({ station }: { station: Station }) {
         <h3
           style={{
             fontFamily: "var(--font-display)",
-            fontSize: "clamp(24px, 2.5vw, 36px)",
-            color: "#0F1A2E",
+            fontSize: "clamp(24px, 2.5vw, 32px)",
+            color: "#FCFEFD",
             fontWeight: 400,
             marginBottom: 16,
+            letterSpacing: "0.04em",
           }}
         >
           {station.titel}
@@ -134,11 +146,12 @@ function StationContent({ station }: { station: Station }) {
             fontFamily: "var(--font-body)",
             fontSize: 15,
             lineHeight: 1.7,
-            color: "rgba(15,26,46,0.75)",
+            color: "rgba(244,237,224,0.7)",
           }}
         >
           {station.text}
         </p>
+      </div>
     </div>
   );
 }
@@ -159,7 +172,7 @@ function TimelineMarker({ jahr }: { jahr: string }) {
           height: 48,
           borderRadius: "50%",
           backgroundColor: "#0960D0",
-          border: "3px solid #F4EDE0",
+          border: "3px solid #0F1A2E",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -251,7 +264,7 @@ export default function UeberUnsPage() {
       {/* Intro text */}
       <div
         style={{
-          backgroundColor: "#F4EDE0",
+          backgroundColor: "#0F1A2E",
           padding: "64px 48px",
         }}
         className="px-6 md:px-12 py-12 md:py-16"
@@ -264,7 +277,7 @@ export default function UeberUnsPage() {
             fontFamily: "var(--font-body)",
             fontSize: 18,
             lineHeight: 1.75,
-            color: "rgba(15,26,46,0.8)",
+            color: "rgba(244,237,224,0.75)",
           }}
         >
           Was 1974 als kleine Taverne in Guetersloh begann, ist heute ein fester
@@ -276,7 +289,7 @@ export default function UeberUnsPage() {
       {/* Timeline */}
       <div
         style={{
-          backgroundColor: "#F4EDE0",
+          backgroundColor: "#0F1A2E",
           padding: "80px 48px",
         }}
         className="px-6 md:px-12 py-16 md:py-20"
@@ -294,7 +307,7 @@ export default function UeberUnsPage() {
                 width: 2,
                 top: 0,
                 bottom: 0,
-                backgroundColor: "rgba(9,96,208,0.2)",
+                backgroundColor: "rgba(9,96,208,0.25)",
               }}
               aria-hidden="true"
             />
@@ -348,7 +361,8 @@ export default function UeberUnsPage() {
                       height: 12,
                       borderRadius: "50%",
                       backgroundColor: "#0960D0",
-                      border: "2px solid #F4EDE0",
+                      border: "2px solid #0F1A2E",
+                      boxShadow: "0 0 0 2px rgba(9,96,208,0.4)",
                       zIndex: 1,
                       marginTop: 16,
                     }}
@@ -367,14 +381,23 @@ export default function UeberUnsPage() {
           {/* Mobile timeline */}
           <div className="lg:hidden" style={{ display: "flex", flexDirection: "column", gap: 48 }}>
             {stationen.map((station) => (
-              <div key={station.titel}>
+              <div
+                key={station.titel}
+                style={{
+                  background: "#16243F",
+                  border: "1px solid rgba(9,96,208,0.15)",
+                  borderRadius: 16,
+                  padding: 28,
+                  boxShadow: "0 4px 16px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.04)",
+                }}
+              >
                 <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 20 }}>
                   <TimelineMarker jahr={station.jahr} />
                   <h3
                     style={{
                       fontFamily: "var(--font-display)",
                       fontSize: "clamp(20px, 5vw, 28px)",
-                      color: "#0F1A2E",
+                      color: "#FCFEFD",
                       fontWeight: 400,
                       margin: 0,
                     }}
@@ -445,7 +468,7 @@ export default function UeberUnsPage() {
                     fontFamily: "var(--font-body)",
                     fontSize: 15,
                     lineHeight: 1.7,
-                    color: "rgba(15,26,46,0.75)",
+                    color: "rgba(244,237,224,0.7)",
                   }}
                 >
                   {station.text}
