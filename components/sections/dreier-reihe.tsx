@@ -25,6 +25,9 @@ export default function DreierReihe() {
   const img1Ref = useRef<HTMLDivElement>(null);
   const img2Ref = useRef<HTMLDivElement>(null);
   const img3Ref = useRef<HTMLDivElement>(null);
+  const mobileImg1Ref = useRef<HTMLDivElement>(null);
+  const mobileImg2Ref = useRef<HTMLDivElement>(null);
+  const mobileImg3Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -63,7 +66,53 @@ export default function DreierReihe() {
     return () => ctx.revert();
   }, []);
 
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (window.innerWidth >= 1024) return;
+
+    const elements = [
+      mobileImg1Ref.current,
+      mobileImg2Ref.current,
+      mobileImg3Ref.current,
+    ];
+    if (elements.some((e) => !e)) return;
+
+    elements.forEach((el) => {
+      if (!el) return;
+      el.style.opacity = "0";
+      el.style.transform = "translateY(60px)";
+      el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+    });
+
+    const observers: IntersectionObserver[] = [];
+
+    elements.forEach((el, i) => {
+      if (!el) return;
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            el.style.transitionDelay = `${i * 150}ms`;
+            el.style.opacity = "1";
+            el.style.transform = "translateY(0)";
+          } else {
+            el.style.transitionDelay = "0ms";
+            el.style.opacity = "0";
+            el.style.transform = "translateY(60px)";
+          }
+        },
+        { threshold: 0.15 }
+      );
+      observer.observe(el);
+      observers.push(observer);
+    });
+
+    return () => {
+      observers.forEach((o) => o.disconnect());
+    };
+  }, []);
+
   const imgRefs = [img1Ref, img2Ref, img3Ref];
+  const mobileImgRefs = [mobileImg1Ref, mobileImg2Ref, mobileImg3Ref];
 
   return (
     <section
@@ -111,9 +160,10 @@ export default function DreierReihe() {
         className="flex flex-col md:hidden"
         style={{ gap: 12 }}
       >
-        {bilder.map((bild) => (
+        {bilder.map((bild, i) => (
           <div
             key={bild.src}
+            ref={mobileImgRefs[i]}
             style={{
               borderRadius: 8,
               overflow: "hidden",

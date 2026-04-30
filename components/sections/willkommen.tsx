@@ -10,6 +10,9 @@ export default function Willkommen() {
   const sectionRef = useRef<HTMLElement>(null);
   const leftImageRef = useRef<HTMLDivElement>(null);
   const rightImageRef = useRef<HTMLDivElement>(null);
+  const mobileTopRef = useRef<HTMLDivElement>(null);
+  const mobileTextRef = useRef<HTMLDivElement>(null);
+  const mobileBottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const prefersReduced = window.matchMedia(
@@ -41,6 +44,59 @@ export default function Willkommen() {
     }, sectionRef);
 
     return () => ctx.revert();
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (window.innerWidth >= 1024) return;
+
+    const top = mobileTopRef.current;
+    const text = mobileTextRef.current;
+    const bottom = mobileBottomRef.current;
+    if (!top || !text || !bottom) return;
+
+    top.style.transform = "translateY(-100%)";
+    top.style.transition = "transform 0.8s ease";
+
+    text.style.opacity = "0";
+    text.style.transition = "opacity 0.8s ease";
+
+    bottom.style.transform = "translateY(100%)";
+    bottom.style.transition = "transform 0.8s ease";
+
+    const topObserver = new IntersectionObserver(
+      ([entry]) => {
+        top.style.transform = entry.isIntersecting
+          ? "translateY(0)"
+          : "translateY(-100%)";
+      },
+      { threshold: 0.3 }
+    );
+    topObserver.observe(top);
+
+    const textObserver = new IntersectionObserver(
+      ([entry]) => {
+        text.style.opacity = entry.isIntersecting ? "1" : "0";
+      },
+      { threshold: 0.3 }
+    );
+    textObserver.observe(text);
+
+    const bottomObserver = new IntersectionObserver(
+      ([entry]) => {
+        bottom.style.transform = entry.isIntersecting
+          ? "translateY(0)"
+          : "translateY(100%)";
+      },
+      { threshold: 0.3 }
+    );
+    bottomObserver.observe(bottom);
+
+    return () => {
+      topObserver.disconnect();
+      textObserver.disconnect();
+      bottomObserver.disconnect();
+    };
   }, []);
 
   return (
@@ -98,19 +154,17 @@ export default function Willkommen() {
 
       {/* Mobile: stacked */}
       <div className="lg:hidden">
-        <div style={{ height: 300, overflow: "hidden" }}>
+        <div ref={mobileTopRef} style={{ height: 300, overflow: "hidden" }}>
           <img
             src="/images/tzatziki.png"
             alt="Griechisches Essen"
             style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
           />
         </div>
-        <div style={{ padding: "48px 24px", backgroundColor: "#FCFEFD" }}>
-          <FadeIn delay={0.2}>
-            <WillkommenText />
-          </FadeIn>
+        <div ref={mobileTextRef} style={{ padding: "48px 24px", backgroundColor: "#FCFEFD" }}>
+          <WillkommenText />
         </div>
-        <div style={{ height: 300, overflow: "hidden" }}>
+        <div ref={mobileBottomRef} style={{ height: 300, overflow: "hidden" }}>
           <img
             src="/images/gyrosteller.png"
             alt="Griechische Taverne"
