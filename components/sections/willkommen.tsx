@@ -59,35 +59,25 @@ export default function Willkommen() {
       return;
 
     const ctxMobile = gsap.context(() => {
-      gsap.fromTo(
-        mobileLeftRef.current,
-        { xPercent: 0 },
-        {
-          xPercent: -100,
-          ease: "none",
-          scrollTrigger: {
-            trigger: mobileSection,
-            start: "top bottom",
-            end: "top top",
-            scrub: 1,
-          },
-        }
-      );
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: mobileSection,
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 1,
+        },
+      });
 
-      gsap.fromTo(
-        mobileRightRef.current,
-        { xPercent: 0 },
-        {
-          xPercent: 100,
-          ease: "none",
-          scrollTrigger: {
-            trigger: mobileSection,
-            start: "top bottom",
-            end: "top top",
-            scrub: 1,
-          },
-        }
-      );
+      // Kurz sichtbar (0 – 0.4)
+      tl.to(mobileLeftRef.current, { xPercent: 0, ease: "none", duration: 0.4 }, 0)
+        .to(mobileRightRef.current, { xPercent: 0, ease: "none", duration: 0.4 }, 0)
+      // Bilder fahren auseinander (0.4 – 1.4)
+        .to(mobileLeftRef.current, { xPercent: -100, ease: "none", duration: 1 }, 0.4)
+        .to(mobileRightRef.current, { xPercent: 100, ease: "none", duration: 1 }, 0.4)
+      // Text sichtbar – Hold (1.4 – 1.8)
+      // Bilder fahren zurück (1.8 – 2.8)
+        .to(mobileLeftRef.current, { xPercent: 0, ease: "none", duration: 1 }, 1.8)
+        .to(mobileRightRef.current, { xPercent: 0, ease: "none", duration: 1 }, 1.8);
     });
 
     return () => ctxMobile.revert();
@@ -147,7 +137,7 @@ export default function Willkommen() {
       </div>
 
       {/* Mobile: Split-Effekt */}
-      <div className="lg:hidden" style={{ position: "relative", height: "300vh" }}>
+      <div className="lg:hidden" style={{ position: "relative", height: "200vh" }}>
         {/* Sticky Container */}
         <div
           style={{
