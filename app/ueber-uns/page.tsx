@@ -280,9 +280,9 @@ export default function UeberUnsPage() {
             color: "rgba(244,237,224,0.75)",
           }}
         >
-          Was 1974 als kleine Taverne in Guetersloh begann, ist heute ein fester
-          Bestandteil der Stadt. Drei Generationen, eine Leidenschaft:
-          authentische griechische Kueche.
+          Was 2021 als kleiner Imbiss begann, ist heute ein fester
+          Bestandteil der Stadt. In zweiter Generation, eine Leidenschaft:
+          authentische griechische Küche.
         </p>
       </div>
 
