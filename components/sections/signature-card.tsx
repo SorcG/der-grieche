@@ -135,7 +135,7 @@ function TextBlock() {
       <h2
         style={{
           fontFamily: "var(--font-display)",
-          fontSize: "clamp(40px, 5vw, 72px)",
+          fontSize: "clamp(28px, 6vw, 72px)",
           color: "#F4EDE0",
           lineHeight: 0.95,
           marginBottom: 24,
