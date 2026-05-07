@@ -142,9 +142,9 @@ function TextBlock() {
           fontWeight: 400,
         }}
       >
-        50 JAHRE
+        40 JAHRE
         <br />
-        TRADITION
+        ERFAHRUNG
       </h2>
 
       <p
