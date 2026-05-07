@@ -1,5 +1,4 @@
 "use client";
-
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -25,11 +24,8 @@ export default function TextFill() {
     }
 
     const ctx = gsap.context(() => {
-      lineRefs.current.forEach((el, i) => {
+      lineRefs.current.forEach((el) => {
         if (!el) return;
-
-        const isMobile = window.innerWidth < 1024;
-
         gsap.fromTo(
           el,
           { "--fill-progress": "0%" } as gsap.TweenVars,
@@ -39,8 +35,8 @@ export default function TextFill() {
             scrollTrigger: {
               trigger: el,
               start: "top 85%",
-              end: isMobile ? "bottom -20%" : "top 20%",
-              scrub: isMobile ? true : 1,
+              end: "bottom 15%",
+              scrub: 1,
             },
           } as gsap.TweenVars
         );
@@ -63,26 +59,36 @@ export default function TextFill() {
         {lines.map((line, i) => (
           <div
             key={line}
-            ref={(el) => {
-              lineRefs.current[i] = el;
-            }}
             style={{
-              fontFamily: "var(--font-display)",
-              fontSize: "clamp(48px, 8vw, 120px)",
-              lineHeight: 1.0,
-              letterSpacing: "0.01em",
-              color: "transparent",
-              WebkitTextStroke: "1.5px #F4EDE0",
-              backgroundImage:
-                "linear-gradient(90deg, #F4EDE0 var(--fill-progress, 0%), transparent var(--fill-progress, 0%))",
-              WebkitBackgroundClip: "text",
-              backgroundClip: "text",
               paddingLeft: i % 2 === 1 ? "clamp(32px, 8vw, 160px)" : "0",
               marginBottom: i < lines.length - 1 ? "16px" : "0",
-              ["--fill-progress" as string]: "0%",
+              // Kein Zeilenumbruch - Gradient funktioniert nur auf einer Zeile
+              whiteSpace: "nowrap",
+              overflowX: "hidden",
             }}
           >
-            {line}
+            <span
+              ref={(el) => {
+                lineRefs.current[i] = el as HTMLDivElement | null;
+              }}
+              style={{
+                fontFamily: "var(--font-display)",
+                // Kleiner auf Mobile damit kein Umbruch nötig
+                fontSize: "clamp(28px, 7.5vw, 120px)",
+                lineHeight: 1.1,
+                letterSpacing: "0.01em",
+                color: "transparent",
+                WebkitTextStroke: "1.5px #F4EDE0",
+                backgroundImage:
+                  "linear-gradient(90deg, #F4EDE0 var(--fill-progress, 0%), transparent var(--fill-progress, 0%))",
+                WebkitBackgroundClip: "text",
+                backgroundClip: "text",
+                display: "inline-block",
+                ["--fill-progress" as string]: "0%",
+              }}
+            >
+              {line}
+            </span>
           </div>
         ))}
       </div>
