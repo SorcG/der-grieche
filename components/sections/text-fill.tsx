@@ -39,8 +39,8 @@ export default function TextFill() {
             scrollTrigger: {
               trigger: el,
               start: "top 85%",
-              end: isMobile ? "bottom 30%" : "top 20%",
-              scrub: 1,
+              end: isMobile ? "bottom -20%" : "top 20%",
+              scrub: isMobile ? true : 1,
             },
           } as gsap.TweenVars
         );
