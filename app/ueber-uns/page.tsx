@@ -255,7 +255,7 @@ export default function UeberUnsPage() {
               color: "rgba(244,237,224,0.8)",
             }}
           >
-            Der Grieche · Seit 1974
+            Der Grieche · Seit 2021
           </p>
         </div>
       </div>
