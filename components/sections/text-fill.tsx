@@ -33,9 +33,9 @@ export default function TextFill() {
             "--fill-progress": "100%",
             ease: "none",
             scrollTrigger: {
-              trigger: sectionRef.current,
-              start: `top+=${i * 200} 70%`,
-              end: `top+=${(i + 1) * 200 + 200} 30%`,
+              trigger: el,
+              start: "top 90%",
+              end: "center 40%",
               scrub: 1,
             },
           } as gsap.TweenVars
@@ -51,8 +51,7 @@ export default function TextFill() {
       ref={sectionRef}
       style={{
         backgroundColor: "#0F1A2E",
-        padding: "160px 24px",
-        minHeight: "100vh",
+        padding: "80px 24px",
         overflow: "hidden",
       }}
     >
