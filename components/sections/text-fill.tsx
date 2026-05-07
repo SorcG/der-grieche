@@ -51,7 +51,7 @@ export default function TextFill() {
       ref={sectionRef}
       style={{
         backgroundColor: "#0F1A2E",
-        padding: "120px 48px",
+        padding: "120px 24px",
         overflow: "hidden",
       }}
     >
@@ -60,7 +60,7 @@ export default function TextFill() {
           <div
             key={line}
             style={{
-              paddingLeft: i % 2 === 1 ? "clamp(32px, 8vw, 160px)" : "0",
+              paddingLeft: i % 2 === 1 ? "clamp(16px, 8vw, 160px)" : "0",
               marginBottom: i < lines.length - 1 ? "16px" : "0",
               // Kein Zeilenumbruch - Gradient funktioniert nur auf einer Zeile
               whiteSpace: "nowrap",
@@ -74,7 +74,7 @@ export default function TextFill() {
               style={{
                 fontFamily: "var(--font-display)",
                 // Kleiner auf Mobile damit kein Umbruch nötig
-                fontSize: "clamp(28px, 7.5vw, 120px)",
+                fontSize: "clamp(28px, 8.5vw, 120px)",
                 lineHeight: 1.1,
                 letterSpacing: "0.01em",
                 color: "transparent",
