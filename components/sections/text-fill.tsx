@@ -24,7 +24,7 @@ export default function TextFill() {
     }
 
     const ctx = gsap.context(() => {
-      lineRefs.current.forEach((el) => {
+      lineRefs.current.forEach((el, i) => {
         if (!el) return;
         gsap.fromTo(
           el,
@@ -33,9 +33,9 @@ export default function TextFill() {
             "--fill-progress": "100%",
             ease: "none",
             scrollTrigger: {
-              trigger: el,
-              start: "top 85%",
-              end: "bottom 15%",
+              trigger: sectionRef.current,
+              start: `top+=${i * 200} 70%`,
+              end: `top+=${(i + 1) * 200 + 200} 30%`,
               scrub: 1,
             },
           } as gsap.TweenVars
@@ -51,7 +51,8 @@ export default function TextFill() {
       ref={sectionRef}
       style={{
         backgroundColor: "#0F1A2E",
-        padding: "120px 24px",
+        padding: "160px 24px",
+        minHeight: "100vh",
         overflow: "hidden",
       }}
     >
@@ -64,7 +65,7 @@ export default function TextFill() {
               marginBottom: i < lines.length - 1 ? "16px" : "0",
               // Kein Zeilenumbruch - Gradient funktioniert nur auf einer Zeile
               whiteSpace: "nowrap",
-              overflowX: "hidden",
+              overflow: "visible",
             }}
           >
             <span
